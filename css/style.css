@@ -1,0 +1,167 @@
+@charset = "utf-8";
+*, body{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #f3f3f3;
+    font-family: Tahoma,Helvetica,Verdana,Arial;
+}
+html{
+    
+}
+#khung-trang-web{
+    width: 960px;
+    margin: 0 auto;
+    background: #fff;
+}
+#header-body{
+    float: left;
+    width: 100%;
+}
+#header-body img{
+    width: 100%;
+}
+#nav{
+    float: left;
+    width: 100%;
+}
+#noi-dung-trang-web{
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
+.cot-mot{
+    width: 230px;
+}
+.cot-hai{
+    width: 720px;
+    box-shadow: 2px 4px 12px -3px #c7c7c7;
+    margin-left: 10px;
+    border-left: 1px solid #e0e0e0;
+}
+.cot-ba{
+    width: 230px;
+    background-color: yellowgreen;
+}
+.cot-mot, .cot-hai, .cot-ba{
+    float: left;
+    border-radius: 8px 8px 0px 0px;
+    padding-bottom: 10px;
+}
+.header-cot-hai{
+    float: left;
+    width: 100%;
+    height: 30px;
+    background: #3498db;
+    border-radius: 8px 8px 0px 0px;
+}
+.header-cot-hai h3{
+    padding: 0px 13px;
+    margin: 0;
+    font-size: 16px;
+    width: fit-content;
+    line-height: 30px;
+    color: #fff;
+    font-weight: 500;
+}
+.bao-sach{
+    width: 143px;
+    float: left;
+    text-align: center;
+    padding: 2px 8px;
+}
+.bao-sach a{
+    text-decoration: none;
+}
+.sach{
+    padding: 6px;
+    /*border: 1px solid rgba(232, 232, 232, 0.43);
+    box-shadow: 1px 2px 19px 1px #ccc;*/
+    border-radius: 4px;
+}
+.sach:hover{
+    transition: all 0.222s;
+        box-shadow: 0px 3px 18px -1px #ccc;
+}
+.anh-bia-sach{
+    width: 100%;
+    height: 188px;
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto;
+}
+.ten-sach{
+    color: #656565;
+    font-size: 12px;
+    padding: 6px 0px 0px 0px;
+}
+.ten-sach:hover{
+    text-decoration: underline;
+}
+.ten-sach span{
+    
+}
+.header-cot-mot{
+    float: left;
+    width: 100%;
+    height: 30px;
+    background: #1abc9c;
+    border-radius: 8px 8px 0px 0px;
+}
+.header-cot-mot h3{
+    padding: 0px 13px;
+    margin: 0;
+    font-size: 16px;
+    width: fit-content;
+    line-height: 30px;
+    color: #fff;
+    font-weight: 500;
+}
+#sach-theo-khoa{
+    list-style-type: none;
+    width: 100%;
+    float: left;
+}
+#sach-theo-khoa li{
+    display: block;
+    border-bottom: 1px dotted rgba(95, 204, 182, 0.37);
+}
+#sach-theo-khoa li:last-child{
+    border: none;
+}
+#sach-theo-khoa li a{
+    padding: 0px 0px 0px 14px;  
+    display: block;  
+    height: 25px; 
+    line-height: 25px;
+}
+.tim-kiem{
+    background: #34495e;
+}
+.bao-cot-mot{
+    float: left;
+    border: 1px solid #e8e8e8;
+    margin-bottom: 10px;
+    width: 230px;
+    box-shadow: 0px 4px 12px -3px #c7c7c7;
+}
+.the-loai-khac{
+
+}
+.tim{
+    float: left;
+    width: 100%;
+    padding: 7px;
+}
+.o-tim{
+    width: 148px;
+    font-size: 12px;
+    height: 25px;
+}
+.nut-tim{
+    width: 61px;
+    font-size: 12px;
+    height: 25px;
+    border-radius: 2px;
+}
