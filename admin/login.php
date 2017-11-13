@@ -6,6 +6,7 @@
 			session_start();
 			$_SESSION['username'] = $_POST['username'];
 			$_SESSION['password'] = $_POST['password'];
+			$_SESSION['LAST_ACTIVITY'] = time();
 			header("Location: index.php");
 		}
 	}
