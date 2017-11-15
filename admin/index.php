@@ -23,7 +23,7 @@
 	      <a class="navbar-brand" href="#">VLUTE Elearning</a>
 	    </div>
 	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="#">Trang chủ</a></li>
+	      <li><a href="#">Trang chủ</a></li>
 		  <li class="dropdown">
         	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Quản lý sinh viên
 	        <span class="caret"></span></a>
@@ -33,8 +33,8 @@
 	          <li><a href="#">Sinh viên theo lớp</a></li>
 	        </ul>
 	      </li>
-	      <li><a href="#">Học kỳ - Năm học</a></li>
-	      <li><a href="#">Bài học</a></li>
+	      <li id="khoahoc"><a href="?p=khoahoc">Khóa học</a></li>
+	      <li><a href="#">Bài giảng</a></li>
 		  <li class="dropdown">
         	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Điểm
 	        <span class="caret"></span></a>
@@ -50,6 +50,11 @@
 	    </ul>
 	  </div>
 	</nav>
+	<div id="khung-trang-admin" class="container" style="width: 99%;">
+	  <?php 
+	    include_once("public_control.php");
+	   ?>
+	</div>
 </body>
 </html>
 <script src="nonti/bootstrap-notify.min.js"></script>
