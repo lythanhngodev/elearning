@@ -9,6 +9,19 @@ body{
  	font-family: 'Open Sans', sans-serif;
 
 }
+[data-notify="container"].alert{max-width: 350px;width: fit-content;padding: 10px;}
+.modal div .modal-content{
+	box-shadow: none;
+}
+.anil{
+  opacity: 0.345;
+  -webkit-transition: all 0.345s;/*opening speed*/
+  -o-transition: all 0.345s;/*opening speed*/
+  transition: all 0.345s;/*opening speed*/
+}
+.anil.in {
+  opacity: 1;
+}
 .login-form {
 	background:#f5f5f5;
 	width: 26%;
@@ -18,7 +31,10 @@ body{
 	-o-border-radius: 0.4em;
 	-moz-border-radius: 0.4em;
 }
-
+[data-notify="container"] button{
+	
+margin-left: 8px;
+}
 .head {
 	position: absolute;
 	top:-15%;
@@ -57,7 +73,7 @@ text-align: center;
 form p a:hover {
 	color:#21A957;
 }
- input[type="text"], input[type="password"]{
+.nutnhap{
 	text-align:left;
 	position: relative;
 	width:92%;
@@ -74,7 +90,7 @@ form p a:hover {
 	border:1px solid #DED6D6;
 	-webkit-appearance:none;
 }
- input[type="text"]:hover, input[type="password"]:hover{
+.nutnhap:hover{
  	border:1px solid #949494;
 	transition:0.5s;
 	-webkit-transition:0.5s;
@@ -313,23 +329,22 @@ input[type="submit"]:hover{
 .trai{
     text-align: right;
 }
-.chuatra, .datra, .slmuon{
+.xam{
     border-radius: 2px;
     font-size: 12px;
     padding: 4px 6px;
-}
-.chuatra{
-    background: #d9534f;
     color: #fff;
 }
-.datra{
-    background: #27ae60;
-    color: #fff;
+
+.tgktdk{
+    background: #9C27B0;
 }
 .slmuon{
     background: #1abc9c;
-    color: #fff;
-    border-radius: 2px;
+}
+.xam{border: 1px solid #cccccc;color: gray;cursor: pointer;}
+.xam:hover{
+	border-color: #212121;
 }
 .nut .btn{
     padding: 2px 6px;
@@ -338,9 +353,4 @@ input[type="submit"]:hover{
     text-align: center;
     padding: 30px 0px 0px 0px;
     font-size: 14px;
-}
-img:hover{
-    transition: all 0.3456789s;
-    -webkit-transition:all 0.3456789s;
-    transform: rotate(30deg);
 }

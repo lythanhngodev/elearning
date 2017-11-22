@@ -36,8 +36,8 @@
 					<img src="images/user.png" alt=""/>
 				</div>
 				<form href="" method="post">
-						<input type="text" class="text" name="username" value="" placeholder="USERNAME" >
-						<input type="password" value="" name="password" placeholder="Password">
+						<input type="text" class="text nutnhap" name="username" value="" placeholder="tên đăng nhập" >
+						<input type="password" class="nutnhap" value="" name="password" placeholder="mật khẩu">
 						<div class="submit">
 							<input type="submit" value="ĐĂNG NHẬP" >
 					</div>	

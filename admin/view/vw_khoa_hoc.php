@@ -2,21 +2,23 @@
       function thanhcong(chuoi) {
            $.notify(chuoi, {
               animate: {
-                enter: 'animated bounceIn',
-                exit: 'animated bounceOut'
+                enter: 'animated fadeIn',
+                exit: 'animated fadeOut'
+              },
+              placement: {
+                from: 'bottom',
+                align: 'left'
               },
               type: 'success',
               delay: 2000
             });
-           $("#qltv-modal-them-khoa").modal("hide");
-           $("#qltv-modal-sua-khoa").modal("hide");
-           $("#qltv-modal-xoa-khoa").modal("hide");
+           $("#qltv-modal-them-khoa-hoc").modal("hide");
       }
       function tailai() {
         setTimeout(function(){ location.reload(); }, 3000);
       }
       function dongsua() {
-        $("#qltv-modal-sua-dg").modal("hide");
+        $("#qltv-modal-sua-khoa-hoc").modal("hide");
       }
       function dongxoa(){
         $("#qltv-modal-xoa-dg").modal("hide");
@@ -24,15 +26,19 @@
       function khongthanhcong(chuoi) {
            $.notify(chuoi, {
               animate: {
-                enter: 'animated bounceIn',
-                exit: 'animated bounceOut'
+                enter: 'animated fadeIn',
+                exit: 'animated fadeOut'
+              },
+              placement: {
+                from: 'bottom',
+                align: 'left'
               },
               type: 'danger',
-              delay: 4000
+              delay: 2000
             });
-
       }
 </script>
+<script src="ckfinder/ckfinder.js"></script>
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -72,17 +78,18 @@
                 ?>
                   <tr>
                     <th class="giua"><?php echo $stt; ?></th>
-                    <td class="giua"><a><?php echo $row['MAKH']; ?></a></td>
-                    <td><?php echo $row['TENKH']; ?></td>
-                    <td><?php echo $row['MOTAKH']; ?></td>
-                    <td class="giua"><a><?php echo $row['TGBATDAU']; ?></a></td>
-                    <td class="giua"><a><?php echo $row['TGKETTHUC']; ?></a></td>
-                    <td class="giua"><span class="datra" ><?php echo $row['TGBDDK']; ?></span></td>
-                    <td class="giua"><span class="chuatra"><?php echo $row['TGKTDK']; ?></span></td>
-                    <td class="giua"><div class="nut nam-giua"><a class="btn btn-primary btn-sua-khoa" data-qltv="<?php echo $row['MAKH']; ?>" title="Sửa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        <a class="btn btn-danger btn-xoa-khoa" title="Xóa"
-                        data-qltv="<?php echo $row['MAKH']; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></a></div>
+                    <td class="giua" id="id-ma-khoa-hoc-<?php echo $row['IDKH']; ?>"><a><?php echo $row['MAKH']; ?></a></td>
+                    <td id="id-ten-khoa-hoc-<?php echo $row['IDKH']; ?>"><?php echo $row['TENKH']; ?></td>
+                    <td id="id-mo-ta-<?php echo $row['IDKH']; ?>"><?php echo $row['MOTAKH']; ?></td>
+                    <td id="id-thoi-gian-bat-dau-<?php echo $row['IDKH']; ?>" class="giua" id=""><span class="xam" ><?php echo $row['TGBATDAU']; ?></span></td>
+                    <td id="id-thoi-gian-ket-thuc-<?php echo $row['IDKH']; ?>" class="giua"><span class="xam"><?php echo $row['TGKETTHUC']; ?></span></td>
+                    <td id="id-thoi-gian-bat-dau-dang-ky-<?php echo $row['IDKH']; ?>" class="giua"><span class="xam" ><?php echo $row['TGBDDK']; ?></span></td>
+                    <td id="id-thoi-gian-ket-thuc-dang-ky-<?php echo $row['IDKH']; ?>" class="giua"><span class="xam"><?php echo $row['TGKTDK']; ?></span></td>
+                    <td class="giua"><div class="nut nam-giua"><a class="btn btn-primary btn-sua-khoa-hoc" data-el="<?php echo $row['IDKH']; ?>" title="Sửa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        <a class="btn btn-danger btn-xoa-khoa-hoc" title="Xóa"
+                        data-el="<?php echo $row['IDKH']; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></a></div>
                     </td>
+                    <input type="text" hidden="hidden" id="id-hinh-anh-<?php echo $row['IDKH']; ?>" name="" value="<?php echo $row['HINHANH']; ?>">
                 </tr>
                 <?php
                 $stt++;
@@ -93,92 +100,162 @@
       </div>
     </section>
 
-<!-- Modal: Thêm khoa -->
-<div class="modal fade" id="qltv-modal-them-khoa" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- Modal: Thêm khóa học -->
+<div class="modal anil in" id="qltv-modal-them-khoa-hoc" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Thêm khoa</h4>
+        <h4 class="modal-title">Thêm khóa học</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label>Mã khoa</label>
-          <input type="text" class="form-control" name="" id="ma-khoa-them" placeholder="mã khoa" required autocomplete="on">
+          <label>Mã khhóa học</label>
+          <input type="text" class="form-control" name="" id="ma-khoa-hoc-them" placeholder="mã khóa học" required autocomplete="on">
         </div>
         <div class="form-group">
-          <label>Tên khoa</label>
-          <input type="text" class="form-control" name="" id="ten-khoa-them" placeholder="tên khoa" required autocomplete="on">
+          <label>Tên khóa học</label>
+          <input type="text" class="form-control" name="" id="ten-khoa-hoc-them" placeholder="tên khóa học" required autocomplete="on">
         </div>
-        <div class="form-group">
-          <label>Địa chỉ khoa</label>
-          <input type="text" class="form-control" name="" id="dia-chi-khoa-them" placeholder="địa chỉ khoa" required autocomplete="on">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Mô tả khóa học</label>
+              <textarea class="form-control" id="mo-ta-khoa-hoc-them" rows="5"></textarea>
+            </div>
+          </div>  
+          <div class="col-md-6">
+            <div class="form-group">
+              <button class="btn btn-default" onclick="BrowseServer()">Chọn hình ảnh khóa học ...</button>
+              <img src="" id="hinh-anh-hoc-ky-them" style="width: 100%;">
+            </div>
+            <input type="text" id="hinh-anh-hoc-ky-them-src" hidden="hidden" name="">
+          </div>
         </div>
-        <div class="form-group">
-          <label>Số điện thoại</label>
-          <input type="text" class="form-control" name="" id="so-dien-thoai-khoa-them" placeholder="số điện thoại" required autocomplete="on">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Thời gian bắt đầu khóa học</label>
+              <input type="date" class="form-control" name="" id="thoi-gian-bat-dau-them" required autocomplete="on">
+            </div>
+          </div>  
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Thời gian kết thúc khóa học</label>
+              <input type="date" class="form-control" name="" id="thoi-gian-ket-thuc-them" required autocomplete="on">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Thời gian bắt đầu đăng ký</label>
+              <input type="date" class="form-control" name="" id="thoi-gian-dang-ky-them" required autocomplete="on">
+            </div>
+          </div>  
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Thời gian kết thúc đăng ký</label>
+              <input type="date" class="form-control" name="" id="thoi-gian-ket-thuc-dang-ky-them" required autocomplete="on">
+            </div>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary" id="nut-them-khoa">Thêm khoa</button>
+        <button type="button" class="btn btn-primary" id="nut-them-khoa-hoc">Thêm khóa học</button>
       </div>
     </div>
   </div>
-</div><!-- Modal: Thêm khoa -->
+</div><!-- Modal: Thêm khóa học -->
 
-<!-- Modal: Sửa khoa -->
-<div class="modal fade" id="qltv-modal-sua-khoa" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- Modal: Sửa khóa học -->
+<div class="modal anil in" id="qltv-modal-sua-khoa-hoc" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Chỉnh sửa khoa</h4>
+        <h4 class="modal-title">Thêm khóa học</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label>Mã khoa</label>
-          <input type="text" class="form-control" name="" id="ma-khoa-sua" placeholder="mã khoa" required autocomplete="on">
+          <label>Mã khhóa học</label>
+          <input type="text" class="form-control" name="" id="ma-khoa-hoc-sua" placeholder="mã khóa học" required autocomplete="on">
         </div>
         <div class="form-group">
-          <label>Tên khoa</label>
-          <input type="text" class="form-control" name="" id="ten-khoa-sua" placeholder="tên khoa" required autocomplete="on">
+          <label>Tên khóa học</label>
+          <input type="text" class="form-control" name="" id="ten-khoa-hoc-sua" placeholder="tên khóa học" required autocomplete="on">
         </div>
-        <div class="form-group">
-          <label>Địa chỉ khoa</label>
-          <input type="text" class="form-control" name="" id="dia-chi-khoa-sua" placeholder="địa chỉ khoa" required autocomplete="on">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Mô tả khóa học</label>
+              <textarea class="form-control" id="mo-ta-khoa-hoc-sua" rows="5"></textarea>
+            </div>
+          </div>  
+          <div class="col-md-6">
+            <div class="form-group">
+              <button class="btn btn-default" onclick="BrowseServerSua()">Chọn hình ảnh khóa học ...</button>
+              <img src="" id="hinh-anh-hoc-ky-sua" style="width: 100%;">
+            </div>
+            <input type="text" id="hinh-anh-hoc-ky-sua-src" hidden="hidden" name="">
+          </div>
         </div>
-        <div class="form-group">
-          <label>Số điện thoại</label>
-          <input type="text" class="form-control" name="" id="so-dien-thoai-khoa-sua" placeholder="số điện thoại" required autocomplete="on">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Thời gian bắt đầu khóa học</label>
+              <input type="date" class="form-control" name="" id="thoi-gian-bat-dau-sua" required autocomplete="on">
+            </div>
+          </div>  
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Thời gian kết thúc khóa học</label>
+              <input type="date" class="form-control" name="" id="thoi-gian-ket-thuc-sua" required autocomplete="on">
+            </div>
+          </div>
         </div>
-        <input type="text" hidden="hidden" name="" id="ma-khoa-sua-old">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Thời gian bắt đầu đăng ký</label>
+              <input type="date" class="form-control" name="" id="thoi-gian-dang-ky-sua" required autocomplete="on">
+            </div>
+          </div>  
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Thời gian kết thúc đăng ký</label>
+              <input type="date" class="form-control" name="" id="thoi-gian-ket-thuc-dang-ky-sua" required autocomplete="on">
+            </div>
+          </div>
+          <input type="text" hidden="hidden" name="" value="" id="id-khoa-hoc-sua">
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary" id="nut-sua-khoa">Hoàn thành</button>
+        <button type="button" class="btn btn-primary" id="nut-sua-khoa-hoc">Lưu thay đổi</button>
       </div>
     </div>
   </div>
-</div><!-- Modal: Sửa khoa -->
+</div><!-- Modal: Sửa khóa học -->
 
 <!-- Modal: Xóa khoa -->
-<div class="modal fade in" id="qltv-modal-xoa-khoa" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal anil in" id="qltv-modal-xoa-khoa-hoc" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-        <h4 class="modal-title" id="myModalLabel">Xóa khoa</h4>
+        <h4 class="modal-title">Xóa khóa học</h4>
       </div>
       <div class="modal-body">
-        <div class="alert alert-danger" role="alert">Bạn có chắc muốn xóa khoa này?</div>
+        <div class="alert alert-danger" style="margin: 0;">Bạn có chắc muốn xóa khóa học này?</div>
       </div>
-      <input type="text" hidden="hidden" name="" id="ma-khoa-xoa">
+      <input type="text" hidden="hidden" name="" id="id-khoa-hoc-xoa">
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Tôi không chắc</button>
-        <button type="button" class="btn btn-danger" id="nut-xoa-khoa">Tôi chắc chắn</button>
+        <button type="button" class="btn btn-danger" id="nut-xoa-khoa-hoc">Tôi chắc chắn</button>
       </div>
     </div> 
   </div>
@@ -195,72 +272,105 @@
 <link rel="stylesheet" href="css/datatables.min.css">
 <script src="js/datatables.min.js" type="text/javascript"></script>
 <script type="text/javascript" charset="utf-8">
-      $(document).ready(function() {
-        $('#qltv-khoa-sach').DataTable();
-        $("#themloaisach").click(function(){
-        	$("#qltv-modal-them-khoa").modal("show");
-        });
-        $("#nut-them-khoa").click(function(){
-	      $.ajax({
-	        url : "ajax/ajax_them_khoa.php",
-	        type : "post",
-	        dataType:"text",
-	        data : {
-	          ma: $("#ma-khoa-them").val(),
-            ten: $("#ten-khoa-them").val(),
-            diachi: $("#dia-chi-khoa-them").val(),
-            sdt: $("#so-dien-thoai-khoa-them").val()
-	        },
-	        success : function (data){
-              $("body").append(data);
-	        }
-	      });
-	    });
-	    $(".btn-sua-khoa").click(function(){
-	    	var id = $(this).attr("data-qltv");
-	    	$("#ma-khoa-sua").val($("#id-ma-khoa-"+id).val().trim());
-	    	$("#ten-khoa-sua").val($("#id-ten-khoa-"+id).val().trim());
-        $("#dia-chi-khoa-sua").val($("#id-dia-chi-khoa-"+id).val().trim());
-        $("#so-dien-thoai-khoa-sua").val($("#id-so-dien-thoai-khoa-"+id).val().trim());
-        $("#ma-khoa-sua-old").val($("#id-ma-khoa-"+id).val().trim());
-	    	$("#qltv-modal-sua-khoa").modal("show");
-	    });
-	    $("#nut-sua-khoa").click(function(){
-	      $.ajax({
-	        url : "ajax/ajax_sua_khoa.php",
-	        type : "post",
-	        dataType:"text",
-	        data : {
-	          ma: $("#ma-khoa-sua").val(),
-            ten: $("#ten-khoa-sua").val(),
-            diachi: $("#dia-chi-khoa-sua").val(),
-            sdt: $("#so-dien-thoai-khoa-sua").val(),
-            maold: $("#ma-khoa-sua-old").val()
-	        },
-	        success : function (data){
-              $("body").append(data);
-	        }
-	      });
-	    });
-	    $(".btn-xoa-khoa").click(function(){
-	    	var id = $(this).attr("data-qltv");
-	    	$("#ma-khoa-xoa").val($("#id-ma-khoa-"+id).val().trim());
-	    	$("#qltv-modal-xoa-khoa").modal("show");
-	    });
-	    $("#nut-xoa-khoa").click(function(){
-	      $.ajax({
-	        url : "ajax/ajax_xoa_khoa.php",
-	        type : "post",
-	        dataType:"text",
-	        data : {
-	          ma: $("#ma-khoa-xoa").val()
-	        },
-	        success : function (data){
-              $("body").append(data);
-	        }
-	      });
-	    });
+  var finder = new CKFinder();
+  function BrowseServer() {
+      finder.selectActionFunction = SetFileField;
+      finder.popup();
+  }
+  function SetFileField(fileUrl) {
+      document.getElementById('hinh-anh-hoc-ky-them').src = fileUrl;
+      var host = "<?php echo $elearning['HOST']; ?>";
+      host = host.substr(0,host.lastIndexOf("\/"));
+      document.getElementById('hinh-anh-hoc-ky-them-src').value=fileUrl.substr(host.length+1,fileUrl.length-host.length);
+  }
+  function BrowseServerSua() {
+      finder.selectActionFunction = SetFileFieldSua;
+      finder.popup();
+  }
+  function SetFileFieldSua(fileUrl) {
+      document.getElementById('hinh-anh-hoc-ky-sua').src = fileUrl;
+      var host = "<?php echo $elearning['HOST']; ?>";
+      host = host.substr(0,host.lastIndexOf("\/"));
+      document.getElementById('hinh-anh-hoc-ky-sua-src').value=fileUrl.substr(host.length+1,fileUrl.length-host.length);
+  }
+  $(document).ready(function() {
+    $("#themloaisach").click(function(){
+    	$("#qltv-modal-them-khoa-hoc").modal("show");
+    });
+    $("#nut-them-khoa-hoc").click(function(){
+      $.ajax({
+        url : "ajax/ajax_them_khoa_hoc.php",
+        type : "post",
+        dataType:"text",
+        data : {
+          m: $("#ma-khoa-hoc-them").val(),
+          t: $("#ten-khoa-hoc-them").val(),
+          mt: $("#mo-ta-khoa-hoc-them").val(),
+          tgbdkh: $("#thoi-gian-bat-dau-them").val(),
+          tgktkh: $("#thoi-gian-ket-thuc-them").val(),
+          tgbddk: $("#thoi-gian-dang-ky-them").val(),
+          tgktdk: $("#thoi-gian-ket-thuc-dang-ky-them").val(),
+          hinh: $("#hinh-anh-hoc-ky-them-src").val()
+        },
+        success : function (data){
+            $("body").append(data);
+        }
       });
+    });
+    $(".btn-sua-khoa-hoc").click(function(){
+      var id = $(this).attr("data-el");
+      $("#ma-khoa-hoc-sua").val($("#id-ma-khoa-hoc-"+id).text().trim());
+      $("#ten-khoa-hoc-sua").val($("#id-ten-khoa-hoc-"+id).text().trim());
+      $("#mo-ta-khoa-hoc-sua").val($("#id-mo-ta-"+id).text().trim());
+      $("#hinh-anh-hoc-ky-sua").attr('src', "../"+$("#id-hinh-anh-"+id).val().trim());
+      $("#hinh-anh-hoc-ky-sua-src").val($("#id-hinh-anh-"+id).val().trim());
+      $("#thoi-gian-bat-dau-sua").val($("#id-thoi-gian-bat-dau-"+id).text().trim());
+      $("#thoi-gian-ket-thuc-sua").val($("#id-thoi-gian-ket-thuc-"+id).text().trim());
+      $("#thoi-gian-dang-ky-sua").val($("#id-thoi-gian-bat-dau-dang-ky-"+id).text().trim());
+      $("#thoi-gian-ket-thuc-dang-ky-sua").val($("#id-thoi-gian-ket-thuc-dang-ky-"+id).text().trim());
+      $("#id-khoa-hoc-sua").val(id);
+      $("#qltv-modal-sua-khoa-hoc").modal("show");
+    });
+    $("#nut-sua-khoa-hoc").click(function(){
+      $.ajax({
+        url : "ajax/ajax_sua_khoa_hoc.php",
+        type : "post",
+        dataType:"text",
+        data : {
+          m: $("#ma-khoa-hoc-sua").val(),
+          t: $("#ten-khoa-hoc-sua").val(),
+          mt: $("#mo-ta-khoa-hoc-sua").val(),
+          tgbdkh: $("#thoi-gian-bat-dau-sua").val(),
+          tgktkh: $("#thoi-gian-ket-thuc-sua").val(),
+          tgbddk: $("#thoi-gian-dang-ky-sua").val(),
+          tgktdk: $("#thoi-gian-ket-thuc-dang-ky-sua").val(),
+          hinh: $("#hinh-anh-hoc-ky-sua-src").val(),
+          id: $("#id-khoa-hoc-sua").val()
+        },
+        success : function (data){
+            $("body").append(data);
+        }
+      });
+    });
+    $(".btn-xoa-khoa-hoc").click(function(){
+      var id = $(this).attr("data-el");
+      $("#id-khoa-hoc-xoa").val(id);
+      $("#qltv-modal-xoa-khoa-hoc").modal("show");
+    });
+    $("#nut-xoa-khoa-hoc").click(function(){
+      $.ajax({
+        url : "ajax/ajax_xoa_khoa_hoc.php",
+        type : "post",
+        dataType:"text",
+        data : {
+          id: $("#id-khoa-hoc-xoa").val()
+        },
+        success : function (data){
+            $("body").append(data);
+        }
+      });
+    });
+  });
 </script>
 <script type="text/javascript">
   $('#qltv-loai-sach').DataTable();
