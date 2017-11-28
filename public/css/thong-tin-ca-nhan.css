@@ -1,0 +1,25 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.col-sm-9.thong-tin-thanh-vien div {
+    line-height: 40px;
+}
+
+p,a {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+	font-family: 'Lora', serif;
+}
+
+.thiet-lap-tai-khoan .col-sm-8.gioi-tinh {
+    padding-top: 8px;
+}
+
+
+.thong-tin-ca-nhan {
+    margin-bottom: 30px;
+}

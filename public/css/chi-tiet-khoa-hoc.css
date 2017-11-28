@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+p,a {
+    font-family: 'Roboto', sans-serif;
+}
+
+.tab-content h6 {
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.danh-gia-khoa-hoc .nguoi-danh-gia {
+    font-size: 13px;
+    padding-top: 8px;
+}
+
+.danh-gia-khoa-hoc {
+    margin-top: 25px;
+}
+
+.danh-sach-khoa-hoc-cung-chu-de.danh-sach-khoa-hoc {
+    border-top: 3px solid #21711c;
+    margin-top: 60px;
+}
+
+.thong-tin-giang-vien {
+    margin-top: 25px;
+}
+
+.thong-tin-giang-vien img {
+    height:180px;
+    width:160px;
+}
+
+.tab-khoa-hoc .mo-ta-chi-tiet {
+    padding: 20px;
+    font-size: 15px;
+    line-height: 32px;
+}
+
+.tab-khoa-hoc {
+    margin-top: 30px;
+}
+
+.danh-sach-khoa-hoc-cung-chu-de.danh-sach-khoa-hoc .col-sm-4 {
+    float: left;
+}
+
+.danh-sach-bai-hoc ul li {
+    padding-bottom: 10px;
+}
+
+.danh-sach-bai-hoc ul li a {
+    font-size: 17px;
+    color: #333;
+    display: block;
+    padding-top: 8px;
+}
+
+.danh-sach-bai-hoc {
+    /* padding-left: 14px; */
+    margin-top: 25px;
+}
+
+.chi-tiet-khoa-hoc .tieu-de {
+    color: #15880f;
+    font-weight: bold;
+}
+
+.chi-tiet-khoa-hoc .thong-tin-khoa-hoc i {
+    margin-right: 10px;
+}
+
+.danh-sach-khoa-hoc-cung-chu-de.danh-sach-khoa-hoc .tieu-de-khoa-hoc {
+    padding-left: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    padding-top: 8px;
+}

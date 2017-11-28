@@ -1,0 +1,28 @@
+* { margin:0; padding:0; }
+
+.lich-thi .thong-tin-nguoi-dang {
+    font-size: 11px;
+}
+
+.lich-thi .thong-tin-lich-thi {
+    color: #716a6a;
+    font-size: 13px;
+    padding-top: 9px;
+}
+
+.lich-thi {
+    padding: 19px 28px;
+    background: #ddd0;
+    box-shadow: 0px 4px 18px -4px rgba(0, 0, 0, 0.18);
+    margin-bottom: 32px;
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.lich-thi .tieu-de-lich-thi a {
+    font-size: 19px;
+    color: #003A6A;
+    font-weight: 500;
+    /* color: black; */
+}   

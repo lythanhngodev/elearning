@@ -1,0 +1,49 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+p,a {
+    font-family: 'Roboto', sans-serif;
+}
+
+.thiet-lap-tai-khoan a.red-thong-tin-ca-nhan {
+    font-size: 18px;
+    padding: 20px 0px;
+    display: block;
+}
+
+body {
+	font-family: 'Lora', serif;
+}
+
+.thiet-lap-tai-khoan #matkhau {
+    padding: 30px 70px;
+}
+
+.thiet-lap-tai-khoan {
+    font-size: 14px;
+}
+
+.thiet-lap-tai-khoan .ket-qua-dat {
+    color: green;
+    font-weight: bold;
+}
+
+.thiet-lap-tai-khoan .ket-qua-khong-dat {
+    font-weight: bold;
+    color: red;
+}
+
+a.btn.btn-primary.btn-sm.thay-doi-anh-dai-dien {
+    margin-right: 8px;
+}
+
+.thiet-lap-tai-khoan #hinhdaidien {
+    padding: 22px;
+}
+.thiet-lap-tai-khoan #thongtin {padding: 30px 70px;/* background: #f6f9f64f; */}
+
+.thiet-lap-tai-khoan .tab-pane {
+    background: #f6f9f64f;
+}

@@ -1,0 +1,49 @@
+* {
+	margin:0;
+	padding:0;
+}
+
+.col-sm-12.lich-thi-lien-quan h6 {font-weight: 600;}
+
+.col-sm-12.lich-thi-lien-quan ul {
+    /* list-style: none; */
+    padding-left: 20px;
+}
+
+.col-sm-12.lich-thi-lien-quan ul li a {
+    font-size: 13px;
+    color: #003A6A;
+}
+
+.col-sm-12.lich-thi-lien-quan li {line-height: 26px;}
+
+.col-sm-12.luu-y {
+    padding-top: 11px;
+    font-size: 13px;
+    padding-bottom: 10px;
+}
+
+.col-sm-12.thong-tin-lich-thi {
+    font-size: 13px;
+}
+
+.chi-tiet-lich-thi {
+    padding: 10px;
+    background: #fff;
+}
+
+.col-sm-12.nhan-gui {
+    color: #333;
+    font-size: 14px;
+}
+
+.col-sm-12.thong-tin-bai-dang {
+    font-size: 11px;
+    padding-top: 1px;
+    padding-bottom: 8px;
+}
+
+.col-sm-12.tieu-de-lich-thi a {
+    color: #003A6A;
+    font-size: 19px;
+}

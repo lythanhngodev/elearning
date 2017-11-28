@@ -1,0 +1,427 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+p,a {
+    font-family: 'Roboto', sans-serif;
+}
+
+a#btn-thong-tin-ca-nhan {
+    display: block;
+    width: 38px;
+    height: 38px;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+body {
+	font-family: 'Lora', serif;
+	background: #fff;
+}
+
+#datetimepicker1 {
+	position: relative;
+	z-index:999999999 !important;;
+}
+
+
+nav.navbar.navbar-light.menu {
+    padding-bottom: 0px;
+    height: 49px;
+    margin: -10px 0px 10px 0px;
+}
+
+.bar-shadow {
+    width: 100%;
+    height: 30px;
+    -webkit-linear-gradient(top, #f1f1f1, #ffffff): red;
+    background: -webkit-linear-gradient(top, #f1f1f1, #ffffff);
+    margin-bottom: 0px;
+}
+
+.menu-top i.fa.fa-home {
+    font-size: 35px;
+    color: #14770d;
+}
+
+.header-top {
+    padding: 12px 0px;
+}
+
+header {
+	border-top: 3px solid #4eb748;
+	font-family: 'Montserrat', sans-serif;
+}
+
+
+/* BEGIN MENU TOP */
+.logoVLUTE {
+	width: 80px;
+}
+
+.menu .menu-top ul {
+	/* padding-top: 24px; */
+}
+
+.menu .menu-top ul li {
+	/* padding-right:20px; */
+}
+
+.menu li.nav-item:hover {
+    border-bottom: 1px solid gray;
+}
+
+.menu li.nav-item.active {
+    border-bottom: 2px solid #4eb748;
+    /* padding-bottom: 7px; */
+}
+
+.menu .menu-top ul li.icon-dangnhap {
+	padding-right:0px;
+	position: relative;
+	float: right;
+}
+
+nav.navbar.navbar-light.bg-faded.menu .menu-top ul li a {
+	color: rgba(51, 51, 51, 0.81);
+}
+
+/* END MENU TOP */
+/* BEGIN CONTENT */
+
+/* BEGIN DANH MUC KHOA HOC */
+.danh-muc-khoa-hoc ul li a {
+	font-size: 15px;
+	display: block;
+	padding-bottom: 6px;
+	color: #333;
+}
+
+.danh-muc-khoa-hoc ul li {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 9px;
+}
+
+.danh-muc-khoa-hoc h6 {
+    margin-bottom: 15px;
+    font-size: 21px;
+}
+
+.col-sm-2.danh-muc-khoa-hoc-cang-le {
+    padding-right: 0px;
+}
+
+/* END DANH MUC KHOA HOC */
+
+/* BEGIN DANH MUC KHOA HOC */
+
+.danh-sach-khoa-hoc .khoa-hoc {box-shadow: 0px 0px 13px -2px rgba(0, 0, 0, 0.41);margin-bottom: 44px;}
+
+.danh-sach-khoa-hoc .khoa-hoc .hinh-anh {
+	width: 100%;
+	height: 190px;
+	overflow: hidden;
+	
+}
+
+
+.danh-sach-khoa-hoc .khoa-hoc:hover {
+	box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.5);
+}
+
+.danh-sach-khoa-hoc .khoa-hoc:hover .hinh-anh img {
+  
+    background-size: cover;
+    transition: 0.3s;
+}
+
+.danh-sach-khoa-hoc .khoa-hoc .hinh-anh img{
+	width: 100%;
+	height: 100%;
+}
+
+.danh-sach-khoa-hoc .khoa-hoc {
+    background: #fff;
+    /* height: 400px; */
+    position: relative;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.danh-sach-khoa-hoc .khoa-hoc .noi-dung{
+	padding: 10px;
+}
+
+.danh-sach-khoa-hoc .khoa-hoc .thong-tin .ngay-thang{
+	display: inline-block;
+}
+
+.danh-sach-khoa-hoc .khoa-hoc .thong-tin .luot-xem{
+	display: inline-block;
+	float: right;
+}
+
+.danh-sach-khoa-hoc .tieu-de {
+	margin-top: 9px;
+	font-size: 17px;
+	display: block;
+	font-weight: 500;
+}
+
+
+.danh-sach-khoa-hoc .bat-dau-hoc {
+    border-top: 2px solid #5a7185;
+}
+
+.danh-sach-khoa-hoc .bat-dau-hoc .vao-khoa-hoc,.danh-sach-khoa-hoc .bat-dau-hoc .ghi-danh {
+    background: #4eb748;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: transparent;
+    margin-top: 10px;
+}
+
+.danh-sach-khoa-hoc .bat-dau-hoc .ghi-danh {
+    background: #337ab7;
+}
+
+.danh-sach-khoa-hoc .bat-dau-hoc button:hover {
+    background: #35a02f;
+    cursor: pointer;
+}
+
+.danh-sach-khoa-hoc .bat-dau-hoc .ghi-danh:hover {
+    background: #286090;
+}
+
+.danh-sach-khoa-hoc .giang-vien {
+    font-size: 13px;
+    margin-top: 20px;
+    margin-bottom: 18px;
+}
+
+i.fa.fa-user-circle {
+    font-size: 30px;
+    float: right;
+}
+
+i.fa.fa-user-circle.thong-tin-ca-nhan {}
+
+.col-2.logo-cang-le {
+    padding-right: 24px;
+    padding-left: 11px;
+    padding-top: 0px;
+}
+
+.danh-sach-khoa-hoc h6 {
+    font-size: 14px;
+    margin-bottom: 13px;
+}
+
+/* END DANH MUC KHOA HOC */
+
+/* END CONTENT */
+
+/* BEGIN FOOTER */
+footer {
+	background: #f7f7f9;
+	font-size:13px;
+	padding-bottom: 0px;
+	padding-top: 29px;
+}
+
+.lien-ket-voi-chung-toi ul li {
+	display:inline-block;
+}
+
+.lien-ket-voi-chung-toi ul li a {
+		display:block;
+		background: transparent;
+		width:30px;
+		height:30px;
+		border: 2px rgba(128, 128, 128, 0.48) solid;
+		border-radius: 50%;
+		text-align:center;
+		line-height:25px;
+}
+
+.danh-muc-chu-de {
+	padding: 0px 50px;
+}
+
+.danh-muc-chu-de a {
+	color:#333;
+}
+
+/* END FOOTER */
+
+/*BEGIN MODEL LOGIN*/
+.modal-login {
+	position: absolute;
+	/* float: right; */
+	top: 43px;
+	right: 0px;
+	z-index:100;
+	width: 435px;
+	/* height: 241px; */
+	background: rgb(255, 255, 255);
+	margin-left:-160px;
+	padding: 12px;
+	padding-top: 0px;
+	opacity:0;
+	visibility: hidden;
+	border-radius: 4px;
+	box-shadow: 0px 0px 22px -3px grey;
+}
+
+.nen-den {
+	width: 100%;
+	height: 100%;
+	background: rgba(51, 51, 51, 0.91);
+	position: fixed;
+	top:0px;
+	left:0px;
+	z-index:99;
+	opacity:0;
+	visibility: hidden;
+}
+
+.modal-login.show {
+	opacity: 1;
+	visibility: visible;
+}
+
+.modal-login.modal-logged.show {
+    width: 230px;
+    padding-top: 16px;
+    font-size: 17px;
+    padding-right: 0px !important;
+}
+
+.modal-login.modal-logged.show tr {
+    line-height: 31px;
+}
+
+.modal-login.modal-logged.show table {
+}
+
+.modal-login.modal-logged.show ul li {
+    font-size: 16px;
+    line-height: 32px;
+}
+
+.modal-login.modal-logged.show ul {
+    padding: 10px;
+}
+
+.modal-login.modal-logged.show i {
+    padding-right: 16px;
+}
+
+.modal-login.modal-logged.show ul {
+    list-style: none;
+}
+
+.nen-den.show {
+	opacity: 1;
+	visibility: visible;
+}
+
+.modal-login .tieu-de {
+	padding: 10px;
+	padding-left: 0px;
+	border-bottom : 1px solid #ddd;
+	box-shadow: 0px;
+}
+
+.loginfacebook {
+	background: ;
+}
+
+.modal-login input.password {
+    margin-left: 54px;
+    margin-top: 8px;
+}
+
+.modal-login input.username {
+    margin-left: 20px;
+    margin-top: 12px;
+}
+
+.modal-login a.quenmatkhau {
+    color: black;
+    display: block;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.modal-login input.btnLogin {
+    margin-left: 133px;
+    margin-top: 10px;
+}
+
+.modal-login .nutx {
+	position: absolute;
+	right: 0;
+	top: 6px;
+	color: #333;
+	display: block;
+}
+
+.dangkyvnexpress {
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+i.fa.fa-user-circle.show {
+	position: fixed;
+	z-index:999;
+	color:white;
+	right: 120px;
+}
+
+.modal-login a.quenpass {
+    font-size: 13px;
+    margin-left: 162px;
+    color: #333;
+}
+
+.modal-login a {
+    color: #333;
+}
+
+.modal-login span.input-group-addon {
+    width: 45px;
+}
+
+.col-sm-4.dia-chi-dhspktvl p {
+    font-size: 14px;
+}
+
+
+.container-fluid.designer {
+    background: #333333;
+    color: white;
+    height: 41px;0
+    padding-top: 13px;
+}
+
+.thong-tin {
+    font-size: 15px;
+}
+
+
+
+/*END MODEL LOGIN*/
+
+html.noscroll {
+    position: fixed; 
+    overflow-y: scroll;
+    width: 100%;
+}
+
+@media (min-width: 0px) and (max-width: 992px) {
+		
+}

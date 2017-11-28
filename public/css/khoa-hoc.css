@@ -1,0 +1,65 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.khoa-hoc {
+    padding-bottom: 26px;
+}
+
+.khoa-hoc h3.tieu-de-khoa-hoc {font-weight: 500;display: block;padding-bottom: 10px;}
+
+.col-sm-3.danh-sach-khoa-hoc-cang-le .tieu-de-khoa-hoc {
+    color: red;
+}
+
+.danh-sach-khoa-hoc ul {height: 460px;overflow-y: scroll;padding-top: 3px;}
+
+.danh-sach-khoa-hoc ul li a {
+    color: gray;
+    font-size: 14px;
+    display: block;
+    padding-left: 10px;
+}
+
+.danh-sach-khoa-hoc ul li:hover a {
+    color: #333;
+}
+
+.danh-sach-khoa-hoc ul li {
+    line-height: 36px;
+    border-bottom: 1px solid #dddddd70;
+    width: 98%;
+}
+
+.danh-sach-khoa-hoc ul li.active {
+    background: #f2f2f2c4;
+    border-bottom: 1px solid transparent;
+}
+
+.danh-sach-khoa-hoc ul li.active a {
+    color: black;
+}
+
+.danh-sach-khoa-hoc h5 {
+    display: block;
+    font-weight: 300;
+    font-size: 21px;
+}
+
+/* CUSTOM SCROLL BAR */
+#listlist::-webkit-scrollbar {
+    width: 6px;
+    background-color: white;
+} 
+
+#listlist::-webkit-scrollbar-thumb {
+    background-color: #c3c3c3;
+}
+
+#listlist::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: white;
+}
+
+/*END*/
