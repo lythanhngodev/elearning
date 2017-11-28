@@ -42,7 +42,7 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Toàn bộ sinh viên
+        Giáo viên
         <div class="line"></div>
       </h1>
     </section>
@@ -50,7 +50,7 @@
     <section class="content">
       <div class="row">
         <div class="col-md-12 col-ms-12">
-          <a id="themloaisach" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Thêm sinh viên</a>
+          <a id="themloaisach" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Thêm giáo viên</a>
         </div>
         <div class="col-md-12 col-ms-12 cach"></div>
       </div>
@@ -60,15 +60,15 @@
                 <tr role="row">
                   <tr style="background-color: #f1f1f1;color: #7d7d7d;border-top: 3px solid #9e9e9e;">
                     <th class="giua">STT</th>
-                    <th class="giua">Mã sinh viên</th>
-                    <th class="giua">Họ</th>
-                    <th class="giua">Tên</th>
+                    <th class="giua">Mã giáo viên</th>
+                    <th class="giua">Tên giáo viên</th>
                     <th class="giua">Tên đăng nhập</th>
                     <th class="giua">SĐT</th>
                     <th class="giua">MAIL</th>
                     <th class="giua">Địa chỉ</th>
                     <th class="giua">Giới tính</th>
                     <th class="giua">Trạng thái</th>
+                    <th class="giua">Loại tài khoản</th>
                     <th class="giua">Thao tác</th>
                   </tr>
                 </tr>
@@ -80,15 +80,14 @@
                 ?>
                   <tr>
                     <th class="giua"><?php echo $stt; ?></th>
-                    <td class="giua" id="id-ma-giao-vien-<?php echo $row['IDSV']; ?>"><a><?php echo $row['MASV']; ?></a></td>
-                    <td id="id-ho-sinh-vien-<?php echo $row['IDSV']; ?>"><?php echo $row['HOSV']; ?></td>
-                    <td id="id-ten-sinh-vien-<?php echo $row['IDSV']; ?>"><?php echo $row['TENSV']; ?></td>
-                    <td id="id-ten-dang-nhap-<?php echo $row['IDSV']; ?>"><?php echo $row['TENDANGNHAP']; ?></td>
-                    <td id="id-so-dien-thoai-<?php echo $row['IDSV']; ?>"><?php echo $row['SDT']; ?></td>
-                    <td id="id-mail-<?php echo $row['IDSV']; ?>"><?php echo $row['MAIL']; ?></td>
-                    <td id="id-dia-chi-<?php echo $row['IDSV']; ?>"><?php echo $row['DIACHI']; ?></td>
-                    <td id="id-gioi-tinh-<?php echo $row['IDSV']; ?>">
-                    	<select id="id-gioi-tinh-<?php echo $row['IDSV']; ?>" data-el="<?php echo $row['IDSV']; ?>" class="form-control chon doigioitinh">
+                    <td class="giua" id="id-ma-giao-vien-<?php echo $row['IDGV']; ?>"><a><?php echo $row['MAGV']; ?></a></td>
+                    <td id="id-ten-giao-vien-<?php echo $row['IDGV']; ?>"><?php echo $row['TENGV']; ?></td>
+                    <td id="id-ten-dang-nhap-<?php echo $row['IDGV']; ?>"><?php echo $row['TenDangNhap']; ?></td>
+                    <td id="id-so-dien-thoai-<?php echo $row['IDGV']; ?>"><?php echo $row['SDT']; ?></td>
+                    <td id="id-mail-<?php echo $row['IDGV']; ?>"><?php echo $row['MAIL']; ?></td>
+                    <td id="id-dia-chi-<?php echo $row['IDGV']; ?>"><?php echo $row['DIACHI']; ?></td>
+                    <td id="id-gioi-tinh-<?php echo $row['IDGV']; ?>">
+                    	<select id="id-gioi-tinh-<?php echo $row['IDGV']; ?>" data-el="<?php echo $row['IDGV']; ?>" class="form-control chon doigioitinh">
                     	<?php if ($row['GIOITINH']=='Nam') { ?>
                     		<option value="Nam" selected >Nam</option>
                     		<option value="Nữ">Nữ</option>
@@ -107,7 +106,7 @@
                     	</select>
                     </td>
                     <td class="giua">
-                    	<select id="id-trang-thai-<?php echo $row['IDSV']; ?>" data-el="<?php echo $row['IDSV']; ?>" class="form-control chon">
+                    	<select id="id-trang-thai-<?php echo $row['IDGV']; ?>" data-el="<?php echo $row['IDGV']; ?>" class="form-control chon">
                     	<?php if ($row['TRANGTHAI']==0) { ?>
                     		<option value="0" selected >Bình thường</option>
                     		<option value="1">Bị cấm</option>
@@ -118,11 +117,24 @@
                     	<?php } ?>
                     	</select>
                     </td>
-                    <td class="giua"><div class="nut nam-giua"><a class="btn btn-primary btn-sua-giao-vien" data-el="<?php echo $row['IDSV']; ?>" title="Sửa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        <a class="btn btn-danger btn-xoa-giao-vien" title="Xóa"
-                        data-el="<?php echo $row['IDSV']; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></a></div>
+                    <td id="id-loai-tai-khoan-<?php echo $row['IDGV']; ?>">
+                    	<select id="id-loai-tai-khoan-<?php echo $row['IDGV']; ?>" data-el="<?php echo $row['IDGV']; ?>" class="form-control chon doiloaitaikhoan">
+                    	<?php if ($row['LOAITAIKHOAN']==1) { ?>
+                    		<option value="1" selected>ADMIN</option>
+                    		<option value="2">GIÁO VIÊN</option>
+                    	<?php } ?>
+                    	<?php if ($row['LOAITAIKHOAN']==2) { ?>
+                    		<option value="2" selected>GIÁO VIÊN</option>
+                    		<option value="1">ADMIN</option>
+                    	<?php } ?>
+                    	</select>
+
                     </td>
-                    <input type="text" hidden="hidden" id="id-hinh-anh-<?php echo $row['IDSV']; ?>" name="" value="<?php echo $row['HINHANH']; ?>">
+                    <td class="giua"><div class="nut nam-giua"><a class="btn btn-primary btn-sua-giao-vien" data-el="<?php echo $row['IDGV']; ?>" title="Sửa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        <a class="btn btn-danger btn-xoa-giao-vien" title="Xóa"
+                        data-el="<?php echo $row['IDGV']; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></a></div>
+                    </td>
+                    <input type="text" hidden="hidden" id="id-hinh-anh-<?php echo $row['IDGV']; ?>" name="" value="<?php echo $row['HINHANH']; ?>">
                 </tr>
                 <?php
                 $stt++;
@@ -187,7 +199,7 @@
           <div class="col-md-6">
             <div class="form-group">
             	<label>Loại tài khoản</label>
-            	<select id="gioi-tinh-them" class="form-control">
+            	<select id="loai-tai-khoan-them" class="form-control">
             		<option value="1">Admin</option>
             		<option value="2" selected>Giáo viên</option>
             	</select>
@@ -314,7 +326,7 @@
 </script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#toanbosinhvien").addClass("active");
+		$("#giaovien").addClass("active");
 	});
 </script>
 <link rel="stylesheet" href="css/datatables.min.css">
@@ -358,7 +370,8 @@
           sdt: $("#so-dien-thoai-them").val(),
           mail: $("#mail-them").val(),
           gt: $("#gioi-tinh-them").val(),
-          hinh: $("#hinh-anh-dai-dien-them-src").val()
+          hinh: $("#hinh-anh-dai-dien-them-src").val(),
+          loai: $("#loai-tai-khoan-them").val()
         },
         success : function (data){
             $("body").append(data);

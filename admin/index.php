@@ -17,19 +17,19 @@
 </head>
 <body>
 	<nav class="navbar navbar-default" style="border: none;">
-	  <div class="container-fluid">
+	  <div class="container-fluid" style="border-bottom: 1px solid #e7e7e7;">
 	    <div class="navbar-header">
 	      <a class="navbar-brand" href="#">VLUTE Elearning</a>
 	    </div>
 	    <ul class="nav navbar-nav">
 	      <li><a href="#">Trang chủ</a></li>
+	      <li id="giaovien"><a href="?p=giaovien">Giảng viên</a></li>
 		  <li class="dropdown" id="toanbosinhvien">
-        	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Quản lý sinh viên
+        	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sinh viên
 	        <span class="caret"></span></a>
 	        <ul class="dropdown-menu" style="box-shadow: none;border: 1px solid #e8e8e8;">
 	          <li><a href="?p=toanbosinhvien">Toàn bộ sinh viên</a></li>
-	          <li><a href="#">Sinh viên theo học kỳ năm học</a></li>
-	          <li><a href="#">Sinh viên theo lớp</a></li>
+	          <li><a href="#">Sinh viên theo khóa học</a></li>
 	        </ul>
 	      </li>
 	      <li id="khoahoc"><a href="?p=khoahoc">Khóa học</a></li>

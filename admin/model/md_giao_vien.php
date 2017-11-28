@@ -1,9 +1,9 @@
 <?php 
 	include_once("config.php");
-	function el_get_toan_bo_sinh_vien(){
+	function el_get_giao_vien(){
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
-		$query = "SELECT * FROM sinhvien sv, login_sv lg WHERE sv.IDSV = lg.IDSV";
+		$query = "SELECT * FROM giaovien gv, login_gv lg WHERE gv.IDGV = lg.IDGV";
 		$result = mysqli_query($conn, $query);
 		return $result;
 	}

@@ -1,6 +1,9 @@
 <?php 
 	if (isset($_GET["p"]) && !empty($_GET["p"])) {
 		switch ($_GET["p"]) {
+			case 'giaovien':
+				include_once("control/ctrl_giao_vien.php");
+				break;
 			case 'khoahoc':
 				include_once("control/ctrl_khoa_hoc.php");
 				break;

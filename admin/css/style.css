@@ -261,16 +261,17 @@ input[type="submit"]:hover{
 		
 }
 #khung-trang-admin{
-    border: 1px solid #f8f8f8;
+    border: 1px solid #b7b7b7;
     border-radius: 4px;
     margin-bottom: 20px;
     padding-bottom: 20px;
+    background: #f8f8f8;
 }
 .giua{
     text-align: center;
 }
 .content-header{
-    border-bottom: 1px solid #f8f8f8;
+    border-bottom: 1px solid #ececec;
     margin-bottom: 10px;
 }
 .content-header h1{
@@ -353,4 +354,11 @@ input[type="submit"]:hover{
     text-align: center;
     padding: 30px 0px 0px 0px;
     font-size: 14px;
+}
+#qltv-loai-sach{
+	background: #ececec;
+	border: 1px solid #bbbbbb;
+}
+td > .chon{
+	padding: 0;
 }
