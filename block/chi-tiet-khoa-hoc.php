@@ -51,7 +51,7 @@
 						<i class="fa fa-eye"> 2633</i>
 					</div>
 					<hr>
-					<div class="btn btn-primary">Bắt đầu học</div>
+					<a href="?p=noi-dung-khoa-hoc&id=<?php echo $id; ?>" class="btn btn-primary">Bắt đầu học</a>
 				</div>
 			</div>
 		</div>
@@ -89,20 +89,12 @@
 					<div class="danh-sach-bai-hoc">
 						<h4>DANH SÁCH BÀI HỌC BAO GỒM :</h4>
 						<ul type=none>
-							<li><a href="">Bài 1: Giới thiệu về OOP và .NET Framework</a></li>
-							<li><a href="">Bài 2: Các khái niệm căn bản và viết chương trình đầu tiên</a></li>
-							<li><a href="">Bài 3: Biến và kiểu dữ liệu trong C#</a></li>
-							<li><a href="">Bài 4: Cách chuyển đổi kiểu dữ liệu trong C#</a></li>
-							<li><a href="">Bài 5: Các toán tử trong C#</a></li>
-							<li><a href="">Bài 6: Cấu trúc rẽ nhánh trong #</a></li>
-							<li><a href="">Bài 7: Cách sử dụng vòng lặp</a></li>
-							<li><a href="">Bài 8: Đóng gói dữ liệu</a></li>
-							<li><a href="">Bài 9: Cách sử dụng phương thức</a></li>
-							<li><a href="">Bài 10: Kiểu Nullable trong C#</a></li>
-							<li><a href="">Bài 11: Cách sử dụng mảng trong C#</a></li>
-							<li><a href="">Bài 12: Chuỗi và cách sử dụng chuỗi trong C#</a></li>
-							<li><a href="">Bài 13: Kiểu cấu trúc trong C#</a></li>
-							<li><a href="">Bài 14: Khai báo và sử dụng kiểu liệt kê Enum</a></li>
+						<?php 
+							$stt=1;
+							while ($row = mysqli_fetch_array($danhsachbaihoc)) { ?>
+							<li><a href="#"><?php echo $stt.". ".$row['TENBAI'] ?></a></li>
+						<?php $stt++;} ?>
+							
 						</ul>
 					</div>
 				</div>
@@ -116,19 +108,20 @@
 	 					<br>
 	 					<div class="row">
 	 					 	<div class="col-sm-4"><strong>Họ tên</strong></div>
-	 					 	<div class="col-sm-8">Võ Hoàng Thảo Quyên</div>
+	 					 	<div class="col-sm-8"><?php echo $rowgv['TENGV'] ?></div>
 	 					</div>
 	 					<hr>
 	 					<div class="row">
 	 					 	<div class="col-sm-4"><strong>Ảnh đại diện</strong></div>
-	 					 	<div class="col-sm-8"><img src="../img/tq.jpg" alt=""></div>
+	 					 	<div class="col-sm-8"><img src="<?php echo $rowgv['HINHANH'] ?>" alt="" style="width: 135px;height: auto;"></div>
 	 					</div>
 	 					<hr>
 	 					<div class="row">
 	 					 	<div class="col-sm-4"><strong>Tiểu sử</strong></div>
 	 					 	<div class="col-sm-8">
-	 					 		<p>Nghề nghiệp: FONTEND</p>
-	 					 		<p>Sở thích: Ca hát, lập trình và đọc sách</p>
+	 					 		<p>
+	 					 			<?php echo $rowgv['MOTA'] ?>
+	 					 		</p>
 	 					 	</div>
 	 					</div>
 	 				</div>
@@ -138,7 +131,7 @@
 	</div> <!-- END TAB CONTENT -->
 </div>
 <div class="row">
-	<div class="danh-sach-khoa-hoc-cung-chu-de danh-sach-khoa-hoc">
+	<div class="danh-sach-khoa-hoc-cung-chu-de danh-sach-khoa-hoc col-md-12">
 		<p class="tieu-de-khoa-hoc">KHÓA HỌC KHÁC</p>
 		<?php while($row = mysqli_fetch_array($khoahockhac)){ ?>
 		<div class="col-sm-4">

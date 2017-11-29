@@ -14,4 +14,18 @@
 		$result = mysqli_query($conn, $query);
 		return $result;
 	}
+	function el_get_danh_sach_bai_hoc($id){
+		$ketnoi = new clsKetnoi();
+		$conn = $ketnoi->ketnoi();
+		$query = "SELECT * FROM baigiang WHERE IDKH = '1' AND BATTAT = '0' ORDER BY IDBG ASC";
+		$result = mysqli_query($conn, $query);
+		return $result;
+	}
+	function el_thong_tin_giao_vien($id){
+		$ketnoi = new clsKetnoi();
+		$conn = $ketnoi->ketnoi();
+		$query = "SELECT gv.IDGV, TENGV, gv.HINHANH, gv.MOTA FROM khoahoc kh, giaovien gv, gv_kh gk WHERE kh.IDKH = '$id' and gk.IDGV = gv.IDGV AND kh.IDKH = gk.IDKH";
+		$result = mysqli_query($conn, $query);
+		return $result;
+	}
  ?>

@@ -14,27 +14,6 @@
             });
            $("#qltv-modal-them-khoa-hoc").modal("hide");
       }
-      function tailai() {
-        setTimeout(function(){ 
-          $.ajax({
-            url : "ajax/ajax_danh_sach_sinh_dk_vien_khoa_hoc_reload.php",
-            type : "post",
-            dataType:"text",
-            data : {
-              a: 'null'
-            },
-            success : function (data){
-                $("#du-lieu").html(data);
-            }
-          });
-        }, 3000);
-      }
-      function dongsua() {
-        $("#qltv-modal-sua-khoa-hoc").modal("hide");
-      }
-      function dongxoa(){
-        $("#qltv-modal-xoa-dg").modal("hide");
-      }
       function khongthanhcong(chuoi) {
            $.notify(chuoi, {
               animate: {
@@ -65,10 +44,10 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Xác nhận đăng ký khóa học của sinh viên
+        Bài giảng
         
       </h1>
-      <label> - Sau khi sinh viên đăng ký thành công trên phần mêm, sinh viên hoàn thành việc đóng học phí, người quản trị tích vào vô đã xác nhận để sinh viên có thể được học!</label>
+      <label> - Thông tin các bài giảng của giảng viên!</label>
     </section>
     <!-- Main content -->
     <section class="content">
@@ -82,41 +61,50 @@
                 <option data-tokens="<?php echo $row['IDKH']." ".$row['TENKH']; ?>" value="<?php echo $row['IDKH']; ?>"><?php echo $row['IDKH']." - ".$row['TENKH']; ?></option>
               <?php } ?>
             </select><br><br>
-            <button id="xem-ds-sv-kh" class="btn btn-primary">Xem danh sách</button>
+            <button id="xem-ds-bg-gv" class="btn btn-primary">Xem danh sách</button>
           </div>
         </div>
       <div class="windows-table col-md-9">
-        <label>Danh sách đã & chưa đóng học phí</label>
+        <label>Danh sách bài giảng của giáo viên</label>
         <div class="line"></div>
           <div id="du-lieu">
             <table id="qltv-loai-sach" class="table table-striped">
                 <thead>
                       <tr style="background-color: #f1f1f1;color: #7d7d7d;border-top: 3px solid #9e9e9e;">
                         <th class="giua">STT</th>
-                        <th class="giua">Họ & Tên</th>
-                        <th class="giua">MAIL</th>
-                        <th class="giua">TÊN KHOÁ HỌC</th>
-                        <th class="giua">ĐÃ ĐÓNG</th>
+                        <th class="giua">TÊN BÀI</th>
+                        <th class="giua">TÓM TẮT</th>
+                        <th class="giua">ID NỘI DUNG</th>
+                        <th class="giua">NGÀY ĐĂNG</th>
+                        <th class="giua">KHÓA HỌC</th>
+                        <th class="giua">TẮT</th>
+                        <th class="giua">THAO TÁC</th>
                       </tr>
                 </thead>
                 <tbody>
                 <?php 
                   $stt = 1;
-                  while ($row = mysqli_fetch_assoc($sinhvien)) {
+                  while ($row = mysqli_fetch_assoc($baigiang)) {
                     ?>
                       <tr>
                         <th class="giua"><?php echo $stt; ?></th>
-                        <td><?php echo $row['HOSV']." ".$row['TENSV']; ?></td>
-                        <td><?php echo $row['MAIL']; ?></td>
+                        <td><?php echo $row['TENBAI']; ?></td>
+                        <td><?php echo $row['TOMTAT']; ?></td>
+                        <td><?php echo $row['NOIDUNG']; ?></td>
+                        <td><?php echo $row['NGAYDANG']; ?></td>
                         <td><?php echo $row['TENKH']; ?></td>
+                        <td class="giua">
+	                        <?php 
+	                        if ($row['BATTAT']==1) { ?>
+	                        <input type="checkbox" name="" checked id="bat-tat-<?php echo $row['IDBG']; ?>" onclick="battat('<?php echo $row['IDBG']; ?>')">
+	                        <?php } else{ ?>
+	                        <input type="checkbox" name="" id="bat-tat-<?php echo $row['IDBG']; ?>" onclick="battat('<?php echo $row['IDBG']; ?>')">
+	                        <?php } ?>
+                        </td>
                         <td class="giua"><div class="nut nam-giua">
-                        <?php if ($row['XACNHAN']==0){ ?>
-                            <a class="btn btn-danger btn-xac-nhan" title="Xác nhận"
-                           onclick="xacnhan('<?php echo $row['IDSVKH'] ?>')" ><i class="fa fa-close" aria-hidden="true"></i></a>
-                        <?php } else{ ?>
-                            <a class="btn btn-success btn-xac-nhan" title="Xác nhận"
-                           onclick="huyxacnhan('<?php echo $row['IDSVKH'] ?>')" ><i class="fa fa-check" aria-hidden="true"></i></a>
-                        <?php } ?>
+                        	<a class="btn btn-primary btn-sua" title="Sửa"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                            <a class="btn btn-danger btn-xoa" title="Xóa"
+                           onclick="xoa('<?php echo $row['IDBG'] ?>')" ><i class="fa fa-trash" aria-hidden="true"></i></a>
                           </div>
                         </td>
                     </tr>
@@ -156,47 +144,53 @@
 </script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#toanbosinhvien").addClass("active");
+		$("#baigiang").addClass("active");
 	});
 </script>
 <link rel="stylesheet" href="css/datatables.min.css">
 <script src="js/datatables.min.js" type="text/javascript"></script>
 <script type="text/javascript" charset="utf-8">
-    function xacnhan(id){
-      $.ajax({
-        url : "ajax/ajax_xac_nhan.php",
-        type : "post",
-        dataType:"text",
-        data : {
-          id: id
-        },
-        success : function (data){
-            $("body").append(data);
-        }
-      });
-    }
-    function huyxacnhan(id){
-      $.ajax({
-        url : "ajax/ajax_huy_xac_nhan.php",
-        type : "post",
-        dataType:"text",
-        data : {
-          id: id
-        },
-        success : function (data){
-            $("body").append(data);
-        }
-      });
-    }
+	function battat(id){
+		var tt=0;
+		if(document.getElementById('bat-tat-'+id).checked)
+			tt=1;
+		$.ajax({
+			url : "ajax/ajax_bat_tat_bai_giang.php",
+			type : "post",
+			dataType:"text",
+			data : {
+			  id: id,
+			  tt: tt
+			},
+			success : function (data){
+			    $("body").append(data);
+			}
+		});
+	}
+	function xoa(id){
+		if (confirm('Bạn có chắc chắn xóa bài giảng này không?')) {
+			$.ajax({
+				url : "ajax/ajax_xoa_bai_giang.php",
+				type : "post",
+				dataType:"text",
+				data : {
+				  id: id
+				},
+				success : function (data){
+				    $("body").append(data);
+				}
+			});
+		}
+	}
   $(document).ready(function() {
-
-    $("#xem-ds-sv-kh").click(function(){
+    $("#xem-ds-bg-gv").click(function(){
       $.ajax({
-        url : "ajax/ajax_danh_sach_sinh_dk_vien_khoa_hoc.php",
+        url : "ajax/ajax_danh_sach_bai_giang_giao_vien.php",
         type : "post",
         dataType:"text",
         data : {
-          kh: $("#ma-khoa-hoc").val()
+          kh: $("#ma-khoa-hoc").val(),
+          id: <?php echo $idofgv; ?>
         },
         success : function (data){
             $("#du-lieu").html(data);

@@ -9,18 +9,19 @@
 	}
 	else
 		header("Location: login.php");
-	if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 900)) {
+	/*if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 900)) {
 	    // last request was more than 30 minutes ago
 	    session_unset();     // unset $_SESSION variable for the run-time 
 	    session_destroy();   // destroy session data in storage
-	}
+	}*/
 	$_SESSION['LAST_ACTIVITY'] = time();
-	/*$ketnoi = new clsKetnoi();
-	$hoi_user = "SELECT * FROM `nhanvien` WHERE BINARY `TenDangNhap` = '".$_SESSION['username']."' and `MatKhau` = '".md5($_SESSION['password'])."' and trangthainv='1'";
+	$ketnoi = new clsKetnoi();
+	$hoi_user = "SELECT gv.IDGV FROM login_gv lg, giaovien gv WHERE lg.IDGV = gv.IDGV AND gv.TrangThai = b'0' AND (BINARY `TenDangNhap` = '".$_SESSION['username']."') AND `MatKhau` = '".$_SESSION['password']."'";
 	$thucthi_user = mysqli_query($ketnoi->ketnoi(), $hoi_user);
 	$row_user = mysqli_fetch_assoc($thucthi_user);
-	$id = $row_user['Id'];
-	$manv = $row_user['MaNV'];
+	$idofgv = $row_user['IDGV'];
+
+	/*$manv = $row_user['MaNV'];
 	$tennv = $row_user['TenNV'];
 	$tendn = $row_user['TenDangNhap'];
 	$diachi = $row_user['DiaChiNV'];

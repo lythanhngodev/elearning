@@ -17,7 +17,8 @@
 	function el_get_khoa_hoc(){
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
-		$query = "SELECT DISTINCT kh.IDKH,kh.TENKH FROM khoahoc kh WHERE ((CURRENT_DATE() <= TGBDDK) or (CURRENT_DATE() <= TGKTDK)) AND (IDKH NOT IN (SELECT IDKH FROM gv_kh))";
+		//$query = "SELECT DISTINCT kh.IDKH,kh.TENKH FROM khoahoc kh WHERE ((CURRENT_DATE() <= TGBDDK) or (CURRENT_DATE() <= TGKTDK)) AND (IDKH NOT IN (SELECT IDKH FROM gv_kh))";
+		$query = "SELECT DISTINCT kh.IDKH,kh.TENKH FROM khoahoc kh";
 		$result = mysqli_query($conn, $query);
 		return $result;
 	}
