@@ -423,3 +423,9 @@ html.noscroll {
 @media (min-width: 0px) and (max-width: 992px) {
 		
 }
+.tom-tat-noi-dung-bai-hoc{
+	margin: 10px 0px;
+	border-left: 2px solid #383a3c;
+	padding: 8px 10px;
+	background: #f5f5f5;
+}

@@ -10,10 +10,17 @@
 		else
 			return false;
 	}
-	function el_danh_sach_bai_hoc(){
+	function el_danh_sach_bai_hoc($id,$kh){
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
-		$query = "SELECT DISTINCT kh.IDKH, kh.TENKH, kh.TGBATDAU, kh.HINHANH, gv.TENGV, kh.LUOTXEM FROM khoahoc kh, giaovien gv, gv_kh g WHERE g.IDGV = gv.IDGV AND g.IDKH = kh.IDKH ORDER BY kh.IDKH";
+		$query = "SELECT DISTINCT bg.IDBG, bg.TENBAI,bg.TOMTAT,bg.NOIDUNG,bg.NGAYDANG,bg.IDKH FROM sv_dk_khoahoc sdk, baigiang bg, khoahoc kh WHERE sdk.IDSV = '$id' AND sdk.IDKH = '$kh' AND bg.IDKH = sdk.IDKH AND kh.IDKH = sdk.IDKH AND kh.TRANGTHAI = b'0'";
+		$result = mysqli_query($conn, $query);
+		return $result;
+	}
+	function el_danh_sach_bai_hoc_top_1($id,$kh){
+		$ketnoi = new clsKetnoi();
+		$conn = $ketnoi->ketnoi();
+		$query = "SELECT DISTINCT bg.IDBG, bg.TENBAI,bg.TOMTAT,bg.NOIDUNG,bg.NGAYDANG,bg.IDKH FROM sv_dk_khoahoc sdk, baigiang bg, khoahoc kh WHERE sdk.IDSV = '$id' AND sdk.IDKH = '$kh' AND bg.IDKH = sdk.IDKH AND kh.IDKH = sdk.IDKH AND kh.TRANGTHAI = b'0' limit 0,1";
 		$result = mysqli_query($conn, $query);
 		return $result;
 	}

@@ -33,7 +33,7 @@
                   <td><?php echo $row['MAIL']; ?></td>
                   <td><?php echo $row['TENKH']; ?></td>
 	                <td class="giua"><div class="nut nam-giua">
-	                <?php if ($row['XACNHAN']==0){ ?>
+	                <?php if ($row['XACNHAN']==1){ ?>
 	                    <a class="btn btn-danger btn-xac-nhan" title="Xác nhận"
 	                     onclick="xacnhan(<?php echo $row['IDSVKH']; ?>)" ><i class="fa fa-close" aria-hidden="true"></i></a>
 	                <?php } else{ ?>

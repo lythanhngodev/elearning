@@ -10,7 +10,7 @@
 		$hoi = "
 			UPDATE `sv_dk_khoahoc` 
 			SET 
-				`XACNHAN` = b'0'
+				`XACNHAN` = b'1'
 			WHERE 
 				`sv_dk_khoahoc`.`IDSVKH` = '$id'
 		";
