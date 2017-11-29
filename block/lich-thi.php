@@ -1,4 +1,5 @@
-<h4>DANH SÁCH LỊCH THI</h4>
+<h4 style="width: fit-content;padding: 6px 6px;margin-bottom: 0px;text-shadow: 2px 0px 3px #d4d4d4;">DANH SÁCH LỊCH THI</h4>
+    <hr style="margin-top: 0px;height: 10px;">
 <div class="row">
 <?php for ($i = 0; $i < 10; $i++) { ?>
 	<div class="col-md-6">
@@ -26,3 +27,6 @@
 }
 ?>
 </div>
+<script type="text/javascript">
+	$("#lich-thi").addClass('active');
+</script>

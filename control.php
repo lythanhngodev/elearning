@@ -1,6 +1,12 @@
 <?php 
 if (isset($_GET["p"]) && !empty($_GET["p"])) {
 	switch ($_GET["p"]) {
+		case 'chi-tiet-lich-thi':
+			require 'block/chi-tiet-lich-thi.php';
+			break;
+		case 'lich-thi':
+			require 'block/lich-thi.php';
+			break;
 		case 'noi-dung-khoa-hoc':
 			$id = 0;
 			if (!isset($_GET['id'])) {
@@ -39,12 +45,12 @@ if (isset($_GET["p"]) && !empty($_GET["p"])) {
 		default:
 			require 'model/md_trangchu.php';
 			$dulieu = el_get_khoa_hoc();
+			$dulieu_all = el_get_all_khoa_hoc();
 			require 'block/trangchu.php';
 			break;
 	}
 }
 else{
-	
 	require 'model/md_trangchu.php';
 	$dulieu = el_get_khoa_hoc();
 	$dulieu_all = el_get_all_khoa_hoc();

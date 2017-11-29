@@ -16,6 +16,9 @@
 			case 'baigiang':
 				include_once("control/ctrl_bai_giang.php");
 				break;
+			case 'lichthi':
+				include_once("control/ctrl_lich_thi.php");
+				break;
 			case 'toanbosinhvien':
 				include_once("control/ctrl_toan_bo_sinh_vien.php");
 				break;

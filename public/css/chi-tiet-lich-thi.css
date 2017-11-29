@@ -1,6 +1,6 @@
 * {
-	margin:0;
-	padding:0;
+    margin:0;
+    padding:0;
 }
 
 .col-sm-12.lich-thi-lien-quan h6 {font-weight: 600;}
@@ -45,5 +45,5 @@
 
 .col-sm-12.tieu-de-lich-thi a {
     color: #003A6A;
-    font-size: 19px;
+    font-size: 36px;
 }

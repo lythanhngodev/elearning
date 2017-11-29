@@ -16,15 +16,12 @@
 			<div class="menu-top">
 				<button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2"></button>
 				<div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-				<a class="navbar-brand" href="#"><i class="fa fa-home"></i></a>
+				<a class="navbar-brand" href=""><i class="fa fa-home"></i></a>
 				 <ul class="nav navbar-nav">
-				   <li class="nav-item active">
-				     <a class="nav-link" href="#">Danh sách khóa học</a>
-				   <li class="nav-item ">
-				     <a class="nav-link" href="#">Lịch khai giảng</a>
-				   </li>
-				   <li class="nav-item ">
-				     <a class="nav-link" href="#">Lịch thi</a>
+				   <li class="nav-item" id="trang-chu">
+				     <a class="nav-link" href="">Danh sách khóa học</a>
+				   <li class="nav-item" id="lich-thi">
+				     <a class="nav-link" href="?p=lich-thi">Lịch thi</a>
 				   </li>
 				    <li class="nav-item ">
 				     <a class="nav-link" href="#">Hỗ trợ</a>

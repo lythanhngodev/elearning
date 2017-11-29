@@ -2,7 +2,7 @@
 <div class="chi-tiet-lich-thi">
 	<div class="row">
 		<div class="col-sm-12 tieu-de-lich-thi">
-			<a  href="#">NGÀY THI 19/11/2017 - CHƯƠNG TRÌNH TOPICA: LỊCH & DANH SÁCH THI</a>
+			<a>NGÀY THI 19/11/2017 - CHƯƠNG TRÌNH TOPICA: LỊCH & DANH SÁCH THI</a>
 		</div>
 		<div class="col-sm-12 thong-tin-bai-dang">
 			<i>Người đăng </i><strong>Anh Phương</strong> ngày <strong>22/11/2017</strong>
@@ -33,3 +33,6 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	$("#lich-thi").addClass("active");
+</script>

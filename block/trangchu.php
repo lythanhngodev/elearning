@@ -79,6 +79,7 @@
 </div>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$("#trang-chu").addClass("active");
 		$(".ghi-danh-chua-dang-nhap").click(function(){
 			$(".modal-login").addClass('show');
 			khongthanhcong('Bạn cần phải đăng nhập để ghi danh!');
