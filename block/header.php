@@ -30,7 +30,7 @@
 				     <a class="nav-link" href="#">Hỗ trợ</a>
 				   </li>
 				   <?php
-			   	 	if (!isset($_SESSION['use'])||!isset($_SESSION['pase'])){ ?>
+			   	 	if (!$dangnhap){ ?>
 					   <li class="nav-item icon-dangnhap">
 					     <a class="nav-link" href="#modalLogin" id="btn-dang-nhap"><i class="fa fa-user-circle"></i></a>
 					     <!-- BEGIN MODAL CHƯA LOGIN -->
@@ -40,7 +40,7 @@
 					   <li class="nav-item icon-dangnhap">
 					     <a class="nav-link" href="#modalLogin" id="btn-thong-tin-ca-nhan" style="background: url('../img/tq.jpg');  background-size: cover;"></a>
 					     <!-- BEGIN MODAL ĐÃ LOGIN -->
-							<?php $dangnhap=true;require 'info.php' ?>
+							<?php require 'info.php'; ?>
 					   </li>
 				   	<?php } ?>
 				 </ul>

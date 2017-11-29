@@ -24,6 +24,7 @@
 	    <ul class="nav navbar-nav">
 	      <li><a href="#">Trang chủ</a></li>
 	      <li id="giaovien"><a href="?p=giaovien">Giảng viên</a></li>
+	      <li id="giaovienkhoahoc"><a href="?p=giaovienkhoahoc">Phân công giảng dạy</a></li>
 		  <li class="dropdown" id="toanbosinhvien">
         	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sinh viên
 	        <span class="caret"></span></a>

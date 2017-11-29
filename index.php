@@ -1,7 +1,22 @@
 <?php 
+	session_start(); 
 	require 'admin/config.php';
 	$dangnhap = false;
-	session_start(); 
+	$idofsv="0";
+	if (isset($_SESSION['use'])&&isset($_SESSION['pase'])) {
+		$ketnoi = new clsKetnoi();
+		$conn = $ketnoi->ketnoi();
+		$username = $_SESSION['use'];
+		$password = $_SESSION['pase'];
+		$password = md5($password);
+		$ex  = mysqli_query($conn,"select * from sinhvien sv WHERE (BINARY TENDANGNHAP = '$username' AND MATKHAU = '$password') OR (BINARY MAIL = '$username' AND MATKHAU = '$password')");
+		$count = mysqli_num_rows($ex);
+		if ($count>0){
+			$dangnhap = true;
+			$row = mysqli_fetch_array($ex);
+			$idofsv = $row['IDSV'];
+		}
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">

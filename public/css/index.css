@@ -179,7 +179,10 @@ nav.navbar.navbar-light.bg-faded.menu .menu-top ul li a {
     border: transparent;
     margin-top: 10px;
 }
-
+.vao-khoa-hoc a{
+	text-decoration: none;
+	color: #fff;
+}
 .danh-sach-khoa-hoc .bat-dau-hoc .ghi-danh {
     background: #337ab7;
 }
@@ -288,6 +291,7 @@ footer {
 .modal-login.show {
 	opacity: 1;
 	visibility: visible;
+	transition: all 0.444s;
 }
 
 .modal-login.modal-logged.show {

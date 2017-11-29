@@ -15,7 +15,19 @@
            $("#qltv-modal-them-khoa-hoc").modal("hide");
       }
       function tailai() {
-        setTimeout(function(){ location.reload(); }, 3000);
+        setTimeout(function(){ 
+          $.ajax({
+            url : "ajax/ajax_danh_sach_sinh_dk_vien_khoa_hoc_reload.php",
+            type : "post",
+            dataType:"text",
+            data : {
+              a: 'null'
+            },
+            success : function (data){
+                $("#du-lieu").html(data);
+            }
+          });
+        }, 3000);
       }
       function dongsua() {
         $("#qltv-modal-sua-khoa-hoc").modal("hide");
@@ -38,215 +50,86 @@
             });
       }
 </script>
-<script src="ckfinder/ckfinder.js"></script>
+<style type="text/css">
+  .line{
+      width: 100%;
+      height: 2px;
+      float: left;
+      background: #ececec;
+      margin-bottom: 10px;
+  }
+  .nut .btn {
+    padding: 0px 5px;
+}
+</style>
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Toàn bộ sinh viên
-        <div class="line"></div>
+        Xác nhận đăng ký khóa học của sinh viên
+        
       </h1>
+      <label> - Sau khi sinh viên đăng ký thành công trên phần mêm, sinh viên hoàn thành việc đóng học phí, người quản trị tích vào vô đã xác nhận để sinh viên có thể được học!</label>
     </section>
     <!-- Main content -->
     <section class="content">
       <div class="row">
         <div class="col-md-3 col-ms-3">
-          <label>Sinh viên</label>
+          <div class="form-group">
+            <label>Khóa học</label>
+            <select id="ma-khoa-hoc" class="form-control selectpicker" data-live-search="true" title="chọn khóa học">
+              <?php while ($row = mysqli_fetch_assoc($khoahoc)) {
+              ?>
+                <option data-tokens="<?php echo $row['IDKH']." ".$row['TENKH']; ?>" value="<?php echo $row['IDKH']; ?>"><?php echo $row['IDKH']." - ".$row['TENKH']; ?></option>
+              <?php } ?>
+            </select><br><br>
+            <button id="xem-ds-sv-kh" class="btn btn-primary">Xem danh sách</button>
+          </div>
         </div>
-        <div class="col-md-3 col-ms-3">
-          <label>Khóa học</label>
-        </div>
-      <div class="windows-table col-md-6">
-        <table id="qltv-loai-sach" class="table table-striped">
-            <thead>
-                  <tr style="background-color: #f1f1f1;color: #7d7d7d;border-top: 3px solid #9e9e9e;">
-                    <th class="giua">STT</th>
-                    <th class="giua">Mã</th>
-                    <th class="giua">Họ & Tên</th>
-                    <th class="giua">SĐT</th>
-                    <th class="giua">Thao tác</th>
-                  </tr>
-            </thead>
-            <tbody>
-            <?php 
-              $stt = 1;
-              while ($row = mysqli_fetch_assoc($dulieu)) {
+      <div class="windows-table col-md-9">
+        <label>Danh sách đã & chưa đóng học phí</label>
+        <div class="line"></div>
+          <div id="du-lieu">
+            <table id="qltv-loai-sach" class="table table-striped">
+                <thead>
+                      <tr style="background-color: #f1f1f1;color: #7d7d7d;border-top: 3px solid #9e9e9e;">
+                        <th class="giua">STT</th>
+                        <th class="giua">Họ & Tên</th>
+                        <th class="giua">MAIL</th>
+                        <th class="giua">TÊN KHOÁ HỌC</th>
+                        <th class="giua">ĐÃ ĐÓNG</th>
+                      </tr>
+                </thead>
+                <tbody>
+                <?php 
+                  $stt = 1;
+                  while ($row = mysqli_fetch_assoc($sinhvien)) {
+                    ?>
+                      <tr>
+                        <th class="giua"><?php echo $stt; ?></th>
+                        <td><?php echo $row['HOSV']." ".$row['TENSV']; ?></td>
+                        <td><?php echo $row['MAIL']; ?></td>
+                        <td><?php echo $row['TENKH']; ?></td>
+                        <td class="giua"><div class="nut nam-giua">
+                        <?php if ($row['XACNHAN']==0){ ?>
+                            <a class="btn btn-danger btn-xac-nhan" title="Xác nhận"
+                           onclick="xacnhan('<?php echo $row['IDSVKH'] ?>')" ><i class="fa fa-close" aria-hidden="true"></i></a>
+                        <?php } else{ ?>
+                            <a class="btn btn-success btn-xac-nhan" title="Xác nhận"
+                           onclick="huyxacnhan('<?php echo $row['IDSVKH'] ?>')" ><i class="fa fa-check" aria-hidden="true"></i></a>
+                        <?php } ?>
+                          </div>
+                        </td>
+                    </tr>
+                    <?php
+                    $stt++;
+                  }
                 ?>
-                  <tr>
-                    <th class="giua"><?php echo $stt; ?></th>
-                    <td class="giua" id="id-ma-giao-vien-<?php echo $row['IDSV']; ?>"><a><?php echo $row['IDSV']; ?></a></td>
-                    <td id="id-ho-sinh-vien-<?php echo $row['IDSV']; ?>"><?php echo $row['HOSV']." ".$row['TENSV']; ?></td>
-                    <td id="id-so-dien-thoai-<?php echo $row['IDSV']; ?>"><?php echo $row['SDT']; ?></td>
-                    <td class="giua"><div class="nut nam-giua">
-                        <a class="btn btn-danger btn-xoa-giao-vien" title="Xóa"
-                        data-el="<?php echo $row['IDSV']; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></a></div>
-                    </td>
-                    <input type="text" hidden="hidden" id="id-hinh-anh-<?php echo $row['IDSV']; ?>" name="" value="<?php echo $row['HINHANH']; ?>">
-                </tr>
-                <?php
-                $stt++;
-              }
-            ?>
-            </tbody>
-        </table>
-      </div>
+                </tbody>
+            </table>  
+          </div>
+        </div>
       </div>
     </section>
-
-<!-- Modal: Thêm khóa học -->
-<div class="modal anil in" id="qltv-modal-them-giao-vien" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Thêm giáo viên</h4>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-md-6">
-	        <div class="form-group">
-	          <label>Mã giáo viên</label>
-	          <input type="text" class="form-control" name="" id="ma-giao-vien-them" placeholder="mã giáo viên" required autocomplete="on">
-	        </div>
-          </div>  
-          <div class="col-md-6">
-	        <div class="form-group">
-	          <label>Tên giáo viên</label>
-	          <input type="text" class="form-control" name="" id="ten-giao-vien-them" placeholder="tên giáo viên" required autocomplete="on">
-	        </div>
-          </div>
-          <div class="col-md-6">
-	        <div class="form-group">
-	          <label>Tên đăng nhập</label>
-	          <input type="text" class="form-control" name="" id="ten-dang-nhap-them" placeholder="tên đăng nhập giáo viên" required autocomplete="on">
-	        </div>
-          </div>
-		  <div class="col-md-6">
-            <div class="form-group">
-              <label>Địa chỉ giáo viên</label>
-              <textarea class="form-control" id="dia-chi-giao-vien-them" rows="1" placeholder="địa chỉ giáo viên"></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-	        <div class="form-group">
-	          <label>Số điện thoại</label>
-	          <input type="text" class="form-control" name="" id="so-dien-thoai-them" placeholder="số điện thoại giáo viên" required autocomplete="on">
-	        </div>
-          </div>  
-          <div class="col-md-6">
-	        <div class="form-group">
-	          <label>Mail</label>
-	          <input type="text" class="form-control" name="" id="mail-them" placeholder="mail giáo viên" required autocomplete="on">
-	        </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-            	<label>Loại tài khoản</label>
-            	<select id="gioi-tinh-them" class="form-control">
-            		<option value="1">Admin</option>
-            		<option value="2" selected>Giáo viên</option>
-            	</select>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <button class="btn btn-default" onclick="BrowseServer()">Chọn ảnh đại diện ...</button>
-              <img src="" id="hinh-anh-dai-dien-them" style="width: 100%;">
-            </div>
-            <input type="text" id="hinh-anh-dai-dien-them-src" hidden="hidden" name="">
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-            	<label>Giới tính</label>
-            	<select id="gioi-tinh-them" class="form-control">
-            		<option value="Nam">Nam</option>
-            		<option value="Nữ">Nữ</option>
-            		<option value="Khác" selected>Khác</option>
-            	</select>
-            </div>
-          </div>
-        </div>
-        <p class="help-block"> (<b>*</b>) Mật khẩu mặc định là <b>1234567</b>.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary" id="nut-them-giao-vien">Xác nhận thêm</button>
-      </div>
-    </div>
-  </div>
-</div><!-- Modal: Thêm khóa học -->
-
-<!-- Modal: Sửa khóa học -->
-<div class="modal anil in" id="qltv-modal-sua-giao-vien" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Thêm giáo viên</h4>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-md-6">
-	        <div class="form-group">
-	          <label>Mã giáo viên</label>
-	          <input type="text" class="form-control" name="" id="ma-giao-vien-sua" placeholder="mã khóa học" required autocomplete="on">
-	        </div>
-          </div>  
-          <div class="col-md-6">
-	        <div class="form-group">
-	          <label>Tên giáo viên</label>
-	          <input type="text" class="form-control" name="" id="ten-giao-vien-sua" placeholder="tên khóa học" required autocomplete="on">
-	        </div>
-          </div>
-          <div class="col-md-6">
-	        <div class="form-group">
-	          <label>Tên đăng nhập</label>
-	          <input type="text" class="form-control" name="" id="ten-dang-nhap-sua" placeholder="tên khóa học" required autocomplete="on">
-	        </div>
-          </div>
-		  <div class="col-md-6">
-            <div class="form-group">
-              <label>Địa chỉ giáo viên</label>
-              <textarea class="form-control" id="dia-chi-giao-vien-sua" rows="1"></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-	        <div class="form-group">
-	          <label>Số điện thoại</label>
-	          <input type="text" class="form-control" name="" id="so-dien-thoai-sua" placeholder="số điện thoại" required autocomplete="on">
-	        </div>
-          </div>  
-          <div class="col-md-6">
-	        <div class="form-group">
-	          <label>Mail</label>
-	          <input type="text" class="form-control" name="" id="mail-sua" placeholder="mail" required autocomplete="on">
-	        </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <button class="btn btn-default" onclick="BrowseServer()">Chọn ảnh đại diện ...</button>
-              <img src="" id="hinh-anh-dai-dien-sua" style="width: 100%;">
-            </div>
-            <input type="text" id="hinh-anh-dai-dien-sua-src" hidden="hidden" name="">
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary" id="nut-sua-khoa-hoc">Xác nhận sửa</button>
-      </div>
-    </div>
-  </div>
-</div><!-- Modal: Sửa khóa học -->
 
 <!-- Modal: Xóa khoa -->
 <div class="modal anil in" id="qltv-modal-xoa-khoa-hoc" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -269,7 +152,7 @@
 </div><!-- Xóa khoa -->
 
 <script type="text/javascript">
-    document.title = "VLUTE Elearning | Khóa học";
+    document.title = "VLUTE Elearning | Xác nhận Sinh viên - Khóa học";
 </script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -279,105 +162,46 @@
 <link rel="stylesheet" href="css/datatables.min.css">
 <script src="js/datatables.min.js" type="text/javascript"></script>
 <script type="text/javascript" charset="utf-8">
-  var finder = new CKFinder();
-  function BrowseServer() {
-      finder.selectActionFunction = SetFileField;
-      finder.popup();
-  }
-  function SetFileField(fileUrl) {
-      document.getElementById('hinh-anh-dai-dien-them').src = fileUrl;
-      var host = "<?php echo $elearning['HOSTGOC']; ?>";
-      host = host.substr(0,host.lastIndexOf("\/"));
-      document.getElementById('hinh-anh-dai-dien-them-src').value=fileUrl.substr(host.length+1,fileUrl.length-host.length);
-  }
-  function BrowseServerSua() {
-      finder.selectActionFunction = SetFileFieldSua;
-      finder.popup();
-  }
-  function SetFileFieldSua(fileUrl) {
-      document.getElementById('hinh-anh-hoc-ky-sua').src = fileUrl;
-      var host = "<?php echo $elearning['HOSTGOC']; ?>";
-      host = host.substr(0,host.lastIndexOf("\/"));
-      document.getElementById('hinh-anh-hoc-ky-sua-src').value=fileUrl.substr(host.length+1,fileUrl.length-host.length);
-  }
+    function xacnhan(id){
+      $.ajax({
+        url : "ajax/ajax_xac_nhan.php",
+        type : "post",
+        dataType:"text",
+        data : {
+          id: id
+        },
+        success : function (data){
+            $("body").append(data);
+        }
+      });
+    }
+    function huyxacnhan(id){
+      $.ajax({
+        url : "ajax/ajax_huy_xac_nhan.php",
+        type : "post",
+        dataType:"text",
+        data : {
+          id: id
+        },
+        success : function (data){
+            $("body").append(data);
+        }
+      });
+    }
   $(document).ready(function() {
-    $("#themloaisach").click(function(){
-    	$("#qltv-modal-them-giao-vien").modal("show");
-    });
-    $("#nut-them-giao-vien").click(function(){
-      $.ajax({
-        url : "ajax/ajax_them_sinh_vien.php",
-        type : "post",
-        dataType:"text",
-        data : {
-          m: $("#ma-giao-vien-them").val(),
-          t: $("#ten-giao-vien-them").val(),
-          tdn: $("#ten-dang-nhap-them").val(),
-          dc: $("#dia-chi-giao-vien-them").val(),
-          sdt: $("#so-dien-thoai-them").val(),
-          mail: $("#mail-them").val(),
-          gt: $("#gioi-tinh-them").val(),
-          hinh: $("#hinh-anh-dai-dien-them-src").val()
-        },
-        success : function (data){
-            $("body").append(data);
-        }
-      });
-    });
-    $(".doigioitinh").change(function(){
-      $.ajax({
-        url : "ajax/ajax_doi_gioi_tinh_sinh_vien.php",
-        type : "post",
-        dataType:"text",
-        data : {
-          ma: $(this).attr("data-el"),
-          gt: $(this).val()
-        },
-        success : function (data){
-            $("body").append(data);
-        }
-      });
-    });
 
-    $(".btn-sua-khoa-hoc").click(function(){
-      var id = $(this).attr("data-el");
-      $("#ma-khoa-hoc-sua").val($("#id-ma-khoa-hoc-"+id).text().trim());
-      $("#ten-khoa-hoc-sua").val($("#id-ten-khoa-hoc-"+id).text().trim());
-      $("#mo-ta-khoa-hoc-sua").val($("#id-mo-ta-"+id).text().trim());
-      $("#hinh-anh-hoc-ky-sua").attr('src', "../"+$("#id-hinh-anh-"+id).val().trim());
-      $("#hinh-anh-hoc-ky-sua-src").val($("#id-hinh-anh-"+id).val().trim());
-      $("#thoi-gian-bat-dau-sua").val($("#id-thoi-gian-bat-dau-"+id).text().trim());
-      $("#thoi-gian-ket-thuc-sua").val($("#id-thoi-gian-ket-thuc-"+id).text().trim());
-      $("#thoi-gian-dang-ky-sua").val($("#id-thoi-gian-bat-dau-dang-ky-"+id).text().trim());
-      $("#thoi-gian-ket-thuc-dang-ky-sua").val($("#id-thoi-gian-ket-thuc-dang-ky-"+id).text().trim());
-      $("#id-khoa-hoc-sua").val(id);
-      $("#qltv-modal-sua-khoa-hoc").modal("show");
-    });
-    $("#nut-sua-khoa-hoc").click(function(){
+    $("#xem-ds-sv-kh").click(function(){
       $.ajax({
-        url : "ajax/ajax_sua_khoa_hoc.php",
+        url : "ajax/ajax_danh_sach_sinh_dk_vien_khoa_hoc.php",
         type : "post",
         dataType:"text",
         data : {
-          m: $("#ma-khoa-hoc-sua").val(),
-          t: $("#ten-khoa-hoc-sua").val(),
-          mt: $("#mo-ta-khoa-hoc-sua").val(),
-          tgbdkh: $("#thoi-gian-bat-dau-sua").val(),
-          tgktkh: $("#thoi-gian-ket-thuc-sua").val(),
-          tgbddk: $("#thoi-gian-dang-ky-sua").val(),
-          tgktdk: $("#thoi-gian-ket-thuc-dang-ky-sua").val(),
-          hinh: $("#hinh-anh-hoc-ky-sua-src").val(),
-          id: $("#id-khoa-hoc-sua").val()
+          kh: $("#ma-khoa-hoc").val()
         },
         success : function (data){
-            $("body").append(data);
+            $("#du-lieu").html(data);
         }
       });
-    });
-    $(".btn-xoa-khoa-hoc").click(function(){
-      var id = $(this).attr("data-el");
-      $("#id-khoa-hoc-xoa").val(id);
-      $("#qltv-modal-xoa-khoa-hoc").modal("show");
     });
     $("#nut-xoa-khoa-hoc").click(function(){
       $.ajax({
@@ -397,6 +221,7 @@
 <script src="../bootstrap/dist/js/bootstrap-select.min.js"></script>
 <script type="text/javascript">
   $('#qltv-loai-sach').DataTable();
+  $('#qltv-loai-sach-1').DataTable();
 </script>
 <style type="text/css">
 	.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
