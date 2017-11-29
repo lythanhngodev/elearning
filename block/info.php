@@ -29,7 +29,7 @@
 			</tr>
 			<tr>
 				<td><i class="fa fa-sign-out"></i></td>
-				<td><a href="">Đăng xuất</a></td>
+				<td><a href="logout.php">Đăng xuất</a></td>
 			</tr>
 		</table>
 </div>

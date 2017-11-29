@@ -1,6 +1,6 @@
 <?php 
 	include_once("../config.php");
-	function el_them_khoa_hoc($m, $t, $mt, $tgbdkh, $tgktkh, $tgbddk, $tgktdk, $hinh){
+	function el_them_khoa_hoc($m, $t, $mt, $tgbdkh, $tgktkh, $tgbddk, $tgktdk, $hinh,$mtct){
 		if (empty($m)) {
 			echo "<script type=\"text/javascript\">khongthanhcong(\"<strong>Chưa thêm</strong> mã khóa học không được trống!\")</script>";
 			exit();
@@ -32,14 +32,14 @@
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
 		$hoi = "
-				INSERT INTO `khoahoc`(`MAKH`, `TENKH`, `MOTAKH`, `TGBATDAU`, `TGKETTHUC`, `TGBDDK`, `TGKTDK`, `HINHANH`) VALUES ('$m','$t','$mt','$tgbdkh','$tgktkh','$tgbddk','$tgktdk','$hinh')
+				INSERT INTO `khoahoc`(`MAKH`, `TENKH`, `MOTAKH`, `TGBATDAU`, `TGKETTHUC`, `TGBDDK`, `TGKTDK`, `HINHANH`,`MOTACTKH`) VALUES ('$m','$t','$mt','$tgbdkh','$tgktkh','$tgbddk','$tgktdk','$hinh','$mtct')
 		";
 		if(mysqli_query($conn, $hoi)===TRUE)
 			return true;
 		else
 			return false;
 	}
-	if (el_them_khoa_hoc($_POST['m'],$_POST['t'],$_POST['mt'],$_POST['tgbdkh'],$_POST['tgktkh'],$_POST['tgbddk'],$_POST['tgktdk'], $_POST['hinh'])) {
+	if (el_them_khoa_hoc($_POST['m'],$_POST['t'],$_POST['mt'],$_POST['tgbdkh'],$_POST['tgktkh'],$_POST['tgbddk'],$_POST['tgktdk'], $_POST['hinh'],$_POST['mtct'])) {
 		echo "<script type=\"text/javascript\">tailai();thanhcong(\"<strong>Đã lưu</strong> khóa học đã được thêm!\")</script>";
 		exit();
 	}

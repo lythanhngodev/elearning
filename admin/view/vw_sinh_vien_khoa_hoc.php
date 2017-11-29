@@ -42,34 +42,29 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Khóa học
+        Toàn bộ sinh viên
         <div class="line"></div>
       </h1>
     </section>
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-md-12 col-ms-12">
-          <a id="themloaisach" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Thêm khóa học</a>
+        <div class="col-md-3 col-ms-3">
+          <label>Sinh viên</label>
         </div>
-        <div class="col-md-12 col-ms-12 cach"></div>
-      </div>
-      <div class="windows-table">
+        <div class="col-md-3 col-ms-3">
+          <label>Khóa học</label>
+        </div>
+      <div class="windows-table col-md-6">
         <table id="qltv-loai-sach" class="table table-striped">
             <thead>
-                <tr role="row">
                   <tr style="background-color: #f1f1f1;color: #7d7d7d;border-top: 3px solid #9e9e9e;">
                     <th class="giua">STT</th>
-                    <th class="giua">Mã khóa học</th>
-                    <th class="giua">Tên khóa học</th>
-                    <th class="giua">Mô tả</th>
-                    <th class="giua">TG bắt đầu</th>
-                    <th class="giua">TG kết thúc</th>
-                    <th class="giua">TG bắt đầu ĐK</th>
-                    <th class="giua">TG kết thúc ĐK</th>
+                    <th class="giua">Mã</th>
+                    <th class="giua">Họ & Tên</th>
+                    <th class="giua">SĐT</th>
                     <th class="giua">Thao tác</th>
                   </tr>
-                </tr>
             </thead>
             <tbody>
             <?php 
@@ -78,19 +73,14 @@
                 ?>
                   <tr>
                     <th class="giua"><?php echo $stt; ?></th>
-                    <td class="giua" id="id-ma-khoa-hoc-<?php echo $row['IDKH']; ?>"><a><?php echo $row['MAKH']; ?></a></td>
-                    <td id="id-ten-khoa-hoc-<?php echo $row['IDKH']; ?>"><?php echo $row['TENKH']; ?></td>
-                    <td id="id-mo-ta-<?php echo $row['IDKH']; ?>"><?php echo $row['MOTAKH']; ?></td>
-                    <td id="id-thoi-gian-bat-dau-<?php echo $row['IDKH']; ?>" class="giua" id=""><span class="xam" ><?php echo $row['TGBATDAU']; ?></span></td>
-                    <td id="id-thoi-gian-ket-thuc-<?php echo $row['IDKH']; ?>" class="giua"><span class="xam"><?php echo $row['TGKETTHUC']; ?></span></td>
-                    <td id="id-thoi-gian-bat-dau-dang-ky-<?php echo $row['IDKH']; ?>" class="giua"><span class="xam" ><?php echo $row['TGBDDK']; ?></span></td>
-                    <td id="id-thoi-gian-ket-thuc-dang-ky-<?php echo $row['IDKH']; ?>" class="giua"><span class="xam"><?php echo $row['TGKTDK']; ?></span></td>
-                    <td class="giua"><div class="nut nam-giua"><a class="btn btn-primary btn-sua-khoa-hoc" data-el="<?php echo $row['IDKH']; ?>" title="Sửa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        <a class="btn btn-danger btn-xoa-khoa-hoc" title="Xóa"
-                        data-el="<?php echo $row['IDKH']; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></a></div>
+                    <td class="giua" id="id-ma-giao-vien-<?php echo $row['IDSV']; ?>"><a><?php echo $row['IDSV']; ?></a></td>
+                    <td id="id-ho-sinh-vien-<?php echo $row['IDSV']; ?>"><?php echo $row['HOSV']." ".$row['TENSV']; ?></td>
+                    <td id="id-so-dien-thoai-<?php echo $row['IDSV']; ?>"><?php echo $row['SDT']; ?></td>
+                    <td class="giua"><div class="nut nam-giua">
+                        <a class="btn btn-danger btn-xoa-giao-vien" title="Xóa"
+                        data-el="<?php echo $row['IDSV']; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></a></div>
                     </td>
-                    <input type="text" hidden="hidden" id="id-hinh-anh-<?php echo $row['IDKH']; ?>" name="" value="<?php echo $row['HINHANH']; ?>">
-                    <input type="text" hidden="hidden" id="id-mo-ta-ct-<?php echo $row['IDKH']; ?>" name="" value="<?php echo $row['MOTACTKH']; ?>">
+                    <input type="text" hidden="hidden" id="id-hinh-anh-<?php echo $row['IDSV']; ?>" name="" value="<?php echo $row['HINHANH']; ?>">
                 </tr>
                 <?php
                 $stt++;
@@ -99,156 +89,160 @@
             </tbody>
         </table>
       </div>
+      </div>
     </section>
 
 <!-- Modal: Thêm khóa học -->
-<div class="modal anil in" id="qltv-modal-them-khoa-hoc" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal anil in" id="qltv-modal-them-giao-vien" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Thêm khóa học</h4>
+        <h4 class="modal-title">Thêm giáo viên</h4>
       </div>
       <div class="modal-body">
-        <div class="form-group">
-          <label>Mã khhóa học</label>
-          <input type="text" class="form-control" name="" id="ma-khoa-hoc-them" placeholder="mã khóa học" required autocomplete="on">
-        </div>
-        <div class="form-group">
-          <label>Tên khóa học</label>
-          <input type="text" class="form-control" name="" id="ten-khoa-hoc-them" placeholder="tên khóa học" required autocomplete="on">
-        </div>
         <div class="row">
           <div class="col-md-6">
-            <div class="form-group">
-              <label>Mô tả khóa học</label>
-              <textarea class="form-control" id="mo-ta-khoa-hoc-them" rows="5"></textarea>
-            </div>
+	        <div class="form-group">
+	          <label>Mã giáo viên</label>
+	          <input type="text" class="form-control" name="" id="ma-giao-vien-them" placeholder="mã giáo viên" required autocomplete="on">
+	        </div>
           </div>  
           <div class="col-md-6">
-            <div class="form-group">
-              <label>Mô tả chi tiết khóa học</label>
-              <textarea class="form-control" id="mo-ta-chi-tiet-khoa-hoc-them" rows="5"></textarea>
-            </div>
-          </div> 
-          <div class="col-md-6">
-            <div class="form-group">
-              <button class="btn btn-default" onclick="BrowseServer()">Chọn hình ảnh khóa học ...</button>
-              <img src="" id="hinh-anh-hoc-ky-them" style="width: 100%;">
-            </div>
-            <input type="text" id="hinh-anh-hoc-ky-them-src" hidden="hidden" name="">
+	        <div class="form-group">
+	          <label>Tên giáo viên</label>
+	          <input type="text" class="form-control" name="" id="ten-giao-vien-them" placeholder="tên giáo viên" required autocomplete="on">
+	        </div>
           </div>
-        </div>
-        <div class="row">
           <div class="col-md-6">
+	        <div class="form-group">
+	          <label>Tên đăng nhập</label>
+	          <input type="text" class="form-control" name="" id="ten-dang-nhap-them" placeholder="tên đăng nhập giáo viên" required autocomplete="on">
+	        </div>
+          </div>
+		  <div class="col-md-6">
             <div class="form-group">
-              <label>Thời gian bắt đầu khóa học</label>
-              <input type="date" class="form-control" name="" id="thoi-gian-bat-dau-them" required autocomplete="on">
-            </div>
-          </div>  
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Thời gian kết thúc khóa học</label>
-              <input type="date" class="form-control" name="" id="thoi-gian-ket-thuc-them" required autocomplete="on">
+              <label>Địa chỉ giáo viên</label>
+              <textarea class="form-control" id="dia-chi-giao-vien-them" rows="1" placeholder="địa chỉ giáo viên"></textarea>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
-            <div class="form-group">
-              <label>Thời gian bắt đầu đăng ký</label>
-              <input type="date" class="form-control" name="" id="thoi-gian-dang-ky-them" required autocomplete="on">
-            </div>
+	        <div class="form-group">
+	          <label>Số điện thoại</label>
+	          <input type="text" class="form-control" name="" id="so-dien-thoai-them" placeholder="số điện thoại giáo viên" required autocomplete="on">
+	        </div>
           </div>  
           <div class="col-md-6">
+	        <div class="form-group">
+	          <label>Mail</label>
+	          <input type="text" class="form-control" name="" id="mail-them" placeholder="mail giáo viên" required autocomplete="on">
+	        </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
             <div class="form-group">
-              <label>Thời gian kết thúc đăng ký</label>
-              <input type="date" class="form-control" name="" id="thoi-gian-ket-thuc-dang-ky-them" required autocomplete="on">
+            	<label>Loại tài khoản</label>
+            	<select id="gioi-tinh-them" class="form-control">
+            		<option value="1">Admin</option>
+            		<option value="2" selected>Giáo viên</option>
+            	</select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <button class="btn btn-default" onclick="BrowseServer()">Chọn ảnh đại diện ...</button>
+              <img src="" id="hinh-anh-dai-dien-them" style="width: 100%;">
+            </div>
+            <input type="text" id="hinh-anh-dai-dien-them-src" hidden="hidden" name="">
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+            	<label>Giới tính</label>
+            	<select id="gioi-tinh-them" class="form-control">
+            		<option value="Nam">Nam</option>
+            		<option value="Nữ">Nữ</option>
+            		<option value="Khác" selected>Khác</option>
+            	</select>
             </div>
           </div>
         </div>
+        <p class="help-block"> (<b>*</b>) Mật khẩu mặc định là <b>1234567</b>.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary" id="nut-them-khoa-hoc">Thêm khóa học</button>
+        <button type="button" class="btn btn-primary" id="nut-them-giao-vien">Xác nhận thêm</button>
       </div>
     </div>
   </div>
 </div><!-- Modal: Thêm khóa học -->
 
 <!-- Modal: Sửa khóa học -->
-<div class="modal anil in" id="qltv-modal-sua-khoa-hoc" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal anil in" id="qltv-modal-sua-giao-vien" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Thêm khóa học</h4>
+        <h4 class="modal-title">Thêm giáo viên</h4>
       </div>
       <div class="modal-body">
-        <div class="form-group">
-          <label>Mã khhóa học</label>
-          <input type="text" class="form-control" name="" id="ma-khoa-hoc-sua" placeholder="mã khóa học" required autocomplete="on">
-        </div>
-        <div class="form-group">
-          <label>Tên khóa học</label>
-          <input type="text" class="form-control" name="" id="ten-khoa-hoc-sua" placeholder="tên khóa học" required autocomplete="on">
-        </div>
         <div class="row">
           <div class="col-md-6">
-            <div class="form-group">
-              <label>Mô tả khóa học</label>
-              <textarea class="form-control" id="mo-ta-khoa-hoc-sua" rows="5"></textarea>
-            </div>
-          </div> 
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Mô tả chi tiết khóa học</label>
-              <textarea class="form-control" id="mo-ta-chi-tiet-khoa-hoc-sua" rows="5"></textarea>
-            </div>
-          </div> 
-          <div class="col-md-6">
-            <div class="form-group">
-              <button class="btn btn-default" onclick="BrowseServerSua()">Chọn hình ảnh khóa học ...</button>
-              <img src="" id="hinh-anh-hoc-ky-sua" style="width: 100%;">
-            </div>
-            <input type="text" id="hinh-anh-hoc-ky-sua-src" hidden="hidden" name="">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Thời gian bắt đầu khóa học</label>
-              <input type="date" class="form-control" name="" id="thoi-gian-bat-dau-sua" required autocomplete="on">
-            </div>
+	        <div class="form-group">
+	          <label>Mã giáo viên</label>
+	          <input type="text" class="form-control" name="" id="ma-giao-vien-sua" placeholder="mã khóa học" required autocomplete="on">
+	        </div>
           </div>  
           <div class="col-md-6">
+	        <div class="form-group">
+	          <label>Tên giáo viên</label>
+	          <input type="text" class="form-control" name="" id="ten-giao-vien-sua" placeholder="tên khóa học" required autocomplete="on">
+	        </div>
+          </div>
+          <div class="col-md-6">
+	        <div class="form-group">
+	          <label>Tên đăng nhập</label>
+	          <input type="text" class="form-control" name="" id="ten-dang-nhap-sua" placeholder="tên khóa học" required autocomplete="on">
+	        </div>
+          </div>
+		  <div class="col-md-6">
             <div class="form-group">
-              <label>Thời gian kết thúc khóa học</label>
-              <input type="date" class="form-control" name="" id="thoi-gian-ket-thuc-sua" required autocomplete="on">
+              <label>Địa chỉ giáo viên</label>
+              <textarea class="form-control" id="dia-chi-giao-vien-sua" rows="1"></textarea>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
-            <div class="form-group">
-              <label>Thời gian bắt đầu đăng ký</label>
-              <input type="date" class="form-control" name="" id="thoi-gian-dang-ky-sua" required autocomplete="on">
-            </div>
+	        <div class="form-group">
+	          <label>Số điện thoại</label>
+	          <input type="text" class="form-control" name="" id="so-dien-thoai-sua" placeholder="số điện thoại" required autocomplete="on">
+	        </div>
           </div>  
           <div class="col-md-6">
-            <div class="form-group">
-              <label>Thời gian kết thúc đăng ký</label>
-              <input type="date" class="form-control" name="" id="thoi-gian-ket-thuc-dang-ky-sua" required autocomplete="on">
-            </div>
+	        <div class="form-group">
+	          <label>Mail</label>
+	          <input type="text" class="form-control" name="" id="mail-sua" placeholder="mail" required autocomplete="on">
+	        </div>
           </div>
-          <input type="text" hidden="hidden" name="" value="" id="id-khoa-hoc-sua">
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <button class="btn btn-default" onclick="BrowseServer()">Chọn ảnh đại diện ...</button>
+              <img src="" id="hinh-anh-dai-dien-sua" style="width: 100%;">
+            </div>
+            <input type="text" id="hinh-anh-dai-dien-sua-src" hidden="hidden" name="">
+          </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary" id="nut-sua-khoa-hoc">Lưu thay đổi</button>
+        <button type="button" class="btn btn-primary" id="nut-sua-khoa-hoc">Xác nhận sửa</button>
       </div>
     </div>
   </div>
@@ -279,7 +273,7 @@
 </script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#khoahoc").addClass("active");
+		$("#toanbosinhvien").addClass("active");
 	});
 </script>
 <link rel="stylesheet" href="css/datatables.min.css">
@@ -291,10 +285,10 @@
       finder.popup();
   }
   function SetFileField(fileUrl) {
-      document.getElementById('hinh-anh-hoc-ky-them').src = fileUrl;
+      document.getElementById('hinh-anh-dai-dien-them').src = fileUrl;
       var host = "<?php echo $elearning['HOSTGOC']; ?>";
       host = host.substr(0,host.lastIndexOf("\/"));
-      document.getElementById('hinh-anh-hoc-ky-them-src').value=fileUrl.substr(host.length+1,fileUrl.length-host.length);
+      document.getElementById('hinh-anh-dai-dien-them-src').value=fileUrl.substr(host.length+1,fileUrl.length-host.length);
   }
   function BrowseServerSua() {
       finder.selectActionFunction = SetFileFieldSua;
@@ -308,35 +302,48 @@
   }
   $(document).ready(function() {
     $("#themloaisach").click(function(){
-    	$("#qltv-modal-them-khoa-hoc").modal("show");
+    	$("#qltv-modal-them-giao-vien").modal("show");
     });
-    $("#nut-them-khoa-hoc").click(function(){
+    $("#nut-them-giao-vien").click(function(){
       $.ajax({
-        url : "ajax/ajax_them_khoa_hoc.php",
+        url : "ajax/ajax_them_sinh_vien.php",
         type : "post",
         dataType:"text",
         data : {
-          m: $("#ma-khoa-hoc-them").val(),
-          t: $("#ten-khoa-hoc-them").val(),
-          mt: $("#mo-ta-khoa-hoc-them").val(),
-          mtct: $("#mo-ta-chi-tiet-khoa-hoc-them").val(),
-          tgbdkh: $("#thoi-gian-bat-dau-them").val(),
-          tgktkh: $("#thoi-gian-ket-thuc-them").val(),
-          tgbddk: $("#thoi-gian-dang-ky-them").val(),
-          tgktdk: $("#thoi-gian-ket-thuc-dang-ky-them").val(),
-          hinh: $("#hinh-anh-hoc-ky-them-src").val()
+          m: $("#ma-giao-vien-them").val(),
+          t: $("#ten-giao-vien-them").val(),
+          tdn: $("#ten-dang-nhap-them").val(),
+          dc: $("#dia-chi-giao-vien-them").val(),
+          sdt: $("#so-dien-thoai-them").val(),
+          mail: $("#mail-them").val(),
+          gt: $("#gioi-tinh-them").val(),
+          hinh: $("#hinh-anh-dai-dien-them-src").val()
         },
         success : function (data){
             $("body").append(data);
         }
       });
     });
+    $(".doigioitinh").change(function(){
+      $.ajax({
+        url : "ajax/ajax_doi_gioi_tinh_sinh_vien.php",
+        type : "post",
+        dataType:"text",
+        data : {
+          ma: $(this).attr("data-el"),
+          gt: $(this).val()
+        },
+        success : function (data){
+            $("body").append(data);
+        }
+      });
+    });
+
     $(".btn-sua-khoa-hoc").click(function(){
       var id = $(this).attr("data-el");
       $("#ma-khoa-hoc-sua").val($("#id-ma-khoa-hoc-"+id).text().trim());
       $("#ten-khoa-hoc-sua").val($("#id-ten-khoa-hoc-"+id).text().trim());
       $("#mo-ta-khoa-hoc-sua").val($("#id-mo-ta-"+id).text().trim());
-      $("#mo-ta-chi-tiet-khoa-hoc-sua").val($("#id-mo-ta-ct-"+id).val().trim());
       $("#hinh-anh-hoc-ky-sua").attr('src', "../"+$("#id-hinh-anh-"+id).val().trim());
       $("#hinh-anh-hoc-ky-sua-src").val($("#id-hinh-anh-"+id).val().trim());
       $("#thoi-gian-bat-dau-sua").val($("#id-thoi-gian-bat-dau-"+id).text().trim());
@@ -355,7 +362,6 @@
           m: $("#ma-khoa-hoc-sua").val(),
           t: $("#ten-khoa-hoc-sua").val(),
           mt: $("#mo-ta-khoa-hoc-sua").val(),
-          mtct: $("#mo-ta-chi-tiet-khoa-hoc-sua").val(),
           tgbdkh: $("#thoi-gian-bat-dau-sua").val(),
           tgktkh: $("#thoi-gian-ket-thuc-sua").val(),
           tgbddk: $("#thoi-gian-dang-ky-sua").val(),
@@ -388,6 +394,12 @@
     });
   });
 </script>
+<script src="../bootstrap/dist/js/bootstrap-select.min.js"></script>
 <script type="text/javascript">
   $('#qltv-loai-sach').DataTable();
 </script>
+<style type="text/css">
+	.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+	    padding: 5px;
+	}
+</style>

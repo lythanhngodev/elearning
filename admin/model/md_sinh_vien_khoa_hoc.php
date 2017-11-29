@@ -1,9 +1,9 @@
 <?php 
-	include_once("../admin/config.php");
-	function el_get_khoa_hoc(){
+	include_once("config.php");
+	function el_get_sinh_vien_khoa_hoc(){
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
-		$query = "SELECT IDKH, TENKH FROM khoahoc";
+		$query = "SELECT * FROM sinhvien sv";
 		$result = mysqli_query($conn, $query);
 		return $result;
 	}

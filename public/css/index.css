@@ -6,7 +6,7 @@
 p,a {
     font-family: 'Roboto', sans-serif;
 }
-
+[data-notify="container"].alert{max-width: 350px;width: fit-content;padding: 10px;font-family: inherit;}
 a#btn-thong-tin-ca-nhan {
     display: block;
     width: 38px;
@@ -116,18 +116,11 @@ nav.navbar.navbar-light.bg-faded.menu .menu-top ul li a {
 
 /* BEGIN DANH MUC KHOA HOC */
 
-.danh-sach-khoa-hoc .khoa-hoc {box-shadow: 0px 0px 13px -2px rgba(0, 0, 0, 0.41);margin-bottom: 44px;}
+.danh-sach-khoa-hoc .khoa-hoc {box-shadow: 0px 0px 13px -2px rgba(109, 109, 109, 0.41);margin-bottom: 40px;}
 
 .danh-sach-khoa-hoc .khoa-hoc .hinh-anh {
 	width: 100%;
-	height: 190px;
 	overflow: hidden;
-	
-}
-
-
-.danh-sach-khoa-hoc .khoa-hoc:hover {
-	box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.5);
 }
 
 .danh-sach-khoa-hoc .khoa-hoc:hover .hinh-anh img {
@@ -138,7 +131,6 @@ nav.navbar.navbar-light.bg-faded.menu .menu-top ul li a {
 
 .danh-sach-khoa-hoc .khoa-hoc .hinh-anh img{
 	width: 100%;
-	height: 100%;
 }
 
 .danh-sach-khoa-hoc .khoa-hoc {
@@ -146,9 +138,15 @@ nav.navbar.navbar-light.bg-faded.menu .menu-top ul li a {
     /* height: 400px; */
     position: relative;
     cursor: pointer;
-    transition: 0.4s;
+    transition: all 1s;
 }
-
+.danh-sach-khoa-hoc .khoa-hoc:hover {
+	transition: all 0.1s;
+	-webkit-transition: all 0.1s;
+	-moz-transition: all 0.1s;
+	box-shadow: 0px 0px 16px 1px rgba(109, 109, 109, 0.5);
+	top: -3px;
+}
 .danh-sach-khoa-hoc .khoa-hoc .noi-dung{
 	padding: 10px;
 }
@@ -169,9 +167,8 @@ nav.navbar.navbar-light.bg-faded.menu .menu-top ul li a {
 	font-weight: 500;
 }
 
-
 .danh-sach-khoa-hoc .bat-dau-hoc {
-    border-top: 2px solid #5a7185;
+    border-top: 2px solid #e8e8e8;
 }
 
 .danh-sach-khoa-hoc .bat-dau-hoc .vao-khoa-hoc,.danh-sach-khoa-hoc .bat-dau-hoc .ghi-danh {
@@ -198,8 +195,8 @@ nav.navbar.navbar-light.bg-faded.menu .menu-top ul li a {
 
 .danh-sach-khoa-hoc .giang-vien {
     font-size: 13px;
-    margin-top: 20px;
-    margin-bottom: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 i.fa.fa-user-circle {
@@ -400,7 +397,6 @@ i.fa.fa-user-circle.show {
     font-size: 14px;
 }
 
-
 .container-fluid.designer {
     background: #333333;
     color: white;
@@ -411,8 +407,6 @@ i.fa.fa-user-circle.show {
 .thong-tin {
     font-size: 15px;
 }
-
-
 
 /*END MODEL LOGIN*/
 

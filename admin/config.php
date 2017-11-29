@@ -1,6 +1,8 @@
 <?php 
 	$elearning = array(
-		'HOST' => 'http://localhost/elearning/admin' 
+		'HOST' => 'http://localhost/elearning/admin/',
+		'HOSTCON' => 'http://localhost/elearning/',
+		'HOSTGOC' => 'http://localhost/elearning/'
 	);
 	class clsKetnoi
 	{
@@ -17,6 +19,15 @@
 			mb_internal_encoding('UTF-8');
 			mysqli_query($conn, "set names 'utf8'");
 			return $conn;
+		}
+		public function tontai($hoi){
+			$conn = $this->ketnoi();
+			$ex  = mysqli_query($conn,$hoi);
+			$dem = mysqli_num_rows($ex);
+			if ($dem>0)
+				return true;
+			else
+				return false;
 		}
 	}
 	

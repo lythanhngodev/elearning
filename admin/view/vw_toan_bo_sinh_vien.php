@@ -327,7 +327,7 @@
   }
   function SetFileField(fileUrl) {
       document.getElementById('hinh-anh-dai-dien-them').src = fileUrl;
-      var host = "<?php echo $elearning['HOST']; ?>";
+      var host = "<?php echo $elearning['HOSTGOC']; ?>";
       host = host.substr(0,host.lastIndexOf("\/"));
       document.getElementById('hinh-anh-dai-dien-them-src').value=fileUrl.substr(host.length+1,fileUrl.length-host.length);
   }
@@ -337,7 +337,7 @@
   }
   function SetFileFieldSua(fileUrl) {
       document.getElementById('hinh-anh-hoc-ky-sua').src = fileUrl;
-      var host = "<?php echo $elearning['HOST']; ?>";
+      var host = "<?php echo $elearning['HOSTGOC']; ?>";
       host = host.substr(0,host.lastIndexOf("\/"));
       document.getElementById('hinh-anh-hoc-ky-sua-src').value=fileUrl.substr(host.length+1,fileUrl.length-host.length);
   }
@@ -347,7 +347,7 @@
     });
     $("#nut-them-giao-vien").click(function(){
       $.ajax({
-        url : "ajax/ajax_them_giao_vien.php",
+        url : "ajax/ajax_them_sinh_vien.php",
         type : "post",
         dataType:"text",
         data : {
@@ -367,7 +367,7 @@
     });
     $(".doigioitinh").change(function(){
       $.ajax({
-        url : "ajax/ajax_doi_gioi_tinh_giao_vien.php",
+        url : "ajax/ajax_doi_gioi_tinh_sinh_vien.php",
         type : "post",
         dataType:"text",
         data : {
@@ -379,21 +379,7 @@
         }
       });
     });
-    
-    $(".doiloaitaikhoan").change(function(){
-      $.ajax({
-        url : "ajax/ajax_doi_loai_tai_khoan_giao_vien.php",
-        type : "post",
-        dataType:"text",
-        data : {
-          ma: $(this).attr("data-el"),
-          ltk: $(this).val()
-        },
-        success : function (data){
-            $("body").append(data);
-        }
-      });
-    });
+
     $(".btn-sua-khoa-hoc").click(function(){
       var id = $(this).attr("data-el");
       $("#ma-khoa-hoc-sua").val($("#id-ma-khoa-hoc-"+id).text().trim());

@@ -4,8 +4,6 @@
 			<h3 class="tieu-de">Lập trình C# từ cơ bản đến nâng cao</h3>
 			<div class="thong-tin-khoa-hoc">
 				<i class="fa fa-eye"> Xem: 2633</i>
-				<i class="fa fa-download"> Tải về: 0</i>
-				<i class="fa fa-comments"> Thảo luận: 4</i>
 			</div>
 			<hr>
 		</div>

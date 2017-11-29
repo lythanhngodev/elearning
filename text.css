@@ -1,4 +1,4 @@
- <li class="nav-item icon-dangnhap">
+   <li class="nav-item icon-dangnhap">
      <a class="nav-link" href="#modalLogin" id="btn-dang-nhap"><i class="fa fa-user-circle"></i></a>
      <!-- BEGIN MODAL CHƯA LOGIN -->
 		<?php require 'modal-login.php' ?>

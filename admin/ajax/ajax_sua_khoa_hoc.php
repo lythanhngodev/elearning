@@ -1,6 +1,6 @@
 <?php 
 	include_once("../config.php");
-	function el_sua_khoa_hoc($m, $t, $mt, $tgbdkh, $tgktkh, $tgbddk, $tgktdk, $hinh, $id){
+	function el_sua_khoa_hoc($m, $t, $mt, $tgbdkh, $tgktkh, $tgbddk, $tgktdk, $hinh, $id,$mtct){
 		if (empty($m)) {
 			echo "<script type=\"text/javascript\">khongthanhcong(\"<strong>Chưa sửa</strong> mã khóa học không được trống!\")</script>";
 			exit();
@@ -41,7 +41,8 @@
 				`TGKETTHUC`='$tgktkh',
 				`TGBDDK`='$tgbddk',
 				`TGKTDK`='$tgktdk',
-				`HINHANH`='$hinh' 
+				`HINHANH`='$hinh',
+				`MOTACTKH`='$mtct'
 			WHERE 
 				`IDKH` = '$id'
 		";
@@ -50,7 +51,7 @@
 		else
 			return false;
 	}
-	if (el_sua_khoa_hoc($_POST['m'],$_POST['t'],$_POST['mt'],$_POST['tgbdkh'],$_POST['tgktkh'],$_POST['tgbddk'],$_POST['tgktdk'], $_POST['hinh'],$_POST['id'])) {
+	if (el_sua_khoa_hoc($_POST['m'],$_POST['t'],$_POST['mt'],$_POST['tgbdkh'],$_POST['tgktkh'],$_POST['tgbddk'],$_POST['tgktdk'], $_POST['hinh'],$_POST['id'],$_POST['mtct'])) {
 		echo "<script type=\"text/javascript\">tailai();dongsua();thanhcong(\"<strong>Đã lưu</strong> khóa học đã được cập nhật!\")</script>";
 		exit();
 	}

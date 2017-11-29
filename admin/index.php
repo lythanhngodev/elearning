@@ -7,7 +7,7 @@
 	<title>VLUTE Elearning</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<base href="<?php echo $elearning['HOST']; ?>/" />
+	<base href="<?php echo $elearning['HOST']; ?>">
   	<link rel="stylesheet" type="text/css" href="../bootstrap/dist/css/bootstrap.min.css">
   	<link rel="stylesheet" type="text/css" href="../bootstrap/dist/css/bootstrap-select.min.css">
 	<link href="../css/vendor/font-awesome.min.css" type="text/css" rel="stylesheet">
@@ -29,7 +29,7 @@
 	        <span class="caret"></span></a>
 	        <ul class="dropdown-menu" style="box-shadow: none;border: 1px solid #e8e8e8;">
 	          <li><a href="?p=toanbosinhvien">Toàn bộ sinh viên</a></li>
-	          <li><a href="#">Sinh viên theo khóa học</a></li>
+	          <li><a href="?p=sinhvienkhoahoc">Sinh viên - Khóa học</a></li>
 	        </ul>
 	      </li>
 	      <li id="khoahoc"><a href="?p=khoahoc">Khóa học</a></li>
