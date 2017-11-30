@@ -5,6 +5,8 @@ if (isset($_GET["p"]) && !empty($_GET["p"])) {
 			require 'block/chi-tiet-lich-thi.php';
 			break;
 		case 'lich-thi':
+			require 'model/md_lich_thi.php';
+			$dulieu = el_lich_thi();
 			require 'block/lich-thi.php';
 			break;
 		case 'noi-dung-khoa-hoc':

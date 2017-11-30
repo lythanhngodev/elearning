@@ -81,10 +81,10 @@
                     <td id="id-tom-tat-tb-<?php echo $row['IDLT']; ?>"><?php echo $row['TOMTAT']; ?></td>
                     <td class="giua">
                     	<?php if ($row['ANHIEN']==0) { ?>
-                    		<input type="checkbox" name="" id="id-an-hien-<?php echo $row['IDLT'] ?>" onclick="anhien('<?php echo $row['IDLT'] ?>')">
+                    		<input type="checkbox" name="" id="id-an-hien-<?php echo $row['IDLT'] ?>" onclick="anhien('<?php echo $row['IDLT'] ?>')" style="width: 20px;height: 20px;">
                     	<?php } ?>
                     	<?php if ($row['ANHIEN']==1){ ?>
-                        <input type="checkbox" name="" checked id="id-an-hien-<?php echo $row['IDLT'] ?>" onclick="anhien('<?php echo $row['IDLT'] ?>')">
+                        <input type="checkbox" name="" checked id="id-an-hien-<?php echo $row['IDLT'] ?>" onclick="anhien('<?php echo $row['IDLT'] ?>')" style="width: 20px;height: 20px;">
                     	<?php } ?>
                     </td>
                     <td class="giua"><div class="nut nam-giua"><a class="btn btn-primary btn-sua-tb" data-el="<?php echo $row['IDLT']; ?>" title="Sửa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
@@ -212,10 +212,21 @@
 		$("#lichthi").addClass("active");
 	});
   function anhien(id){
+    var hien = 1;
     if(document.getElementById('id-an-hien-'+id).checked)
-      alert(1);
-    else
-      alert(0);
+      hien=0;
+      $.ajax({
+        url : "ajax/ajax_an_hien_thong_bao.php",
+        type : "post",
+        dataType:"text",
+        data : {
+          hienan: hien,
+          id: id
+        },
+        success : function (data){
+            $("body").append(data);
+        }
+      });
   }
 </script>
 <link rel="stylesheet" href="css/datatables.min.css">
