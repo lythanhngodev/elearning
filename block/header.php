@@ -23,7 +23,10 @@
 				   <li class="nav-item" id="lich-thi">
 				     <a class="nav-link" href="?p=lich-thi">Lịch thi</a>
 				   </li>
-				    <li class="nav-item ">
+				   <li class="nav-item ">
+				     <a class="nav-link" href="#">Giới thiệu</a>
+				   </li>
+				   <li class="nav-item ">
 				     <a class="nav-link" href="#">Hỗ trợ</a>
 				   </li>
 				   <?php
