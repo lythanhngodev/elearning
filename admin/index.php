@@ -34,7 +34,7 @@
 	        </ul>
 	      </li>
 	      <li id="khoahoc"><a href="?p=khoahoc">Khóa học</a></li>
-	      <li id="lichthi"><a href="?p=lichthi">Lịch thi</a></li>
+	      <li id="lichthi"><a href="?p=lichthi">TB Lịch thi</a></li>
 	      <li id="baigiang"><a href="?p=baigiang">Bài giảng</a></li>
 		  <li class="dropdown">
         	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Điểm
