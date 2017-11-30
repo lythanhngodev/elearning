@@ -2,15 +2,15 @@
 <div class="chi-tiet-lich-thi">
 	<div class="row">
 		<div class="col-sm-12 tieu-de-lich-thi">
-			<a>NGÀY THI 19/11/2017 - CHƯƠNG TRÌNH TOPICA: LỊCH & DANH SÁCH THI</a>
+			<a><?php echo $row['TENLT'] ?></a>
 		</div>
 		<div class="col-sm-12 thong-tin-bai-dang">
-			<i>Người đăng </i><strong>Anh Phương</strong> ngày <strong>22/11/2017</strong>
+			<i>Người đăng </i><strong><?php echo $row['TENGV'] ?></strong> ngày <strong><?php echo $row['NGAYDANG'] ?></strong>
 		</div>
 		<div class="col-sm-12 nhan-gui">
-			<p>Trung tâm Đào tạo E-learning thông báo đến các sinh viên đang học Đại học hệ từ xa phương thức eLearning lịch thi (thi lại) ngày 19 tháng 11 năm 2017 của các lớp/khóa đang đào tạo như sau:</p>
+			<?php echo $row['NOIDUNG'] ?>
 		</div>
-		<div class="col-sm-12 thong-tin-lich-thi">
+		<!--<div class="col-sm-12 thong-tin-lich-thi">
 			<strong>LỊCH THI: </strong><a href="#"><i>Xem chi tiết tại đây</i></a>
 		</div>
 		<div class="col-sm-12 luu-y">
@@ -18,15 +18,15 @@
 			<p><em>* Yêu cầu sinh viên mang theo thẻ sinh viên, CMTND hoặc giấy tờ tùy thân có dán ảnh. Sinh viên mang theo các dụng cụ thi theo quy định (bút chì, tẩy…).</em></p>
 			<p><em>* Phòng Hội đồng thi – Văn phòng Trung tâm Đào tạo E-Learning. </em></p>
 			<p><em>* Sinh viên cần thực hiện nghiêm túc qui chế thi </em></p>
-		</div>
+		</div>-->
 	</div>
 	<div class="row">
 		<div class="col-sm-12 lich-thi-lien-quan">
 		<h6>BÀI VIẾT LIÊN QUAN</h6>
 			<ul>
-				<?php for ($i = 0; $i < 8; $i++) {
+				<?php while($row = mysqli_fetch_array($ltlq)) {
 				?>
-					<li><a href="">Ngày thi 19/11/2017 – Chương trình HOU-Topica: Lịch & Danh sách thi (Thi lại)</a></li>
+					<li><a href="?p=chi-tiet-lich-thi&id=<?php echo $row['IDLT'] ?>"><?php echo $row['TENLT'] ?></a></li>
 				<?php	
 				} ?>
 			</ul>

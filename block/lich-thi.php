@@ -7,17 +7,17 @@
 			<div class="row">
 					<div class="col-sm-12">
 						<div class="tieu-de-lich-thi">
-							<a href="#"><?php echo $row['TENLT'] ?></a>
+							<a href="?p=chi-tiet-lich-thi&id=<?php echo $row['IDLT'] ?>"><?php echo $row['TENLT'] ?></a>
 						</div>
 					</div>
 					<div class="col-sm-12">
 						<div class="thong-tin-nguoi-dang">
-							<?php $row['NGAYDANG'] ?> | Anh Phương
+							<?php echo $row['NGAYDANG'] ?> | <?php echo $row['TENGV'] ?>
 						</div>
 					</div>
 					<div class="col-sm-12">
 						<div class="thong-tin-lich-thi">
-							<?php $row['TOMTAT'] ?>
+							<?php echo $row['TOMTAT'] ?>
 						</div>
 					</div>
 			</div>

@@ -2,6 +2,16 @@
 if (isset($_GET["p"]) && !empty($_GET["p"])) {
 	switch ($_GET["p"]) {
 		case 'chi-tiet-lich-thi':
+			$id = 0;
+			if (!isset($_GET['id'])) {
+				echo "<h1>404 NOT FOUND !</h1><br><a href=..><< Quay lại trang chủ</a>";
+				exit();
+			}
+			$id = $_GET['id'];
+			require 'model/md_chi_tiet_lich_thi.php';
+			$chitiet = el_chi_tiet_lich_thi($id);
+			$row = mysqli_fetch_array($chitiet);
+			$ltlq = el_lich_thi_lien_quan($id);
 			require 'block/chi-tiet-lich-thi.php';
 			break;
 		case 'lich-thi':
