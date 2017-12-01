@@ -79,8 +79,8 @@
                     <th class="giua">STT</th>
                     <th class="giua">Họ & Tên GV</th>
                     <th class="giua">MAIL GV</th>
-                    <th class="giua">TÊN KH</th>
-                    <th class="giua">Xóa</th>
+                    <th class="giua">TÊN KHÓA HỌC</th>
+                    <th class="giua">Đổi/Xóa</th>
                   </tr>
             </thead>
             <tbody>
@@ -90,12 +90,14 @@
                 ?>
                   <tr>
                     <th class="giua"><?php echo $stt; ?></th>
-                    <td id="id-ten-<?php echo $row['IDGV']; ?>"><?php echo $row['TENGV']; ?></td>
-                    <td id="id-mail-<?php echo $row['IDGV']; ?>"><?php echo $row['MAIL']; ?></td>
-                    <td id="id-ten-khoa-hoc-<?php echo $row['IDGV']; ?>"><?php echo $row['TENKH']; ?></td>
+                    <td id="id-ten-<?php echo $row['IDGVKH']; ?>"><?php echo $row['TENGV']; ?></td>
+                    <td id="id-mail-<?php echo $row['IDGVKH']; ?>"><?php echo $row['MAIL']; ?></td>
+                    <td id="id-ten-khoa-hoc-<?php echo $row['IDGVKH']; ?>"><?php echo $row['TENKH']; ?></td>
                     <td class="giua"><div class="nut nam-giua">
+                        <a class="btn btn-primary btn-doi-giao-vien" title="Đổi giáo viên giảng dạy"
+                        data-el="<?php echo $row['IDGVKH']; ?>" data-el-kh="<?php echo $row['IDKH']; ?>" ><i class="fa fa-refresh" aria-hidden="true"></i></a>
                         <a class="btn btn-danger btn-xoa-giao-vien" title="Xóa"
-                        data-el="<?php echo $row['IDGV']; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></a></div>
+                        data-el="<?php echo $row['IDGVKH']; ?>" data-el-kh="<?php echo $row['IDKH']; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></a></div>
                     </td>
                 </tr>
                 <?php
@@ -119,10 +121,11 @@
       <div class="modal-body">
         <div class="alert alert-danger" style="margin: 0;">Bạn có chắc muốn xóa khóa học này?</div>
       </div>
+      <input type="text" hidden="hidden" name="" id="id-giao-vien-khoa-hoc-xoa">
       <input type="text" hidden="hidden" name="" id="id-khoa-hoc-xoa">
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Tôi không chắc</button>
-        <button type="button" class="btn btn-danger" id="nut-xoa-khoa-hoc">Tôi chắc chắn</button>
+        <button type="button" class="btn btn-danger" id="nut-xoa-giao-vien-khoa-hoc">Tôi chắc chắn</button>
       </div>
     </div> 
   </div>
@@ -154,32 +157,20 @@
         }
       });
     });
-    $(".doigioitinh").change(function(){
-      $.ajax({
-        url : "ajax/ajax_doi_gioi_tinh_sinh_vien.php",
-        type : "post",
-        dataType:"text",
-        data : {
-          ma: $(this).attr("data-el"),
-          gt: $(this).val()
-        },
-        success : function (data){
-            $("body").append(data);
-        }
-      });
-    });
-    $(".btn-xoa-khoa-hoc").click(function(){
-      var id = $(this).attr("data-el");
-      $("#id-khoa-hoc-xoa").val(id);
+
+    $(".btn-xoa-giao-vien").click(function(){
+      $("#id-khoa-hoc-xoa").val($(this).attr("data-el-kh"));
+      $("#id-giao-vien-khoa-hoc-xoa").val($(this).attr("data-el"));
       $("#qltv-modal-xoa-khoa-hoc").modal("show");
     });
-    $("#nut-xoa-khoa-hoc").click(function(){
+    $("#nut-xoa-giao-vien-khoa-hoc").click(function(){
       $.ajax({
-        url : "ajax/ajax_xoa_khoa_hoc.php",
+        url : "ajax/ajax_xoa_giao_vien_khoa_hoc.php",
         type : "post",
         dataType:"text",
         data : {
-          id: $("#id-khoa-hoc-xoa").val()
+          idgvkh: $("#id-giao-vien-khoa-hoc-xoa").val(),
+          idkh: $("#id-khoa-hoc-xoa").val()
         },
         success : function (data){
             $("body").append(data);

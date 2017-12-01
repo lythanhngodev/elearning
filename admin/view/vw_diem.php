@@ -120,12 +120,12 @@
     var kh;
     var sv = [];
     var gc = [];
-    kh=$("#id-nhap-diem-"+i).attr("data-el-hk");
     parseFloat(d)
     for (var i = 1; i <= id; i++) {
       var kt = document.getElementById('id-nhap-diem-'+i).value;
       if(parseFloat(kt)>=0.0 && parseFloat(kt)<=10.0){
         d[i] = kt;
+        kh=$("#id-nhap-diem-"+i).attr("data-el-hk");
         gc[i] = document.getElementById('id-ghi-chu-'+i).value;
         sv[i]=$("#id-nhap-diem-"+i).attr("data-el-sv");
       }

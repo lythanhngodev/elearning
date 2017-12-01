@@ -3,7 +3,7 @@
 	function el_get_sinh_vien_khoa_hoc(){
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
-		$query = "SELECT DISTINCT gv.IDGV, gv.MAGV,gv.TENGV, gv.MAIL, kh.TENKH FROM gv_kh gk, giaovien gv, khoahoc kh WHERE gk.IDGV = gv.IDGV AND gk.IDKH = kh.IDKH";
+		$query = "SELECT DISTINCT gk.IDGVKH,kh.IDKH,gv.IDGV, gv.MAGV,gv.TENGV, gv.MAIL, kh.TENKH FROM gv_kh gk, giaovien gv, khoahoc kh WHERE gk.IDGV = gv.IDGV AND gk.IDKH = kh.IDKH";
 		$result = mysqli_query($conn, $query);
 		return $result;
 	}
