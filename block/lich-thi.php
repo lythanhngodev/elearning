@@ -7,7 +7,7 @@
 			<div class="row">
 					<div class="col-sm-12">
 						<div class="tieu-de-lich-thi">
-							<a href="?p=chi-tiet-lich-thi&id=<?php echo $row['IDLT'] ?>"><?php echo $row['TENLT'] ?></a>
+							<a href="?p=chi-tiet-lich-thi&id=<?php echo $row['IDTB'] ?>"><?php echo $row['TENTB'] ?></a>
 						</div>
 					</div>
 					<div class="col-sm-12">

@@ -136,9 +136,8 @@
 		<?php while($row = mysqli_fetch_array($khoahockhac)){ ?>
 		<div class="col-sm-4">
 			<div class="khoa-hoc">
-				<div class="hinh-anh">
-					<img src="<?php echo $row['HINHANH'] ?>" alt="">
-				</div>
+				<div class="hinh-anh" style="background-image: url('<?php echo $row['HINHANH'] ?>');">
+						</div>
 				<div class="noi-dung">
 					<div class="thong-tin">
 						<a class="ngay-dang"><i class="fa fa-calendar"></i> <?php echo $row['TGBATDAU'] ?></a>

@@ -12,6 +12,11 @@ if (isset($_GET["p"]) && !empty($_GET["p"])) {
 			$chitiet = el_chi_tiet_lich_thi($id);
 			$row = mysqli_fetch_array($chitiet);
 			$ltlq = el_lich_thi_lien_quan($id);
+			$dem = mysqli_num_rows($chitiet);
+			if ($dem==0) {
+				echo "<h1>404 NOT FOUND !</h1><br><a href><< Quay lại trang chủ</a>";
+				exit();
+			}
 			require 'block/chi-tiet-lich-thi.php';
 			break;
 		case 'lich-thi':

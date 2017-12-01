@@ -36,14 +36,7 @@
 	      <li id="khoahoc"><a href="?p=khoahoc">Khóa học</a></li>
 	      <li id="lichthi"><a href="?p=lichthi">TB Lịch thi</a></li>
 	      <li id="baigiang"><a href="?p=baigiang">Bài giảng</a></li>
-		  <li class="dropdown">
-        	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Điểm
-	        <span class="caret"></span></a>
-	        <ul class="dropdown-menu" style="box-shadow: none;border: 1px solid #e8e8e8;">
-	          <li><a href="#">Điểm theo môn học</a></li>
-	          <li><a href="#">Điểm theo môn học</a></li>
-	        </ul>
-	      </li>
+		  <li id="diem"><a href="?p=diem">Điểm</a></li>
 	      <li><a href="#">Thống kê</a></li>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">

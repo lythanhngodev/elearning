@@ -20,7 +20,7 @@
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
 		$hoi = "
-				INSERT INTO `lichthi`(`IDGV`, `TENLT`, `NOIDUNG`, `TOMTAT`, `NGAYDANG`) VALUES ('$id','$td','$nd','$tt',CURRENT_DATE())
+				INSERT INTO `thongbao`(`IDGV`, `TENTB`, `NOIDUNG`, `TOMTAT`, `NGAYDANG`) VALUES ('$id','$td','$nd','$tt',CURRENT_DATE())
 		";
 		if(mysqli_query($conn, $hoi)===TRUE)
 			return true;

@@ -76,22 +76,22 @@
                 ?>
                   <tr>
                     <th class="giua"><?php echo $stt; ?></th>
-                    <td id="id-ten-tb-<?php echo $row['IDLT']; ?>"><?php echo $row['TENLT']; ?></td>
-                    <td id="id-ngay-dang-<?php echo $row['IDLT']; ?>"><?php echo $row['NGAYDANG']; ?></td>
-                    <td id="id-tom-tat-tb-<?php echo $row['IDLT']; ?>"><?php echo $row['TOMTAT']; ?></td>
+                    <td id="id-ten-tb-<?php echo $row['IDTB']; ?>"><?php echo $row['TENTB']; ?></td>
+                    <td id="id-ngay-dang-<?php echo $row['IDTB']; ?>"><?php echo $row['NGAYDANG']; ?></td>
+                    <td id="id-tom-tat-tb-<?php echo $row['IDTB']; ?>"><?php echo $row['TOMTAT']; ?></td>
                     <td class="giua">
                     	<?php if ($row['ANHIEN']==0) { ?>
-                    		<input type="checkbox" name="" id="id-an-hien-<?php echo $row['IDLT'] ?>" onclick="anhien('<?php echo $row['IDLT'] ?>')" style="width: 20px;height: 20px;">
+                    		<input type="checkbox" name="" id="id-an-hien-<?php echo $row['IDTB'] ?>" onclick="anhien('<?php echo $row['IDTB'] ?>')" style="width: 20px;height: 20px;">
                     	<?php } ?>
                     	<?php if ($row['ANHIEN']==1){ ?>
-                        <input type="checkbox" name="" checked id="id-an-hien-<?php echo $row['IDLT'] ?>" onclick="anhien('<?php echo $row['IDLT'] ?>')" style="width: 20px;height: 20px;">
+                        <input type="checkbox" name="" checked id="id-an-hien-<?php echo $row['IDTB'] ?>" onclick="anhien('<?php echo $row['IDTB'] ?>')" style="width: 20px;height: 20px;">
                     	<?php } ?>
                     </td>
-                    <td class="giua"><div class="nut nam-giua"><a class="btn btn-primary btn-sua-tb" data-el="<?php echo $row['IDLT']; ?>" title="Sửa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    <td class="giua"><div class="nut nam-giua"><a class="btn btn-primary btn-sua-tb" data-el="<?php echo $row['IDTB']; ?>" title="Sửa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         <a class="btn btn-danger btn-xoa-tb" title="Xóa"
-                        data-el="<?php echo $row['IDLT']; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></a></div>
+                        data-el="<?php echo $row['IDTB']; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></a></div>
                     </td>
-                    <textarea id="id-noi-dung-tb-<?php echo $row['IDLT']; ?>" hidden=""><?php echo $row['NOIDUNG'] ?></textarea>
+                    <textarea id="id-noi-dung-tb-<?php echo $row['IDTB']; ?>" hidden=""><?php echo $row['NOIDUNG'] ?></textarea>
                 </tr>
                 <?php
                 $stt++;

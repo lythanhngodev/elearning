@@ -41,7 +41,7 @@
 	<hr>
 	<div class="row">
 		<div class="col-sm-4 dia-chi-dhspktvl">
-			<p>Địa chỉ: 73 Nguyễn Huệ, Phường 2, TP.Vĩnh Long<br>Điện thoại: 0703 822141 - Fax: 0703 821003<br>Email: spktvl@vlute.edu.vn </p>
+			<p><i class="fa fa-location-arrow"></i> Địa chỉ: 73 Nguyễn Huệ, Phường 2, TP.Vĩnh Long<br><i class="fa fa-phone"></i> Điện thoại: 0703 822141 - Fax: 0703 821003<br><i class="fa fa-envelope-o"></i> Email: spktvl@vlute.edu.vn </p>
 		</div>
 		<div class="col-sm-3 lien-ket-voi-chung-toi">
 			<h6>LIÊN KẾT VỚI CHÚNG TÔI</h6>

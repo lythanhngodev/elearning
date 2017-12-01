@@ -16,13 +16,13 @@
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
 		$hoi = "
-			UPDATE `lichthi` 
+			UPDATE `thongbao` 
 				SET 
-					`TENLT`='$td',
+					`TENTB`='$td',
 					`NOIDUNG`='$nd',
 					`TOMTAT`='$tt' 
 				WHERE 
-					`IDLT` = '$idtb'
+					`IDTB` = '$idtb'
 		";
 		if(mysqli_query($conn, $hoi)===TRUE)
 			return true;

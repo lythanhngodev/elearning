@@ -21,7 +21,7 @@
 				   <li class="nav-item" id="trang-chu">
 				     <a class="nav-link" href="">Danh sách khóa học</a>
 				   <li class="nav-item" id="lich-thi">
-				     <a class="nav-link" href="?p=lich-thi">Lịch thi</a>
+				     <a class="nav-link" href="?p=lich-thi">Thông báo</a>
 				   </li>
 				   <li class="nav-item ">
 				     <a class="nav-link" href="#">Giới thiệu</a>

@@ -4,7 +4,7 @@
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
 		$hoi = "
-				DELETE FROM `lichthi` WHERE `IDLT` = '$id'
+				DELETE FROM `thongbao` WHERE `IDTB` = '$id'
 		";
 		if(mysqli_query($conn, $hoi)===TRUE)
 			return true;

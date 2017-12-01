@@ -49,8 +49,7 @@
 				<?php while ($row = mysqli_fetch_array($dulieu_all)) { ?>
 				<div class="col-sm-4">
 					<div class="khoa-hoc">
-						<div class="hinh-anh">
-							<img src="<?php echo $row['HINHANH'] ?>" alt="">
+						<div class="hinh-anh" style="background-image: url('<?php echo $row['HINHANH'] ?>');">
 						</div>
 						<div class="noi-dung">
 							<div class="thong-tin">

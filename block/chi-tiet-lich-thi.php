@@ -2,7 +2,7 @@
 <div class="chi-tiet-lich-thi">
 	<div class="row">
 		<div class="col-sm-12 tieu-de-lich-thi">
-			<a><?php echo $row['TENLT'] ?></a>
+			<a><?php echo $row['TENTB'] ?></a>
 		</div>
 		<div class="col-sm-12 thong-tin-bai-dang">
 			<i>Người đăng </i><strong><?php echo $row['TENGV'] ?></strong> ngày <strong><?php echo $row['NGAYDANG'] ?></strong>
@@ -26,7 +26,7 @@
 			<ul>
 				<?php while($row = mysqli_fetch_array($ltlq)) {
 				?>
-					<li><a href="?p=chi-tiet-lich-thi&id=<?php echo $row['IDLT'] ?>"><?php echo $row['TENLT'] ?></a></li>
+					<li><a href="?p=chi-tiet-lich-thi&id=<?php echo $row['IDTB'] ?>"><?php echo $row['TENTB'] ?></a></li>
 				<?php	
 				} ?>
 			</ul>

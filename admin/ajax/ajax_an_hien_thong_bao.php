@@ -5,9 +5,9 @@
 		$conn = $ketnoi->ketnoi();
 		$hoi="";
 		if ($hienan=='0')
-			$hoi="UPDATE `lichthi` SET `ANHIEN` = b'1' WHERE `lichthi`.`IDLT` = '$id'";
+			$hoi="UPDATE `thongbao` SET `ANHIEN` = b'1' WHERE `thongbao`.`IDTB` = '$id'";
 		else
-			$hoi="UPDATE `lichthi` SET `ANHIEN` = b'0' WHERE `lichthi`.`IDLT` = '$id'";
+			$hoi="UPDATE `thongbao` SET `ANHIEN` = b'0' WHERE `thongbao`.`IDTB` = '$id'";
 		if(mysqli_query($conn, $hoi)===TRUE)
 			return true;
 		else

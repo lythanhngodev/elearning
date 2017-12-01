@@ -4,6 +4,9 @@
 			case 'giaovien':
 				include_once("control/ctrl_giao_vien.php");
 				break;
+			case 'diem':
+				include_once("control/ctrl_diem.php");
+				break;
 			case 'giaovienkhoahoc':
 				include_once("control/ctrl_giao_vien_khoa_hoc.php");
 				break;

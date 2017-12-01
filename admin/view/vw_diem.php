@@ -44,10 +44,10 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Bài giảng
+        Quản lý điểm sinh viên
         
       </h1>
-      <label> - Thông tin các bài giảng của giảng viên!</label>
+      <label> - Thông tin điểm số của sinh viên theo từng khóa học!</label>
     </section>
     <!-- Main content -->
     <section class="content">
@@ -61,58 +61,23 @@
                 <option data-tokens="<?php echo $row['IDKH']." ".$row['TENKH']; ?>" value="<?php echo $row['IDKH']; ?>"><?php echo $row['IDKH']." - ".$row['TENKH']; ?></option>
               <?php } ?>
             </select><br><br>
-            <button id="xem-ds-bg-gv" class="btn btn-primary">Xem danh sách</button>
+            <button id="xem-ds-sv-hk" class="btn btn-primary">Xem danh sách</button>
           </div>
         </div>
       <div class="windows-table col-md-9">
-        <label>Danh sách bài giảng của giáo viên</label>
+        <label>Danh sách sinh viên theo học kỳ</label>
         <div class="line"></div>
           <div id="du-lieu">
             <table id="qltv-loai-sach" class="table table-striped">
                 <thead>
                       <tr style="background-color: #f1f1f1;color: #7d7d7d;border-top: 3px solid #9e9e9e;">
                         <th class="giua">STT</th>
-                        <th class="giua">TÊN BÀI</th>
-                        <th class="giua">TÓM TẮT</th>
-                        <th class="giua">ID NỘI DUNG</th>
-                        <th class="giua">NGÀY ĐĂNG</th>
-                        <th class="giua">KHÓA HỌC</th>
-                        <th class="giua">TẮT</th>
-                        <th class="giua">THAO TÁC</th>
+                        <th class="giua" style="width: 60px;">SỐ SV</th>
+                        <th class="giua">HỌ TÊN SV</th>
+                        <th class="giua" style="width: 60px;">ĐIỂM</th>
+                        <th class="giua" style="width: 80px;">GHI CHÚ</th>
                       </tr>
                 </thead>
-                <tbody>
-                <?php 
-                  $stt = 1;
-                  while ($row = mysqli_fetch_assoc($baigiang)) {
-                    ?>
-                      <tr>
-                        <th class="giua"><?php echo $stt; ?></th>
-                        <td><?php echo $row['TENBAI']; ?></td>
-                        <td><?php echo $row['TOMTAT']; ?></td>
-                        <td><?php echo $row['NOIDUNG']; ?></td>
-                        <td><?php echo $row['NGAYDANG']; ?></td>
-                        <td><?php echo $row['TENKH']; ?></td>
-                        <td class="giua">
-	                        <?php 
-	                        if ($row['BATTAT']==1) { ?>
-	                        <input type="checkbox" name="" checked id="bat-tat-<?php echo $row['IDBG']; ?>" onclick="battat('<?php echo $row['IDBG']; ?>')">
-	                        <?php } else{ ?>
-	                        <input type="checkbox" name="" id="bat-tat-<?php echo $row['IDBG']; ?>" onclick="battat('<?php echo $row['IDBG']; ?>')">
-	                        <?php } ?>
-                        </td>
-                        <td class="giua"><div class="nut nam-giua">
-                        	<a class="btn btn-primary btn-sua" title="Sửa"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                            <a class="btn btn-danger btn-xoa" title="Xóa"
-                           onclick="xoa('<?php echo $row['IDBG'] ?>')" ><i class="fa fa-trash" aria-hidden="true"></i></a>
-                          </div>
-                        </td>
-                    </tr>
-                    <?php
-                    $stt++;
-                  }
-                ?>
-                </tbody>
             </table>  
           </div>
         </div>
@@ -140,73 +105,58 @@
 </div><!-- Xóa khoa -->
 
 <script type="text/javascript">
-    document.title = "VLUTE Elearning | Bài giảng";
+    document.title = "VLUTE Elearning | Điểm";
 </script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#baigiang").addClass("active");
+		$("#diem").addClass("active");
 	});
 </script>
 <link rel="stylesheet" href="css/datatables.min.css">
 <script src="js/datatables.min.js" type="text/javascript"></script>
 <script type="text/javascript" charset="utf-8">
-	function battat(id){
-		var tt=0;
-		if(document.getElementById('bat-tat-'+id).checked)
-			tt=1;
+	function luudiem(id){
+    var d = [];
+    var kh = [];
+    var sv = [];
+    parseFloat(d)
+    for (var i = 1; i <= id; i++) {
+      var kt = document.getElementById('id-nhap-diem-'+i).value;
+      if(parseFloat(kt)>=0.0 && parseFloat(kt)<=10.0){
+        d[i] = kt;
+        kh[i]=$("#id-nhap-diem-"+i).attr("data-el-hk");
+        sv[i]=$("#id-nhap-diem-"+i).attr("data-el-sv");
+      }
+      else{
+        khongthanhcong('Điểm phải lớn hơn 0.0 và điểm không quá 10.0');
+        return;
+      }
+    }
 		$.ajax({
-			url : "ajax/ajax_bat_tat_bai_giang.php",
+			url : "ajax/ajax_nhap_diem_cho_sinh_vien_theo_hoc_ky.php",
 			type : "post",
 			dataType:"text",
 			data : {
-			  id: id,
-			  tt: tt
+			  d: d,
+			  kh: kh,
+        sv: sv
 			},
 			success : function (data){
 			    $("body").append(data);
 			}
 		});
 	}
-	function xoa(id){
-		if (confirm('Bạn có chắc chắn xóa bài giảng này không?')) {
-			$.ajax({
-				url : "ajax/ajax_xoa_bai_giang.php",
-				type : "post",
-				dataType:"text",
-				data : {
-				  id: id
-				},
-				success : function (data){
-				    $("body").append(data);
-				}
-			});
-		}
-	}
   $(document).ready(function() {
-    $("#xem-ds-bg-gv").click(function(){
+    $("#xem-ds-sv-hk").click(function(){
       $.ajax({
-        url : "ajax/ajax_danh_sach_bai_giang_giao_vien.php",
+        url : "ajax/ajax_danh_sach_sinh_vien_hoc_hoc_ky.php",
         type : "post",
         dataType:"text",
         data : {
-          kh: $("#ma-khoa-hoc").val(),
-          id: <?php echo $idofgv; ?>
+          kh: $("#ma-khoa-hoc").val()
         },
         success : function (data){
             $("#du-lieu").html(data);
-        }
-      });
-    });
-    $("#nut-xoa-khoa-hoc").click(function(){
-      $.ajax({
-        url : "ajax/ajax_xoa_khoa_hoc.php",
-        type : "post",
-        dataType:"text",
-        data : {
-          id: $("#id-khoa-hoc-xoa").val()
-        },
-        success : function (data){
-            $("body").append(data);
         }
       });
     });
