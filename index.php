@@ -23,7 +23,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>VLUTE | Elearning</title>
-	<base href="<?php echo $elearning['HOSTCON']; ?>/" />
+	<base href="<?php echo $elearning['HOSTCON']; ?>" />
 	<script type="text/javascript" src="1libs/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="1libs/boostrap/bootstrap.js"></script>
 	<link rel="stylesheet" type="text/css" href="1libs/boostrap/bootstrap.css">

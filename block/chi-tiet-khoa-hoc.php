@@ -40,7 +40,7 @@
 		</div>
 		<div class="col-sm-12">
 			<div class="row">
-				<div class="col-sm-4"><img src="../<?php echo $row['HINHANHkh']; ?>" style="width:100%;min-height:192px"></div>
+				<div class="col-sm-4"><img src="<?php echo $row['HINHANHkh']; ?>" style="width:100%;min-height:192px"></div>
 				<div class="col-sm-8">
 					<div><strong>Mô tả: </strong><?php echo $row['MOTAKH']; ?></div>
 					<div><strong>Tổng số bài học:</strong> <?php echo $row['SOBAIHOC']; ?></div>
@@ -144,7 +144,7 @@
 						<a class="ngay-dang"><i class="fa fa-calendar"></i> <?php echo $row['TGBATDAU'] ?></a>
 						<a class="luot-xem"><i class="fa fa-eye"></i> <?php echo $row['LUOTXEM'] ?></a>
 					</div>
-					<a href="" class="tieu-de"><?php echo $row['TENKH'] ?></a>
+					<a href="?p=chi-tiet-khoa-hoc&id=<?php echo $row['IDKH']; ?>" class="tieu-de"><?php echo $row['TENKH'] ?></a>
 					<div class="giang-vien">
 						Giảng viên: <a href=""><?php echo $row['TENGV'] ?></a>
 					</div>
@@ -163,24 +163,18 @@
 	</div>
 </div> <!-- END danh-sach-khoa-hoc-cung-chu-de danh-sach-khoa-hoc -->
 <script type="text/javascript">
-	$(document).ready(function(){
-		$(".ghi-danh-chua-dang-nhap").click(function(){
-			$(".modal-login").addClass('show');
-			khongthanhcong('Bạn cần phải đăng nhập để ghi danh!');
-		});
-		$(".ghi-danh-da-dang-nhap").click(function(){
-	      $.ajax({
-	        url : "ajax/ajax_dang_ky_hoc_vien_khoa_hoc.php",
-	        type : "post",
-	        dataType:"text",
-	        data : {
-	        	id: <?php echo $idofsv; ?>,
-	        	kh: $(this).attr("data-el")
-	        },
-	        success : function (data){
-	            $("body").append(data);
-	        }
-	      });		
-	  });
-	});
+	$(".ghi-danh-da-dang-nhap").click(function(){
+      $.ajax({
+        url : "ajax/ajax_dang_ky_hoc_vien_khoa_hoc.php",
+        type : "post",
+        dataType:"text",
+        data : {
+        	id: <?php echo $idofsv; ?>,
+        	kh: $(this).attr("data-el")
+        },
+        success : function (data){
+            $("body").append(data);
+        }
+      });		
+  	});
 </script>

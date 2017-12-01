@@ -1,13 +1,18 @@
 $(document).ready(function()
 {
-	$('#btn-dang-nhap').click(function () {
-		$('.modal-login').addClass('show');
+	$("#btn-dang-nhap").click(function(){
+		$("#id-modal-login").addClass('show');
 	});
-
-	$('#btn-thong-tin-ca-nhan').click(function () {
-		$('.modal-login').addClass('show');
+	$("#btn-thong-tin-ca-nhan").click(function(){
+		$("#id-modal-login").addClass('show');
 	});
- 	
+	$(".nutx").click(function(){
+		$("#id-modal-login").removeClass('show');
+	});
+	$(".ghi-danh-chua-dang-nhap").click(function(){
+		$(".modal-login").addClass('show');
+		khongthanhcong('Bạn cần phải đăng nhập để ghi danh!');
+	});
  	// BEGIN DATETIME PICKER
  	$.datetimepicker.setLocale('vi');
  	$('#datetimepicker1').datetimepicker({

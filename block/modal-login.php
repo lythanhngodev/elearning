@@ -39,8 +39,8 @@
       }
 </script>
 <div class="nen-den"></div>
-<div class="modal-login">
-	<a href="" class="nutx" style="right: 10px;"><i class="fa fa-close"></i></a>
+<div id="id-modal-login" class="modal-login">
+	<a class="nutx" style="right: 10px;"><i class="fa fa-close"></i></a>
 	<ul class="nav nav-tabs" role="tablist" style="padding-top: 10px;">
 	  <li class="nav-item">
 	    <a class="nav-link active" data-toggle="tab" href="#dangnhap" role="tab">Đăng nhập</a>

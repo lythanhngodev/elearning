@@ -4,7 +4,7 @@ if (isset($_GET["p"]) && !empty($_GET["p"])) {
 		case 'chi-tiet-lich-thi':
 			$id = 0;
 			if (!isset($_GET['id'])) {
-				echo "<h1>404 NOT FOUND !</h1><br><a href=..><< Quay lại trang chủ</a>";
+				echo "<h1>404 NOT FOUND !</h1><br><a href><< Quay lại trang chủ</a>";
 				exit();
 			}
 			$id = $_GET['id'];
@@ -22,19 +22,19 @@ if (isset($_GET["p"]) && !empty($_GET["p"])) {
 		case 'noi-dung-khoa-hoc':
 			$id = 0;
 			if (!isset($_GET['id'])) {
-				echo "<h1>404 NOT FOUND !</h1><br><a href=..><< Quay lại trang chủ</a>";
+				echo "<h1>404 NOT FOUND !</h1><br><a href><< Quay lại trang chủ</a>";
 				exit();
 			}
 			$id = $_GET['id'];
 			require 'model/md_noi_dung_khoa_hoc.php';
 			if (!el_check_sv_dk_kh($idofsv,$id)) {
-				echo "Bạn không có quyền truy cập trang này!<br><a href=..><< Quay lại trang chủ</a>";
+				echo "Bạn không có quyền truy cập trang này!<br><a href><< Quay lại trang chủ</a>";
 				exit();
 			}
 			$baihoc = el_danh_sach_bai_hoc($idofsv,$id);
 			$dem = mysqli_num_rows($baihoc);
 			if ($dem==0) {
-				echo "<h1>Hiện chưa có bài học!</h1><br><a href=..><< Quay lại trang chủ</a>";
+				echo "<h1>Hiện chưa có bài học!</h1><br><a href><< Quay lại trang chủ</a>";
 				exit();
 			}
 			$top1 = el_danh_sach_bai_hoc_top_1($idofsv,$id);

@@ -1,11 +1,5 @@
-<div class="modal-login modal-logged">
-	<a href="" class="nutx"><i class="fa fa-close"></i></a>
-		<!-- <li><a href=""><i class="fa fa-bell-o"></i>Thông báo</a></li>
-		<li><a href=""><i class="fa fa-bookmark-o"></i>Khóa học của tôi</a></li>
-		<li><a href=""><i class="fa fa-id-card-o"></i>Chỉnh sữa thông tin</a></li>
-		<li><a href=""><i class="fa fa-key"></i>Cập nhật mật khẩu</a></li>
-		<li><a href=""><i class="fa fa-history"></i>Lịch sử</a></li>
-		<li><a href=""><i class="fa fa-sign-out"></i>Đăng xuất</a></li> -->
+<div id="id-modal-login" class="modal-login modal-logged">
+	<a class="nutx"><i class="fa fa-close"></i></a>
 		<table>
 			<tr>
 				<td><i class="fa fa-bell-o"></i></td>

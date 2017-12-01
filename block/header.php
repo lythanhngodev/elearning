@@ -2,7 +2,7 @@
 		<div class="header-top">
 			<div class="row">
 				<div class="col-2 logo-cang-le">
-					<a href="" class="logo"><img src="../img/logovlute.png" class="logoVLUTE"></a>
+					<a href="" class="logo"><img src="img/logovlute.png" class="logoVLUTE"></a>
 				</div>
 				<div class="col-10">
 					<h2>TRƯỜNG ĐẠI HỌC SƯ PHẠM KỸ THUẬT VĨNH LONG</h2>
@@ -32,13 +32,13 @@
 				   <?php
 			   	 	if (!$dangnhap){ ?>
 					   <li class="nav-item icon-dangnhap">
-					     <a class="nav-link" href="#modalLogin" id="btn-dang-nhap"><i class="fa fa-user-circle"></i></a>
+					     <a class="nav-link" id="btn-dang-nhap"><i class="fa fa-user-circle"></i></a>
 					     <!-- BEGIN MODAL CHƯA LOGIN -->
 							<?php require 'modal-login.php' ?>
 					   </li>
 				   <?php } else{ ?>
 					   <li class="nav-item icon-dangnhap">
-					     <a class="nav-link" href="#modalLogin" id="btn-thong-tin-ca-nhan" style="background: url('../img/tq.jpg');  background-size: cover;"></a>
+					     <a class="nav-link" id="btn-thong-tin-ca-nhan" style="background: url('img/tq.jpg');  background-size: cover;"></a>
 					     <!-- BEGIN MODAL ĐÃ LOGIN -->
 							<?php require 'info.php'; ?>
 					   </li>

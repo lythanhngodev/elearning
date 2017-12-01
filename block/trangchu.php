@@ -50,14 +50,14 @@
 				<div class="col-sm-4">
 					<div class="khoa-hoc">
 						<div class="hinh-anh">
-							<img src="../<?php echo $row['HINHANH'] ?>" alt="">
+							<img src="<?php echo $row['HINHANH'] ?>" alt="">
 						</div>
 						<div class="noi-dung">
 							<div class="thong-tin">
 								<a class="ngay-dang" title="Ngày bắt đầu học"><i class="fa fa-calendar"></i> <?php echo $row['TGBATDAU'] ?></a>
 								<a class="luot-xem"><i class="fa fa-eye"></i> <?php echo $row['LUOTXEM'] ?></a>
 							</div>
-							<a href="" class="tieu-de"><?php echo $row['TENKH'] ?></a>
+							<a href="?p=chi-tiet-khoa-hoc&id=<?php echo $row['IDKH']; ?>" class="tieu-de"><?php echo $row['TENKH'] ?></a>
 							<div class="giang-vien">
 								Giảng viên: <a href=""><?php echo $row['TENGV'] ?></a>
 							</div>
