@@ -1,6 +1,29 @@
 <?php 
+	include_once("../config.php");
 	$d = $_POST['d'];
+	$kh = $_POST['kh'];
+	$sv = $_POST['sv'];
+	$gc = $_POST['gc'];
+	$tongso = sizeof($d)-1;
+	$ketnoi = new clsKetnoi();
+	$conn = $ketnoi->ketnoi();
+	$query = "SELECT * FROM nhapdiem nd, diemkhoahoc d WHERE d.IDKH = nd.IDKH AND (CURRENT_DATE() BETWEEN nd.NGAYBDN AND nd.NGAYKTN)";
+	$result = mysqli_query($conn, $query);
+	$count = mysqli_num_rows($result);
+	if ($count == 0) {
+		echo "<script type=\"text/javascript\">khongthanhcong(\"<strong>Hiện tại chưa đến thời điểm nhập điểm cho khóa học này.</strong>\")</script>";
+		exit();
+	}
 	for ($i=1; $i <= sizeof($d)-1; $i++) { 
-		echo "nhan du lieu tu ben kia ".$d[$i];
+		// kiem tra diem co nhap hay chua
+		$_query = "SELECT * FROM diemkhoahoc d WHERE d.IDKH='".$kh[$i]."' AND d.IDSV='".$sv[$i]."'";
+		$_result = mysqli_query($conn, $_query);
+		$_count = mysqli_num_rows($_result);
+		if ($_count == 0) {
+		$_query = "INSERT INTO `diemkhoahoc`(`IDKH`, `IDSV`, `DIEM`, `GHICHU`) VALUES ('".$kh[$i]."','".$sv[$i]."','".$d[$i]."','".$gc[$i]."')";
+		$_result = mysqli_query($conn, $_query);
+		}
+		// cap nhat diem
+
 	}
  ?>
