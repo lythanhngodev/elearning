@@ -1,2 +1,2 @@
-# elearning
-Đồ án chuyên sâu phần mềm E-Learninbg
+# Elearning
+Đồ án chuyên sâu phần mềm E-Learning | Design: #lythanhngo
