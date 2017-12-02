@@ -4,11 +4,7 @@
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
 		$hoi = "
-			UPDATE `sv_dk_khoahoc` 
-			SET 
-				`XACNHAN` = b'1'
-			WHERE 
-				`sv_dk_khoahoc`.`IDSVKH` = '$id'
+			DELETE FROM `baigiang` WHERE `IDBG` = '$id'
 		";
 		if(mysqli_query($conn, $hoi)===TRUE)
 			return true;
@@ -16,7 +12,7 @@
 			return false;
 	}
 	if (el_sua_khoa_hoc($_POST['id'])) {
-		echo "<script type=\"text/javascript\">tailai();thanhcong(\"<strong>Đã xác nhận!!</strong>\");thanhcong(\"<strong>Đang cập nhật!</strong>\")</script>";
+		echo "<script type=\"text/javascript\">tailai('0');thanhcong(\"<strong>Đã xóa thành công!!</strong>\")</script>";
 		exit();
 	}
 	else{

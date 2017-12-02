@@ -39,19 +39,19 @@
 </script>
 <script src="ckeditor/ckeditor.js"></script>
 <script src="ckfinder/ckfinder.js"></script>
-<script src="ckfinder/ckfinder.js"></script>
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Thông báo lịch thi
+        Thông báo
         <div class="line"></div>
       </h1>
+      <label> - Thông tin thông báo của trung tâm Elearning. Thông báo lịch thi. Thông báo lớp khai giảng.</label>
     </section>
     <!-- Main content -->
     <section class="content">
       <div class="row">
         <div class="col-md-12 col-ms-12">
-          <a id="themloaisach" class="btn btn-success"><i class="fa fa-play" aria-hidden="true"></i> Thêm giáo viên</a>
+          <a id="themloaisach" class="btn btn-success"><i class="fa fa-play"></i> Thêm giáo viên</a>
         </div>
         <div class="col-md-12 col-ms-12 cach"></div>
       </div>
@@ -109,7 +109,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Thêm thông báo lịch thi</h4>
+        <h4 class="modal-title">Thêm thông báo</h4>
       </div>
       <div class="modal-body">
 	        <div class="form-group">
@@ -141,7 +141,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Thêm thông báo lịch thi</h4>
+        <h4 class="modal-title">Sửa thông báo</h4>
       </div>
       <div class="modal-body">
           <div class="form-group">

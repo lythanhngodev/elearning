@@ -23,7 +23,9 @@
 					<i class="fa fa-calendar"></i>&nbsp;&nbsp;<?php echo $row_top_1['NGAYDANG'] ?>&nbsp;&nbsp;
 				</span>
 				<div class="tom-tat-noi-dung-bai-hoc"><?php echo $row_top_1['TOMTAT'] ?></div>
-				<iframe width="100%" height="440px" src="https://drive.google.com/file/d/<?php echo $row_top_1['NOIDUNG'] ?>/preview?autoplay=1" frameborder="0" allowfullscreen="1"></iframe>
+				<iframe width="100%" height="440px" src="https://drive.google.com/file/d/<?php echo $row_top_1['IDVIDEO'] ?>/preview?autoplay=1" frameborder="0" allowfullscreen="1"></iframe>
+				<br>
+				<div class="col-sm-12"><?php echo $row_top_1['NOIDUNG']; ?></div>
 			</div>
 		</div>
 	</div>
