@@ -13,17 +13,20 @@
 		echo "<script type=\"text/javascript\">khongthanhcong(\"<strong>Không thể xóa khi khóa học đang diễn ra!</strong>!\")</script>";
 		exit();
 		}
+///////////////////////////
+		exit();
+
 		$hoi = "
 			DELETE FROM `khoahoc`
 			WHERE 
-				`IDKH` = '$id'
+				`IDKH` = '$idkh'
 		";
 		if(mysqli_query($conn, $hoi)===TRUE)
 			return true;
 		else
 			return false;
 	}
-	if (el_xoa_khoa_hoc($_POST['id'],$_POST['idgvkh'])) {
+	if (el_xoa_khoa_hoc($_POST['idkh'],$_POST['idgvkh'])) {
 		echo "<script type=\"text/javascript\">tailai();dongsua();thanhcong(\"<strong>Đã xóa</strong> khóa học!\")</script>";
 		exit();
 	}

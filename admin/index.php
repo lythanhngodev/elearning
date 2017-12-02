@@ -37,7 +37,17 @@
 	      <li id="lichthi"><a href="?p=lichthi">TB Lịch thi</a></li>
 	      <li id="baigiang"><a href="?p=baigiang">Bài giảng</a></li>
 		  <li id="diem"><a href="?p=diem">Điểm</a></li>
-	      <li><a href="#">Thống kê</a></li>
+		  <li class="dropdown" id="thongke">
+        	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Thống kê
+	        <span class="caret"></span></a>
+	        <ul class="dropdown-menu" style="box-shadow: none;border: 1px solid #e8e8e8;">
+	          <li><a href="?p=toanbosinhvien">Toàn bộ sinh viên</a></li>
+	          <li><a href="?p=exsinhvienkhoahoc">Sinh viên - Khóa học</a></li>
+	          <li><a href="?p=sinhvienkhoahoc">Kết quả học tập</a></li>
+	          <li><a href="?p=sinhvienkhoahoc">Sinh vien có kết quả không đạt</a></li>
+	          <li><a href="?p=sinhvienkhoahoc">Top 3 sinh viên - Khóa học</a></li> 
+	        </ul>
+	      </li>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
 	        <li class="dropdown" id="quanlythongtin">

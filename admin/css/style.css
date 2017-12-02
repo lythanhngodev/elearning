@@ -287,6 +287,13 @@ input[type="submit"]:hover{
     width: fit-content;
     margin: 0 auto;
 }
+.nut-export{
+    width: fit-content;
+    height: 34px;
+    padding: 0px 8px;
+    margin: 0px 0px 14px 0px;
+    font-size: 14px;
+}
 .thongbaonho{
     position:absolute;
     width:116px;

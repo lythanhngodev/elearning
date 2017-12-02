@@ -25,6 +25,9 @@
 			case 'toanbosinhvien':
 				include_once("control/ctrl_toan_bo_sinh_vien.php");
 				break;
+			case 'exsinhvienkhoahoc':
+				include_once("control/ctrl_du_lieu_sinh_vien_khoa_hoc.php");
+				break;
 			default:
 				# code...
 				break;
