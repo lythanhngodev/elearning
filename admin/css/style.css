@@ -365,6 +365,7 @@ input[type="submit"]:hover{
 #qltv-loai-sach{
 	background: #ececec;
 	border: 1px solid #bbbbbb;
+	font-size: 12px;
 }
 td > .chon{
 	padding: 0;

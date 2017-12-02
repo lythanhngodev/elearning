@@ -49,9 +49,9 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Thống kê sinh viên theo khóa học
+        Thống kê sinh viên đạt theo khóa học
       </h1>
-      <label> - Thông tin sinh viên theo từng khóa học.<br> - Sinh viên đăng ký khóa học và được xác nhận thì mới có trong danh sách này!</label>
+      <label> - Thông tin sinh viên đạt khóa học theo từng khóa học.<br> - Sinh viên đăng ký khóa học và được xác nhận thì mới có trong danh sách này!</label>
     </section>
     <!-- Main content -->
     <section class="content">
@@ -83,6 +83,7 @@
                         <th class="giua">MAIL</th>
                         <th class="giua">SĐT</th>
                         <th class="giua">ĐỊA CHỈ</th>
+                        <th class="giua">ĐIỂM</th>
                       </tr>
                 </thead>
             </table>  
@@ -117,50 +118,16 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#thongke").addClass("active");
-    $("#ex-sv-kh").addClass("active");
+    $("#ex-kq-d").addClass("active");
 	});
 </script>
 <link rel="stylesheet" href="css/datatables.min.css">
 <script src="js/datatables.min.js" type="text/javascript"></script>
 <script type="text/javascript" charset="utf-8">
-	function luudiem(id){
-    var d = [];
-    var kh;
-    var sv = [];
-    var gc = [];
-    parseFloat(d)
-    for (var i = 1; i <= id; i++) {
-      var kt = document.getElementById('id-nhap-diem-'+i).value;
-      if(parseFloat(kt)>=0.0 && parseFloat(kt)<=10.0){
-        d[i] = kt;
-        kh=$("#id-nhap-diem-"+i).attr("data-el-hk");
-        gc[i] = document.getElementById('id-ghi-chu-'+i).value;
-        sv[i]=$("#id-nhap-diem-"+i).attr("data-el-sv");
-      }
-      else{
-        khongthanhcong('Điểm phải lớn hơn 0.0 và điểm không quá 10.0');
-        return;
-      }
-    }
-		$.ajax({
-			url : "ajax/ajax_nhap_diem_cho_sinh_vien_theo_hoc_ky.php",
-			type : "post",
-			dataType:"text",
-			data : {
-			  d: d,
-			  kh: kh,
-        sv: sv,
-        gc: gc
-			},
-			success : function (data){
-			    $("body").append(data);
-			}
-		});
-	}
   $(document).ready(function() {
     $("#xem-ds-sv-hk").click(function(){
       $.ajax({
-        url : "ajax/ajax_du_lieu_sinh_vien_hoc_hoc_ky.php",
+        url : "ajax/ajax_du_lieu_sinh_vien_dat_hoc_hoc_ky.php",
         type : "post",
         dataType:"text",
         data : {

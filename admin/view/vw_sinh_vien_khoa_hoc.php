@@ -96,7 +96,7 @@
                         <th class="giua">Họ & Tên</th>
                         <th class="giua">MAIL</th>
                         <th class="giua">TÊN KHOÁ HỌC</th>
-                        <th class="giua">ĐÃ ĐÓNG</th>
+                        <th class="giua">XÁC NHẬN</th>
                       </tr>
                 </thead>
                 <tbody>
@@ -157,6 +157,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#toanbosinhvien").addClass("active");
+    $("#svkh").addClass("active");
 	});
 </script>
 <link rel="stylesheet" href="css/datatables.min.css">

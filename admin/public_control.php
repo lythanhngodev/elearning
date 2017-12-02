@@ -28,6 +28,18 @@
 			case 'exsinhvienkhoahoc':
 				include_once("control/ctrl_du_lieu_sinh_vien_khoa_hoc.php");
 				break;
+			case 'exketquakhongdat':
+				include_once("control/ctrl_du_lieu_sinh_vien_khong_dat_khoa_hoc.php");
+				break;
+			case 'exketquadat':
+				include_once("control/ctrl_du_lieu_sinh_vien_dat_khoa_hoc.php");
+				break;
+			case 'ketquahoctap':
+				include_once("control/ctrl_du_lieu_ket_qua_hoc_tap.php");
+				break;
+			case 'top5':
+				include_once("control/ctrl_du_lieu_top_5.php");
+				break;
 			default:
 				# code...
 				break;

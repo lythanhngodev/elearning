@@ -315,6 +315,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#toanbosinhvien").addClass("active");
+    $("#tbsv").addClass("active");
 	});
 </script>
 <link rel="stylesheet" href="css/datatables.min.css">

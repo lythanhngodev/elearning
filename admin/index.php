@@ -29,8 +29,8 @@
         	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sinh viên
 	        <span class="caret"></span></a>
 	        <ul class="dropdown-menu" style="box-shadow: none;border: 1px solid #e8e8e8;">
-	          <li><a href="?p=toanbosinhvien">Toàn bộ sinh viên</a></li>
-	          <li><a href="?p=sinhvienkhoahoc">Sinh viên - Khóa học</a></li>
+	          <li id="tbsv"><a href="?p=toanbosinhvien">Toàn bộ sinh viên</a></li>
+	          <li id="svkh"><a href="?p=sinhvienkhoahoc">Sinh viên - Khóa học</a></li>
 	        </ul>
 	      </li>
 	      <li id="khoahoc"><a href="?p=khoahoc">Khóa học</a></li>
@@ -41,11 +41,12 @@
         	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Thống kê
 	        <span class="caret"></span></a>
 	        <ul class="dropdown-menu" style="box-shadow: none;border: 1px solid #e8e8e8;">
-	          <li><a href="?p=toanbosinhvien">Toàn bộ sinh viên</a></li>
-	          <li><a href="?p=exsinhvienkhoahoc">Sinh viên - Khóa học</a></li>
-	          <li><a href="?p=sinhvienkhoahoc">Kết quả học tập</a></li>
-	          <li><a href="?p=sinhvienkhoahoc">Sinh vien có kết quả không đạt</a></li>
-	          <li><a href="?p=sinhvienkhoahoc">Top 3 sinh viên - Khóa học</a></li> 
+	          <!--<li><a href="?p=toanbosinhvien">Toàn bộ sinh viên</a></li>-->
+	          <li id="ex-sv-kh"><a href="?p=exsinhvienkhoahoc">Sinh viên - Khóa học</a></li>
+	          <li id="kqht"><a href="?p=ketquahoctap">Kết quả học tập</a></li>
+	          <li id="ex-kq-d"><a href="?p=exketquadat">Sinh viên có kết quả đạt</a></li>
+	          <li id="ex-kq-kd"><a href="?p=exketquakhongdat">Sinh viên có kết quả không đạt</a></li>
+	          <li id="top-5"><a href="?p=top5">Top 5 sinh viên - Khóa học</a></li>
 	        </ul>
 	      </li>
 	    </ul>
