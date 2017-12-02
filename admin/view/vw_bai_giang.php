@@ -67,6 +67,7 @@
       <div class="windows-table col-md-9">
         <label>Danh sách bài giảng của giáo viên</label>
         <div class="line"></div>
+          <br><button class="btn btn-success" onclick="thembaigiang()">Thêm bài giảng</button><br><br>
           <div id="du-lieu">
             <table id="qltv-loai-sach" class="table table-striped">
                 <thead>
@@ -74,7 +75,7 @@
                         <th class="giua">STT</th>
                         <th class="giua">TÊN BÀI</th>
                         <th class="giua">TÓM TẮT</th>
-                        <th class="giua">ID NỘI DUNG</th>
+                        <th class="giua">ID VIDEO</th>
                         <th class="giua">NGÀY ĐĂNG</th>
                         <th class="giua">KHÓA HỌC</th>
                         <th class="giua">TẮT</th>
@@ -89,8 +90,16 @@
                       <tr>
                         <th class="giua"><?php echo $stt; ?></th>
                         <td><?php echo $row['TENBAI']; ?></td>
-                        <td><?php echo $row['TOMTAT']; ?></td>
-                        <td><?php echo $row['NOIDUNG']; ?></td>
+                        <td><?php
+                          $mang = explode(' ', $row['TOMTAT']);
+                          if (count($mang)>20) {
+                            for ($i=0; $i <20; $i++) { 
+                              echo $mang[$i]." ";
+                            } echo "...";
+                          }
+                          else echo $row['TOMTAT'];
+                        ?></td>
+                        <td><?php echo $row['IDVIDEO']; ?></td>
                         <td><?php echo $row['NGAYDANG']; ?></td>
                         <td><?php echo $row['TENKH']; ?></td>
                         <td class="giua">
@@ -102,7 +111,7 @@
 	                        <?php } ?>
                         </td>
                         <td class="giua"><div class="nut nam-giua">
-                        	<a class="btn btn-primary btn-sua" title="Sửa"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        	<a class="btn btn-primary btn-sua" title="Sửa" onclick="sua('<?php echo $row['IDBG'] ?>')"><i class="fa fa-edit" aria-hidden="true"></i></a>
                             <a class="btn btn-danger btn-xoa" title="Xóa"
                            onclick="xoa('<?php echo $row['IDBG'] ?>')" ><i class="fa fa-trash" aria-hidden="true"></i></a>
                           </div>
@@ -118,6 +127,8 @@
         </div>
       </div>
     </section>
+
+
 
 <!-- Modal: Xóa khoa -->
 <div class="modal anil in" id="qltv-modal-xoa-khoa-hoc" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -150,6 +161,9 @@
 <link rel="stylesheet" href="css/datatables.min.css">
 <script src="js/datatables.min.js" type="text/javascript"></script>
 <script type="text/javascript" charset="utf-8">
+  function thembaigiang(){
+    alert(1);
+  }
 	function battat(id){
 		var tt=0;
 		if(document.getElementById('bat-tat-'+id).checked)
@@ -167,6 +181,9 @@
 			}
 		});
 	}
+  function sua($id){
+    alert($id);
+  }
 	function xoa(id){
 		if (confirm('Bạn có chắc chắn xóa bài giảng này không?')) {
 			$.ajax({

@@ -3,7 +3,7 @@
 	function el_get_tat_ca_bai_giang($id){
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
-		$query = "SELECT bg.IDBG, bg.IDGV, bg.TENBAI,bg.TOMTAT,bg.NOIDUNG, bg.NGAYDANG,bg.IDKH, bg.BATTAT,kh.TENKH FROM baigiang bg, khoahoc kh WHERE bg.IDGV = '$id' AND bg.IDKH = kh.IDKH";
+		$query = "SELECT bg.IDBG, bg.IDGV, bg.TENBAI,bg.TOMTAT,bg.NOIDUNG, bg.NGAYDANG,bg.IDKH, bg.BATTAT,kh.TENKH,bg.IDVIDEO FROM baigiang bg, khoahoc kh WHERE bg.IDGV = '$id' AND bg.IDKH = kh.IDKH";
 		$result = mysqli_query($conn, $query);
 		return $result;
 	}

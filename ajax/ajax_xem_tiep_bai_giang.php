@@ -5,7 +5,7 @@
 	$idbg = $_POST['idbg'];
 	$idsv = $_POST['idsv'];
 	$kh = $_POST['kh'];
-	$query = "SELECT DISTINCT bg.IDBG, bg.TENBAI,bg.TOMTAT,bg.NOIDUNG,bg.NGAYDANG,bg.IDKH FROM sv_dk_khoahoc sdk, baigiang bg, khoahoc kh WHERE sdk.IDSV = '$idsv' AND sdk.IDKH = '$kh' AND bg.IDKH = sdk.IDKH AND kh.IDKH = sdk.IDKH AND kh.TRANGTHAI = b'0' AND bg.IDBG = '$idbg' limit 0,1";
+	$query = "SELECT DISTINCT bg.IDBG, bg.TENBAI,bg.TOMTAT,bg.NOIDUNG,bg.NGAYDANG,bg.IDKH FROM sv_dk_khoahoc sdk, baigiang bg, khoahoc kh WHERE sdk.IDSV = '$idsv' AND sdk.IDKH = '$kh' AND bg.IDKH = sdk.IDKH AND kh.IDKH = sdk.IDKH AND kh.TRANGTHAI = b'0' AND bg.IDBG = '$idbg'  AND bg.BATTAT=b'0' limit 0,1";
 	$result = mysqli_query($conn, $query);
 	$row_top_1 = mysqli_fetch_array($result);
  ?>
