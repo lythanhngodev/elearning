@@ -314,10 +314,9 @@
     $("#tieu-de-sua").val($("#id-ten-bai-"+id).text().trim()),
     $("#tom-tat-sua").val($("#id-tom-tat-"+id).text().trim());
     $("#id-video-sua").val($("#id-id-video-"+id).text().trim());
-    alert($("#id-ma-khoa-hoc-"+id).val().trim());
-    //$("#ma-khoa-hoc-sua").val('3');
-    //CKEDITOR.instances['noi-dung-sua'].setData($("#id-noi-dung-"+id).text().trim());
-    //$("#qltv-modal-sua-bai-giang").modal("show");
+    $("#ma-khoa-hoc-sua").val($("#id-ma-khoa-hoc-"+id).val().trim()).attr("selected").change();
+    CKEDITOR.instances['noi-dung-sua'].setData($("#id-noi-dung-"+id).text().trim());
+    $("#qltv-modal-sua-bai-giang").modal("show");
   }
 	function xoa(id){
 		if (confirm('Bạn có chắc chắn xóa bài giảng này không?')) {
