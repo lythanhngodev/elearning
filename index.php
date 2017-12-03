@@ -3,6 +3,7 @@
 	require 'admin/config.php';
 	$dangnhap = false;
 	$idofsv="0";
+	$hinhanhofsv = "";
 	if (isset($_SESSION['use'])&&isset($_SESSION['pase'])) {
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
@@ -15,6 +16,7 @@
 			$dangnhap = true;
 			$row = mysqli_fetch_array($ex);
 			$idofsv = $row['IDSV'];
+			$hinhanhofsv = $row['HINHANH'];
 		}
 		else{
 			$dangnhap = false;

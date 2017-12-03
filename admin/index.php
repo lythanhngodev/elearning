@@ -23,9 +23,12 @@
 	    </div>
 	    <ul class="nav navbar-nav">
 	      <li><a href="#">Trang chủ</a></li>
+	      <?php 
+	      // tài khoản admin cao nhất
+	      if ($loaitk == 1) { ?>
 	      <li id="giaovien"><a href="?p=giaovien">Giảng viên</a></li>
 	      <li id="giaovienkhoahoc"><a href="?p=giaovienkhoahoc">Phân công giảng dạy</a></li>
-		  <li class="dropdown" id="toanbosinhvien">
+	      <li class="dropdown" id="toanbosinhvien">
         	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sinh viên
 	        <span class="caret"></span></a>
 	        <ul class="dropdown-menu" style="box-shadow: none;border: 1px solid #e8e8e8;">
@@ -35,9 +38,7 @@
 	      </li>
 	      <li id="khoahoc"><a href="?p=khoahoc">Khóa học</a></li>
 	      <li id="lichthi"><a href="?p=lichthi">Thông báo</a></li>
-	      <li id="baigiang"><a href="?p=baigiang">Bài giảng</a></li>
-		  <li id="diem"><a href="?p=diem">Điểm</a></li>
-		  <li class="dropdown" id="thongke">
+	      <li class="dropdown" id="thongke">
         	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Thống kê
 	        <span class="caret"></span></a>
 	        <ul class="dropdown-menu" style="box-shadow: none;border: 1px solid #e8e8e8;">
@@ -49,6 +50,11 @@
 	          <li id="top-5"><a href="?p=top5">Top 5 sinh viên - Khóa học</a></li>
 	        </ul>
 	      </li>
+	      <?php } ?>
+	      <?php if ($loaitk == 0) { ?>
+	      <li id="baigiang"><a href="?p=baigiang">Bài giảng</a></li>
+		  <li id="diem"><a href="?p=diem">Điểm</a></li>
+	       <?php } ?>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
 	        <li class="dropdown" id="quanlythongtin">

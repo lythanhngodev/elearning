@@ -38,7 +38,7 @@
 					   </li>
 				   <?php } else{ ?>
 					   <li class="nav-item icon-dangnhap">
-					     <a class="nav-link" id="btn-thong-tin-ca-nhan" style="background: url('img/tq.jpg');  background-size: cover;"></a>
+					     <a class="nav-link" id="btn-thong-tin-ca-nhan" style="background: url('<?php echo $hinhanhofsv; ?>');  background-size: cover;"></a>
 					     <!-- BEGIN MODAL ĐÃ LOGIN -->
 							<?php require 'info.php'; ?>
 					   </li>
