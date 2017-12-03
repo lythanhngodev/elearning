@@ -51,7 +51,7 @@
 	        </ul>
 	      </li>
 	      <?php } ?>
-	      <?php if ($loaitk == 0) { ?>
+	      <?php if ($loaitk == 2) { ?>
 	      <li id="baigiang"><a href="?p=baigiang">Bài giảng</a></li>
 		  <li id="diem"><a href="?p=diem">Điểm</a></li>
 	       <?php } ?>
