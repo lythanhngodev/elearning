@@ -7,19 +7,15 @@
 			</tr>
 			<tr>
 				<td><i class="fa fa-bookmark-o"></i></td>
-				<td><a href="">Khóa học của tôi</a></td>
+				<td><a href="?p=khoa-hoc-cua-toi">Khóa học của tôi</a></td>
 			</tr>
 			<tr>
 				<td><i class="fa fa-id-card-o"></i></td>
-				<td><a href="">Chỉnh sữa thông tin</a></td>
+				<td><a href="?p=thong-tin-ca-nhan">Thông tin cá nhân</a></td>
 			</tr>
 			<tr>
 				<td><i class="fa fa-key"></i></td>
-				<td><a href="">Cập nhật mật khẩu</a></td>
-			</tr>
-			<tr>
-				<td><i class="fa fa-history"></i></td>
-				<td><a href="">Lịch sử</a></td>
+				<td><a href="?p=thiet-lap-tai-khoan">Thiết lập tài khoản</a></td>
 			</tr>
 			<tr>
 				<td><i class="fa fa-sign-out"></i></td>

@@ -51,7 +51,7 @@
     <section class="content">
       <div class="row">
         <div class="col-md-12 col-ms-12">
-          <a id="themloaisach" class="btn btn-success"><i class="fa fa-play"></i> Thêm giáo viên</a>
+          <a id="themloaisach" class="btn btn-success"><i class="fa fa-play"></i> Thêm thông báo</a>
         </div>
         <div class="col-md-12 col-ms-12 cach"></div>
       </div>

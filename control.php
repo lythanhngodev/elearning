@@ -1,6 +1,36 @@
 <?php 
 if (isset($_GET["p"]) && !empty($_GET["p"])) {
 	switch ($_GET["p"]) {
+		case 'khoa-hoc-cua-toi':
+			if (!($dangnhap)) {
+				echo "<h1>404 NOT FOUND !</h1><br><a href><< Quay lại trang chủ</a>";
+				exit();
+			}
+			require 'model/md_khoa_hoc_cua_toi.php';
+			require 'block/khoa-hoc-cua-toi.php';
+			break;
+		// thiết lập tài khoản
+		case 'thiet-lap-tai-khoan':
+			if (!($dangnhap)) {
+				echo "<h1>404 NOT FOUND !</h1><br><a href><< Quay lại trang chủ</a>";
+				exit();
+			}
+			require 'model/md_thiet_lap_tai_khoan.php';
+			$sv = el_thong_tin_ca_nhan($idofsv);
+			$row = mysqli_fetch_array($sv);
+			require 'block/thiet-lap-tai-khoan.php';
+			break;
+		// thông tin cá nhân
+		case 'thong-tin-ca-nhan':
+			if (!($dangnhap)) {
+				echo "<h1>404 NOT FOUND !</h1><br><a href><< Quay lại trang chủ</a>";
+				exit();
+			}
+			require 'model/md_thong_tin_ca_nhan.php';
+			$sv = el_thong_tin_ca_nhan($idofsv);
+			$row = mysqli_fetch_array($sv);
+			require 'block/thong-tin-ca-nhan.php';
+			break;
 		case 'chi-tiet-lich-thi':
 			$id = 0;
 			if (!isset($_GET['id'])) {

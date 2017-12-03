@@ -436,3 +436,16 @@ html.noscroll {
 	padding: 8px 10px;
 	background: #f5f5f5;
 }
+.cls-hinh-anh-dai-dien{
+	width: 230px;
+	height: 230px;
+	background-position: center;
+	background-size: cover;
+	border: 1px solid #a2a2a2;
+	border-radius: 50%;
+	transition: all 0.2222s;
+}
+.cls-hinh-anh-dai-dien:hover{
+	transition: all 0.2222s;
+	border: 10px solid;
+}

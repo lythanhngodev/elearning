@@ -16,6 +16,9 @@
 			$row = mysqli_fetch_array($ex);
 			$idofsv = $row['IDSV'];
 		}
+		else{
+			$dangnhap = false;
+		}
 	}
 ?>
 <!DOCTYPE html>

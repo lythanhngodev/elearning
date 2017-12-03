@@ -215,6 +215,7 @@
           </div>
         <p class="help-block"> (<b>*</b>) Có thể bật hoặc tắt bài giảng ngay sau khi thêm thành công bài giảng.</p>
       </div>
+      <input type="text" hidden="hidden" name="" value="" id="id-bai-giang">
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
         <button type="button" class="btn btn-primary" id="nut-sua-bai-giang">Xác nhận sửa</button>
@@ -314,7 +315,8 @@
     $("#tieu-de-sua").val($("#id-ten-bai-"+id).text().trim()),
     $("#tom-tat-sua").val($("#id-tom-tat-"+id).text().trim());
     $("#id-video-sua").val($("#id-id-video-"+id).text().trim());
-    $("#ma-khoa-hoc-sua").val($("#id-ma-khoa-hoc-"+id).val().trim()).attr("selected").change();
+    $("#id-bai-giang").val(id);
+    $("#ma-khoa-hoc-sua").val($("#id-ma-khoa-hoc-"+id).val().trim()).change();
     CKEDITOR.instances['noi-dung-sua'].setData($("#id-noi-dung-"+id).text().trim());
     $("#qltv-modal-sua-bai-giang").modal("show");
   }
@@ -344,6 +346,25 @@
           idv: $("#id-video-them").val(),
           makh: $("#ma-khoa-hoc-them").val(),
           nd: CKEDITOR.instances['noi-dung-them'].getData(),
+          id: <?php echo $idofgv; ?>
+        },
+        success : function (data){
+            $("body").append(data);
+        }
+      });
+    });
+    $("#nut-sua-bai-giang").click(function(){
+      $.ajax({
+        url : "ajax/ajax_sua_bai_giang.php",
+        type : "post",
+        dataType:"text",
+        data : {
+          td: $("#tieu-de-sua").val(),
+          tt: $("#tom-tat-sua").val(),
+          idv: $("#id-video-sua").val(),
+          makh: $("#ma-khoa-hoc-sua").val(),
+          nd: CKEDITOR.instances['noi-dung-sua'].getData(),
+          idbg: $("#id-bai-giang").val(),
           id: <?php echo $idofgv; ?>
         },
         success : function (data){

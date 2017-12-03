@@ -1,28 +1,16 @@
 <?php 
 	include_once("../admin/config.php");
-	function el_them_hoc_vien($ten,$hodem,$tdn,$mk,$mk2,$mail,$sdt,$gt,$ns,$dc){
+	function el_them_hoc_vien($ten,$ho,$tdn,$mail,$sdt,$gt,$ns,$dc,$idsv){
 		if (empty($ten)) {
 			echo "<script type=\"text/javascript\">khongthanhcong(\"<strong>Lỗi</strong> tên không được trống!\")</script>";
 			exit();
 		}
-		if (empty($hodem)) {
+		if (empty($ho)) {
 			echo "<script type=\"text/javascript\">khongthanhcong(\"<strong>Lỗi</strong> họ đệm không được trống!\")</script>";
 			exit();
 		}
 		if (empty($tdn)) {
 			echo "<script type=\"text/javascript\">khongthanhcong(\"<strong>Lỗi</strong> tên đăng nhập không được trống!\")</script>";
-			exit();
-		}
-		if (empty($mk)) {
-			echo "<script type=\"text/javascript\">khongthanhcong(\"<strong>Lỗi</strong> mật khẩu không được trống!\")</script>";
-			exit();
-		}
-		if (empty($mk2)) {
-			echo "<script type=\"text/javascript\">khongthanhcong(\"<strong>Lỗi</strong> mật khẩu xác nhận không được trống!\")</script>";
-			exit();
-		}
-		if ($mk!=$mk2) {
-			echo "<script type=\"text/javascript\">khongthanhcong(\"<strong>Lỗi</strong> mật khẩu xác nhận chưa trùng khớp không được trống!\")</script>";
 			exit();
 		}
 		if (empty($mail)) {
@@ -44,31 +32,40 @@
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
 		// kiểm tra tên đăng nhập
-		if ($ketnoi->tontai("select IDSV from sinhvien where (binary TENDANGNHAP = N'".$tdn."')")) {
+		if ($ketnoi->tontai("select IDSV from sinhvien where (binary TENDANGNHAP = N'".$tdn."') AND (IDSV NOT IN (SELECT IDSV FROM sinhvien WHERE BINARY IDSV = '".$idsv."'))")) {
 			echo "<script type=\"text/javascript\">khongthanhcong(\"<strong>Lỗi</strong> tên đăng nhập đã tồn tại!\")</script>";
 			exit();
 		}
 		// kiểm tra mail
-		if ($ketnoi->tontai("select IDSV from sinhvien where (binary Mail = N'".$mail."')")) {
+		if ($ketnoi->tontai("select IDSV from sinhvien where (binary Mail = N'".$mail."') AND (IDSV NOT IN (SELECT IDSV FROM sinhvien WHERE IDSV = '".$idsv."'))")) {
 			echo "<script type=\"text/javascript\">khongthanhcong(\"<strong>Lỗi</strong> mail đã tồn tại!\")</script>";
 			exit();
 		}
 		$dc = Addslashes($dc);
-		$mk = md5($mk);
 		$hoi = "
-				INSERT INTO `sinhvien`(`HOSV`, `TENSV`, `GIOITINH`, `DIACHI`, `SDT`, `MAIL`, `NGAYSINH`, `TENDANGNHAP`, `MATKHAU`,`NGAYDANGKY`) VALUES ('$hodem','$ten','$gt','$dc','$sdt','$mail','$ns','$tdn','$mk',CURRENT_TIMESTAMP()
+			UPDATE `sinhvien` 
+			SET 
+				`HOSV`='$ho',
+				`TENSV`='$ten',
+				`GIOITINH`='$gt',
+				`DIACHI`='$dc',
+				`SDT`='$sdt',
+				`MAIL`='$mail',
+				`NGAYSINH`='$ns',
+				`TENDANGNHAP`='$tdn'
+			WHERE IDSV = '$idsv'
 		";
 		if(mysqli_query($conn, $hoi)===TRUE)
 			return true;
 		else
 			return false;
 	}
-	if (el_them_hoc_vien($_POST['ten'],$_POST['hodem'],$_POST['tdn'],$_POST['mk'],$_POST['mk2'],$_POST['mail'],$_POST['sdt'], $_POST['gt'],$_POST['ns'],$_POST['dc'])) {
-		echo "<script type=\"text/javascript\">tailai();thanhcong(\"<strong>Đăng ký thành công</strong>!\")</script>";
+	if (el_them_hoc_vien($_POST['ten'],$_POST['ho'],$_POST['tdn'],$_POST['mail'],$_POST['sdt'], $_POST['gt'],$_POST['ns'],$_POST['dc'],$_POST['idsv'])) {
+		echo "<script type=\"text/javascript\">thanhcong(\"<strong>Thông tin đã được cập nhật</strong>!\")</script>";
 		exit();
 	}
 	else{
-		echo "<script type=\"text/javascript\">khongthanhcong(\"<strong>Đăng ký chưa thành công</strong> kiểm tra lại thông tin!\")</script>";
+		echo "<script type=\"text/javascript\">khongthanhcong(\"<strong>Lỗi! Chưa lưu.</strong> Kiểm tra lại thông tin!\")</script>";
 		exit();
 	}
  ?>

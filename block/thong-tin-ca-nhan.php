@@ -4,13 +4,12 @@
 			<h4>THÔNG TIN THÀNH VIÊN</h4>
 		</div>
 		<div class="col-sm-3">
-			<img src="../img/tq.jpg" alt="Hình đại diện" style="width:100%;height:230px;">
+			<div class=" col-md-12 cls-hinh-anh-dai-dien" style="background-image: url('<?php echo $row['HINHANH'] ?>');" alt="Ảnh đại diện">
+			</div>
 		</div>
 		<div class="col-sm-9 thong-tin-thanh-vien">
-			<div><i class="fa fa-chevron-right"></i> Tài khoản: <strong>mars0806</strong> (chodoi.trotreu@gmail.com)</div>
-			<div><i class="fa fa-chevron-right"></i> Đăng nhập theo kiểu thông thường</div>
-			<div><i class="fa fa-chevron-right"></i> Đăng nhập vào: Thứ tư, 15/11/2017 12:49</div>
-			<div><i class="fa fa-chevron-right"></i> Bằng IP: 171.245.253.52</div>
+			<div><i class="fa fa-chevron-right"></i> Tài khoản: <strong><?php echo $row['TENDANGNHAP'] ?></strong> (<?php echo $row['MAIL'] ?>)</div>
+			<div><i class="fa fa-chevron-right"></i> Ngày đăng ký: <?php echo $row['NGAYDANGKY'] ?></div>
 		</div>
 	</div>
 </div>
@@ -19,33 +18,33 @@
 		<tbody>
 			<tr>
 				<th>Họ Tên</th>
-				<td>Võ Hoàng Thảo Quyên</td>
+				<td><?php echo $row['HOSV']." ".$row['TENSV']; ?></td>
 			</tr>
 			<tr>
 				<th>Ngày tháng năm sinh</th>
-				<td>22/11/1996</td>
+				<td><?php echo $row['NGAYSINH'] ?></td>
 			</tr>
 			<tr>
 				<th>Giới tính</th>
-				<td>Nữ</td>
+				<td><?php echo $row['GIOITINH'] ?></td>
 			</tr>
 			<tr>
 				<th>Email</th>
-				<td>vo_hoang_thao_quyen@gmail.com</td>
+				<td><?php echo $row['MAIL'] ?></td>
 			</tr>
 			<tr>
 				<th>Ngày tham gia</th>
-				<td>13/11/2017</td>
+				<td><?php echo $row['NGAYDANGKY'] ?></td>
 			</tr>
 			<tr>
-				<th>Loại tài khoản</th>
-				<td>Thành viên</td>
+				<th>Sớ điện thoại</th>
+				<td><?php echo $row['SDT'] ?></td>
 			</tr>
 			<tr>
-				<th>Lần truy cập trước</th>
-				<td>Thứ hai, 13/11/2017 16:26</td>
+				<th>Địa chỉ</th>
+				<td><?php echo $row['DIACHI'] ?></td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<a href=""><i class="fa fa-chevron-right"></i> Thiết lập tài khoản</a>
+<a href="?p=thiet-lap-tai-khoan"><i class="fa fa-chevron-right"></i> Thiết lập tài khoản</a>
