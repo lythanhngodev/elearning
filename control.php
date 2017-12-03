@@ -7,6 +7,8 @@ if (isset($_GET["p"]) && !empty($_GET["p"])) {
 				exit();
 			}
 			require 'model/md_khoa_hoc_cua_toi.php';
+			$dulieu = el_get_khoa_hoc();
+			$dulieu_all = el_get_all_khoa_hoc_cua_sv($idofsv);
 			require 'block/khoa-hoc-cua-toi.php';
 			break;
 		// thiết lập tài khoản

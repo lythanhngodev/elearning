@@ -2,10 +2,6 @@
 	<a class="nutx"><i class="fa fa-close"></i></a>
 		<table>
 			<tr>
-				<td><i class="fa fa-bell-o"></i></td>
-				<td><a href="">Thông báo</a></td>
-			</tr>
-			<tr>
 				<td><i class="fa fa-bookmark-o"></i></td>
 				<td><a href="?p=khoa-hoc-cua-toi">Khóa học của tôi</a></td>
 			</tr>
