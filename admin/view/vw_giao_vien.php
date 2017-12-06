@@ -466,7 +466,17 @@
     });
     $("#nut-reset-giao-vien").click(function(){
       if (confirm('Bạn có chắc Reset mật khẩu cho giảng viên này?')) {
-        alert($("#id-id-giao-vien-sua").val());
+        $.ajax({
+          url : "ajax/ajax_reset_mat_khau_giang_vien.php",
+          type : "post",
+          dataType:"text",
+          data : {
+            id: $("#id-id-giao-vien-sua").val()
+          },
+          success : function (data){
+              $("body").append(data);
+          }
+        });
       }
     });
     $(".btn-xoa-giao-vien").click(function(){
