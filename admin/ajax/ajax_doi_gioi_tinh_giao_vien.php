@@ -4,7 +4,7 @@
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
 		$hoi = "
-			UPDATE `giaovien` SET `GIOITINH` = '$gt' WHERE `giaovien`.`IDGV` = '$ma';
+			UPDATE `giaovien` SET `GIOITINH` = '$gt' WHERE `giaovien`.`IDGV` = '$ma'
 		";
 		if(mysqli_query($conn, $hoi)===TRUE)
 			return true;

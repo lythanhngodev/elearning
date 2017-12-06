@@ -9,10 +9,10 @@
 			header("Location: http://localhost/elearning");
 		}
 		else{
-			header("Location: http://localhost/elearning");
+			header("Location: ".$elearning['HOSTCON']);
 		}
 	}
 	else{
-		header("Location: http://localhost/elearning");
+		header("Location: ".$elearning['HOSTCON']);
 	}
  ?>

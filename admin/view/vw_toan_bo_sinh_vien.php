@@ -49,9 +49,6 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-md-12 col-ms-12">
-          <a id="themloaisach" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Thêm sinh viên</a>
-        </div>
         <div class="col-md-12 col-ms-12 cach"></div>
       </div>
       <div class="windows-table">

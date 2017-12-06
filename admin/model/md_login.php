@@ -1,6 +1,6 @@
 <?php 
 	function el_login($username, $password){
-		//$password = md5($password);	
+		$password = md5($password);	
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
 		// 0 là bật, 1 là tắt

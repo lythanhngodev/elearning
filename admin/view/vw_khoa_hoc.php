@@ -67,6 +67,7 @@
                     <th class="giua">TG kết thúc</th>
                     <th class="giua">TG bắt đầu ĐK</th>
                     <th class="giua">TG kết thúc ĐK</th>
+                    <th class="giua">TG thi</th>
                     <th class="giua">Thao tác</th>
                   </tr>
                 </tr>
@@ -85,6 +86,7 @@
                     <td id="id-thoi-gian-ket-thuc-<?php echo $row['IDKH']; ?>" class="giua"><span class="xam"><?php echo $row['TGKETTHUC']; ?></span></td>
                     <td id="id-thoi-gian-bat-dau-dang-ky-<?php echo $row['IDKH']; ?>" class="giua"><span class="xam" ><?php echo $row['TGBDDK']; ?></span></td>
                     <td id="id-thoi-gian-ket-thuc-dang-ky-<?php echo $row['IDKH']; ?>" class="giua"><span class="xam"><?php echo $row['TGKTDK']; ?></span></td>
+                    <td id="id-thoi-gian-thi-<?php echo $row['IDKH']; ?>" class="giua"><span class="xam"><?php echo $row['TGTHI']; ?></span></td>
                     <td class="giua"><div class="nut nam-giua"><a class="btn btn-primary btn-sua-khoa-hoc" data-el="<?php echo $row['IDKH']; ?>" title="Sửa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         <a class="btn btn-danger btn-xoa-khoa-hoc" title="Xóa"
                         data-el="<?php echo $row['IDKH']; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></a></div>
@@ -184,7 +186,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Thêm khóa học</h4>
+        <h4 class="modal-title">Sửa khóa học</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
@@ -248,7 +250,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary" id="nut-sua-khoa-hoc">Lưu thay đổi</button>
+        <button type="button" class="btn btn-primary" id="nut-sua-khoa-hoc">Hoàn tất</button>
       </div>
     </div>
   </div>

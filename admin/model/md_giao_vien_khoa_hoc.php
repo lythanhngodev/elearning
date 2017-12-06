@@ -10,7 +10,7 @@
 	function el_get_giao_vien(){
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
-		$query = "SELECT * FROM giaovien where trangthai = b'0'";
+		$query = "SELECT * FROM giaovien where trangthai = b'0' AND LOAITAIKHOAN = '2'";
 		$result = mysqli_query($conn, $query);
 		return $result;
 	}
@@ -22,5 +22,4 @@
 		$result = mysqli_query($conn, $query);
 		return $result;
 	}
-	
  ?>

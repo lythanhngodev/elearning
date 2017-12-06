@@ -35,7 +35,7 @@
 			</ul>
 		</div>
 		<div class="col-sm-4">
-			<!--<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FPh%25C3%25B2ng-C%25C3%25B4ng-T%25C3%25A1c-HSSV-%25C4%2590%25E1%25BA%25A1i-H%25E1%25BB%258Dc-SPKT-V%25C4%25A9nh-Long-158993911168841%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>-->
+			<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FPh%25C3%25B2ng-C%25C3%25B4ng-T%25C3%25A1c-HSSV-%25C4%2590%25E1%25BA%25A1i-H%25E1%25BB%258Dc-SPKT-V%25C4%25A9nh-Long-158993911168841%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 		</div>
 	</div>
 	<hr>

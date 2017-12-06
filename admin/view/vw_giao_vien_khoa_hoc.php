@@ -95,7 +95,7 @@
                     <td id="id-ten-khoa-hoc-<?php echo $row['IDGVKH']; ?>"><?php echo $row['TENKH']; ?></td>
                     <td class="giua"><div class="nut nam-giua">
                         <a class="btn btn-primary btn-doi-giao-vien" title="Đổi giáo viên giảng dạy"
-                        data-el="<?php echo $row['IDGVKH']; ?>" data-el-kh="<?php echo $row['IDKH']; ?>" ><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                        data-el="<?php echo $row['IDGVKH']; ?>" data-el-kh="<?php echo $row['IDKH']; ?>" data-el-gv="<?php echo $row['IDGV']; ?>" ><i class="fa fa-refresh" aria-hidden="true"></i></a>
                         <a class="btn btn-danger btn-xoa-giao-vien" title="Xóa"
                         data-el="<?php echo $row['IDGVKH']; ?>" data-el-kh="<?php echo $row['IDKH']; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></a></div>
                     </td>
@@ -110,16 +110,45 @@
       </div>
     </section>
 
+<!-- Modal: Thêm khóa học -->
+<div class="modal anil in" id="qltv-modal-doi-giao-vien" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Đổi giáo viên</h4>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label>Chọn giáo viên</label>
+          <select id="ma-giao-vien-doi" class="form-control selectpicker" data-live-search="true" title="chọn giảng viên">
+            <?php while ($row = mysqli_fetch_assoc($giaovien)) {
+            ?>
+              <option data-tokens="<?php echo $row['IDGV']." ".$row['TENGV']; ?>" value="<?php echo $row['IDGV']; ?>"><?php echo $row['IDGV']." - ".$row['TENGV']; ?></option>
+            <?php } ?>
+          </select>
+          </div>
+      </div>
+      <input type="text" hidden="hidden" id="id-id-kh" name="">
+      <input type="text" hidden="hidden" id="id-id-gv-kh" name="">
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary" id="nut-doi-giao-vien">Xác nhận đổi</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Modal: Xóa khoa -->
 <div class="modal anil in" id="qltv-modal-xoa-khoa-hoc" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-        <h4 class="modal-title">Xóa khóa học</h4>
+        <h4 class="modal-title">Xóa phân công giảng dạy</h4>
       </div>
       <div class="modal-body">
-        <div class="alert alert-danger" style="margin: 0;">Bạn có chắc muốn xóa khóa học này?</div>
+        <div class="alert alert-danger" style="margin: 0;">Bạn có chắc muốn xóa phân công này?</div>
       </div>
       <input type="text" hidden="hidden" name="" id="id-giao-vien-khoa-hoc-xoa">
       <input type="text" hidden="hidden" name="" id="id-khoa-hoc-xoa">
@@ -132,7 +161,7 @@
 </div><!-- Xóa khoa -->
 
 <script type="text/javascript">
-    document.title = "VLUTE Elearning | Khóa học";
+    document.title = "VLUTE Elearning | Phân công giảng dạy";
 </script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -157,11 +186,32 @@
         }
       });
     });
-
+    $(".btn-doi-giao-vien").click(function(){
+      $("#ma-giao-vien-doi").val($(this).attr("data-el-gv")).change();
+      $("#id-id-kh").val($(this).attr("data-el-kh"));
+      $("#id-id-gv-kh").val($(this).attr("data-el"));
+      //alert($(this).attr("data-el-gv"));
+      $("#qltv-modal-doi-giao-vien").modal("show");
+    });
     $(".btn-xoa-giao-vien").click(function(){
       $("#id-khoa-hoc-xoa").val($(this).attr("data-el-kh"));
       $("#id-giao-vien-khoa-hoc-xoa").val($(this).attr("data-el"));
       $("#qltv-modal-xoa-khoa-hoc").modal("show");
+    });
+    $("#nut-doi-giao-vien").click(function(){
+      $.ajax({
+        url : "ajax/ajax_doi_giao_vien_khoa_hoc.php",
+        type : "post",
+        dataType:"text",
+        data : {
+          idgv: $("#ma-giao-vien-doi").val().trim(),
+          idkh: $("#id-id-kh").val().trim(),
+          idgvkh: $("#id-id-gv-kh").val().trim()
+        },
+        success : function (data){
+            $("body").append(data);
+        }
+      });
     });
     $("#nut-xoa-giao-vien-khoa-hoc").click(function(){
       $.ajax({
