@@ -311,7 +311,7 @@
       <input type="text" name="" id="id-id-giao-vien-sua" hidden="hidden" value="">
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-warning" id="nut-reset-giao-vien">Reset mật khẩu</button>
+        <button type="button" class="btn btn-warning" id="nut-reset-giao-vien"><i id="loading-reset"></i> Reset mật khẩu</button>
         <button type="button" class="btn btn-primary" id="nut-sua-giao-vien">Hoàn tất</button>
       </div>
     </div>
@@ -466,6 +466,7 @@
     });
     $("#nut-reset-giao-vien").click(function(){
       if (confirm('Bạn có chắc Reset mật khẩu cho giảng viên này?')) {
+        $("#loading-reset").addClass("fa fa-circle-o-notch fa-spin");
         $.ajax({
           url : "ajax/ajax_reset_mat_khau_giang_vien.php",
           type : "post",

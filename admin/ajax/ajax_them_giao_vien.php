@@ -69,7 +69,7 @@
 					<tr style="font-size: 20px;height: 20px;">
 						<td style="width: 170px;font-weight: bold;padding: 0;padding-left:10px;">Tên giảng viên: </td>
 						<td style="
-			    padding: 0;
+			    padding: 0;padding-right:10px;
 			">'.$t.'</td>
 					</tr>
 					<tr style="font-size: 20px;height: 20px;">

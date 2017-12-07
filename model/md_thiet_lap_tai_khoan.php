@@ -3,7 +3,7 @@
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
 		$query = "
-			SELECT `IDSV`, `MASV`, `HOSV`, `TENSV`, `HINHANH`, `GIOITINH`, `DIACHI`, `SDT`, `MAIL`, `NGAYSINH`, `TENDANGNHAP`, `NGAYDANGKY`, `TRANGTHAI` FROM `sinhvien` WHERE `IDSV` = '$idsv'
+			SELECT `IDSV`, `MASV`, `HOSV`, `TENSV`, `HINHANH`, `GIOITINH`, `DIACHI`, `SDT`, `MAIL`, `NGAYSINH`, `TENDANGNHAP`, `NGAYDANGKY`, `TRANGTHAI` FROM `sinhvien` WHERE `IDSV` = '$idsv' and TRANGTHAI = b'0'
 		";
 		$result = mysqli_query($conn, $query);
 		return $result;

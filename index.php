@@ -10,7 +10,7 @@
 		$username = $_SESSION['use'];
 		$password = $_SESSION['pase'];
 		$password = md5($password);
-		$ex  = mysqli_query($conn,"select * from sinhvien sv WHERE (BINARY TENDANGNHAP = '$username' AND MATKHAU = '$password') OR (BINARY MAIL = '$username' AND MATKHAU = '$password')");
+		$ex  = mysqli_query($conn,"select * from sinhvien sv WHERE ((BINARY TENDANGNHAP = '$username' AND MATKHAU = '$password') OR (BINARY MAIL = '$username' AND MATKHAU = '$password')) and TRANGTHAI = b'0'");
 		$count = mysqli_num_rows($ex);
 		if ($count>0){
 			$dangnhap = true;

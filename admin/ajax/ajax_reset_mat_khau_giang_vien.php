@@ -32,12 +32,12 @@
 			<table style="max-width:555px;background-color:#eff3f2;border-style:none;margin:0 auto;height:255px;">
 					<tbody>
 						<tr>
-							<th colspan="2" style="height: 20px;font-size: 24px;background:#009085;color:#fff;text-align:inherit;border-left: 9px solid #23746e;padding-left: 10px;">ĐĂNG KÍ GIẢNG VIÊN</th>
+							<th colspan="2" style="height: 20px;font-size: 24px;background:#009085;color:#fff;text-align:inherit;border-left: 9px solid #23746e;padding-left: 10px;">RESET MẬT KHẨU GIẢNG VIÊN</th>
 						</tr>
 						<tr style="font-size: 20px;height: 20px;">
 							<td style="width: 170px;font-weight: bold;padding: 0;padding-left:10px;">Tên giảng viên: </td>
 							<td style="
-				    padding: 0;
+				    padding: 0;padding-right:10px;
 				">'.$t.'</td>
 						</tr>
 						<tr style="font-size: 20px;height: 20px;">
@@ -45,7 +45,7 @@
 							<td>'.$tdn.'</td>
 						</tr>
 						<tr style="font-size: 20px;height: 20px;">
-							<td style="width: 170px;font-weight: bold;padding: 0;padding-left:10px;">Mật khâu: </td>
+							<td style="width: 170px;font-weight: bold;padding: 0;padding-left:10px;">Mật khâu reset: </td>
 							<td>'.$mk.'</td>
 						</tr>
 						<tr>
