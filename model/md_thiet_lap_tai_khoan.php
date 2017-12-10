@@ -8,4 +8,11 @@
 		$result = mysqli_query($conn, $query);
 		return $result;
 	}
+	function el_lich_su_khoc_hoc($id){
+		$ketnoi = new clsKetnoi();
+		$conn = $ketnoi->ketnoi();
+		$query = "SELECT kh.TENKH, kh.TGBATDAU,kh.TGKETTHUC,d.DIEM FROM khoahoc kh, sv_dk_khoahoc sd, sinhvien sv, diemkhoahoc d WHERE sv.IDSV = sd.IDSV AND sd.IDKH = kh.IDKH AND d.IDKH = kh.IDKH AND d.IDSV = sv.IDSV AND sd.XACNHAN = '0' AND sv.IDSV = '$id'";
+		$result = mysqli_query($conn, $query);
+		return $result;
+	}
  ?>

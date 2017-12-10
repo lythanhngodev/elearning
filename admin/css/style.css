@@ -41,11 +41,12 @@ margin-left: 8px;
 	left: 35%;
 }
 .head img {
+	width: 120px;
 	border-radius:50%;
 	-webkit-border-radius:50%;
 	-o-border-radius:50%;
 	-moz-border-radius:50%;
-	border:6px solid rgba(221, 218, 215, 0.23);
+	border: 6px solid rgba(2, 184, 59, 0.33);
 }
 .main{
 	position:relative;
@@ -148,6 +149,7 @@ input[type="submit"]:hover{
 .copy-right p a:hover{
 	color:#fff;
 }
+
 /*-----start-responsive-design------*/
 @media (max-width:1440px){
 	.login-form {
@@ -356,6 +358,7 @@ input[type="submit"]:hover{
 }
 .nut .btn{
     padding: 2px 6px;
+    border-radius: 50%;
 }
 .thong-tin{
     text-align: center;

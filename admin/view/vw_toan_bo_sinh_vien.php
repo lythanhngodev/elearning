@@ -12,7 +12,10 @@
               type: 'success',
               delay: 2000
             });
-           $("#qltv-modal-them-khoa-hoc").modal("hide");
+          setTimeout(function(){ 
+            $("#qltv-modal-sua-sinh-vien").modal("hide");
+          }, 1000);
+           
       }
       function tailai() {
         setTimeout(function(){ location.reload(); }, 3000);
@@ -117,10 +120,10 @@
                     </td>
                     <td class="giua"><div class="nut nam-giua">
                       <a class="btn btn-primary btn-sua-sinh-vien" data-el="<?php echo $row['IDSV']; ?>" title="Sửa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        <a class="btn btn-danger btn-xoa-giao-vien" title="Xóa"
-                        data-el="<?php echo $row['IDSV']; ?>" ><i class="fa fa-trash" aria-hidden="true"></i></a></div>
+                        <a class="btn btn-danger" title="Xóa" onclick="xoa('<?php echo $row['IDSV']; ?>')" ><i class="fa fa-trash" aria-hidden="true"></i></a></div>
                     </td>
                     <input type="text" hidden="hidden" id="id-hinh-anh-<?php echo $row['IDSV']; ?>" name="" value="<?php echo $row['HINHANH']; ?>">
+                    <input type="text" hidden="hidden" id="id-ngay-sinhh-<?php echo $row['IDSV']; ?>" name="" value="<?php echo $row['NGAYSINH']; ?>">
                 </tr>
                 <?php
                 $stt++;
@@ -145,19 +148,19 @@
           <div class="col-md-6">
 	        <div class="form-group">
 	          <label>Họ sinh viên</label>
-	          <input type="text" class="form-control" name="" id="ho-sinh-vien-sua" placeholder="mã khóa học" required autocomplete="on">
+	          <input type="text" class="form-control" name="" id="ho-sinh-vien-sua" placeholder="" required autocomplete="on">
 	        </div>
           </div>  
           <div class="col-md-6">
 	        <div class="form-group">
 	          <label>Tên sinh viên</label>
-	          <input type="text" class="form-control" name="" id="ten-sinh-vien-sua" placeholder="tên khóa học" required autocomplete="on">
+	          <input type="text" class="form-control" name="" id="ten-sinh-vien-sua" placeholder="" required autocomplete="on">
 	        </div>
           </div>
           <div class="col-md-6">
 	        <div class="form-group">
 	          <label>Tên đăng nhập</label>
-	          <input type="text" class="form-control" name="" id="ten-dang-nhap-sua" placeholder="tên khóa học" required autocomplete="on">
+	          <input type="text" class="form-control" name="" id="ten-dang-nhap-sua" placeholder="" required autocomplete="on">
 	        </div>
           </div>
 		  <div class="col-md-6">
@@ -171,17 +174,23 @@
           <div class="col-md-6">
 	        <div class="form-group">
 	          <label>Mail</label>
-	          <input type="text" class="form-control" name="" id="mail-sua" placeholder="số điện thoại" required autocomplete="on">
+	          <input type="text" class="form-control" name="" id="mail-sua" placeholder="" required autocomplete="on">
 	        </div>
           </div>  
           <div class="col-md-6">
-	        <div class="form-group">
-	          <label>Địa chỉ</label>
-	          <input type="text" class="form-control" name="" id="dia-chi-sua" placeholder="mail" required autocomplete="on">
-	        </div>
+  	        <div class="form-group">
+  	          <label>Địa chỉ</label>
+  	          <input type="text" class="form-control" name="" id="dia-chi-sua" placeholder="" required autocomplete="on">
+  	        </div>
           </div>
         </div>
         <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Ngày sinh</label>
+              <input type="date" class="form-control" name="" id="ngay-sinh-sua" placeholder="" required autocomplete="on">
+            </div>
+          </div>
           <div class="col-md-6">
             <div class="form-group">
               <button class="btn btn-default" onclick="BrowseServer()">Chọn ảnh đại diện ...</button>
@@ -194,7 +203,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary" id="nut-sua-sinh-vien">Xác nhận sửa</button>
+        <button type="button" class="btn btn-primary" id="nut-sua-sinh-vien"><i id="nut-load"></i> Xác nhận sửa</button>
       </div>
     </div>
   </div>
@@ -238,20 +247,25 @@
       finder.popup();
   }
   function SetFileField(fileUrl) {
-      document.getElementById('hinh-anh-dai-dien-them').src = fileUrl;
+      document.getElementById('hinh-anh-dai-dien-sua').src = fileUrl;
       var host = "<?php echo $elearning['HOSTGOC']; ?>";
       host = host.substr(0,host.lastIndexOf("\/"));
-      document.getElementById('hinh-anh-dai-dien-them-src').value=fileUrl.substr(host.length+1,fileUrl.length-host.length);
+      document.getElementById('hinh-anh-dai-dien-sua-src').value=fileUrl.substr(host.length+1,fileUrl.length-host.length);
   }
-  function BrowseServerSua() {
-      finder.selectActionFunction = SetFileFieldSua;
-      finder.popup();
-  }
-  function SetFileFieldSua(fileUrl) {
-      document.getElementById('hinh-anh-hoc-ky-sua').src = fileUrl;
-      var host = "<?php echo $elearning['HOSTGOC']; ?>";
-      host = host.substr(0,host.lastIndexOf("\/"));
-      document.getElementById('hinh-anh-hoc-ky-sua-src').value=fileUrl.substr(host.length+1,fileUrl.length-host.length);
+  function xoa(id){
+    if (confirm('Bạn có chắc xóa sinh viên này?\nToàn bộ dữ liệu của sinh viên này sẽ bị xóa khỏi hệ thống!')) {
+      $.ajax({
+        url : "ajax/ajax_xoa_sinh_vien.php",
+        type : "post",
+        dataType:"text",
+        data : {
+          id: id
+        },
+        success : function (data){
+            $("body").append(data);
+        }
+      });
+    }
   }
   $(document).ready(function() {
     $("#themloaisach").click(function(){
@@ -285,58 +299,48 @@
         }
       });
     });
-    $("#nut-them-giao-vien").click(function(){
-      $.ajax({
-        url : "ajax/ajax_them_sinh_vien.php",
-        type : "post",
-        dataType:"text",
-        data : {
-          m: $("#ma-giao-vien-them").val(),
-          t: $("#ten-giao-vien-them").val(),
-          tdn: $("#ten-dang-nhap-them").val(),
-          dc: $("#dia-chi-giao-vien-them").val(),
-          sdt: $("#so-dien-thoai-them").val(),
-          mail: $("#mail-them").val(),
-          gt: $("#gioi-tinh-them").val(),
-          hinh: $("#hinh-anh-dai-dien-them-src").val()
-        },
-        success : function (data){
-            $("body").append(data);
-        }
-      });
-    });
-
     $(".btn-sua-sinh-vien").click(function(){
       var id = $(this).attr("data-el");
       $("#ho-sinh-vien-sua").val($("#id-ho-sinh-vien-"+id).text().trim());
       $("#ten-sinh-vien-sua").val($("#id-ten-sinh-vien-"+id).text().trim());
       $("#ten-dang-nhap-sua").val($("#id-ten-dang-nhap-"+id).text().trim());
       $("#so-dien-thoai-sua").val($("#id-so-dien-thoai-"+id).text().trim());
+      $("#ngay-sinh-sua").val($("#id-ngay-sinhh-"+id).val().trim());
       $("#hinh-anh-dai-dien-sua").attr('src', "../"+$("#id-hinh-anh-"+id).val().trim());
+      $("#hinh-anh-dai-dien-sua-src").val($("#id-hinh-anh-"+id).val());
       $("#mail-sua").val($("#id-mail-"+id).text().trim());
       $("#dia-chi-sua").val($("#id-dia-chi-"+id).text().trim());
       $("#id-sinh-vien-sua").val(id);
       $("#qltv-modal-sua-sinh-vien").modal("show");
     });
     $("#nut-sua-sinh-vien").click(function(){
-      $.ajax({
-        url : "ajax/ajax_sua_sinh_vien.php",
-        type : "post",
-        dataType:"text",
-        data : {
-          tl: $("#ho-sinh-vien-sua").val(),
-          t: $("#ten-sinh-vien-sua").val(),
-          tdn: $("#ten-dang-nhap-sua").val(),
-          sdt: $("#so-dien-thoai-sua").val(),
-          h: $("#hinh-anh-dai-dien-sua-src").val(),
-          m: $("#mail-sua").val(),
-          dc: $("#dia-chi-sua").val(),
-          id: $("#id-sinh-vien-sua").val()
-        },
-        success : function (data){
+      $("#nut-load").addClass("fa fa-circle-o-notch fa-spin");
+      setTimeout(function(){
+        $.ajax({
+          url : "ajax/ajax_sua_sinh_vien.php",
+          type : "post",
+          dataType:"text",
+          data : {
+            tl: $("#ho-sinh-vien-sua").val(),
+            t: $("#ten-sinh-vien-sua").val(),
+            tdn: $("#ten-dang-nhap-sua").val(),
+            sdt: $("#so-dien-thoai-sua").val(),
+            h: $("#hinh-anh-dai-dien-sua-src").val(),
+            m: $("#mail-sua").val(),
+            dc: $("#dia-chi-sua").val(),
+            ns: $("#ngay-sinh-sua").val(),
+            id: $("#id-sinh-vien-sua").val()
+          },
+          success : function (data){
+            $("#nut-load").removeClass("fa fa-circle-o-notch fa-spin");
+            $("#nut-sua-sinh-vien").removeClass("btn-primary");
+            $("#nut-sua-sinh-vien").addClass("btn-success");
+            $("#nut-load").addClass("fa fa-check");
             $("body").append(data);
-        }
-      });
+          }
+        });
+      }, 500);
+
     });
     $(".btn-xoa-khoa-hoc").click(function(){
       var id = $(this).attr("data-el");

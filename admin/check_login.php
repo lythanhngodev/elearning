@@ -16,7 +16,7 @@
 	}*/
 	$_SESSION['LAST_ACTIVITY'] = time();
 	$ketnoi = new clsKetnoi();
-	$hoi_user = "SELECT gv.IDGV, gv.LOAITAIKHOAN FROM login_gv lg, giaovien gv WHERE lg.IDGV = gv.IDGV AND gv.TrangThai = b'0' AND (BINARY `TenDangNhap` = '".$_SESSION['username']."') AND `MatKhau` = '".md5($_SESSION['password'])."'";
+	$hoi_user = "SELECT gv.IDGV, gv.LOAITAIKHOAN FROM login_gv lg, giaovien gv WHERE lg.IDGV = gv.IDGV AND gv.TrangThai = b'0' AND (BINARY `TenDangNhap` = '".$_SESSION['username']."') AND `MatKhau` = '".md5($_SESSION['password'])."' AND gv.XOA = b'0'";
 	$thucthi_user = mysqli_query($ketnoi->ketnoi(), $hoi_user);
 	$row_user = mysqli_fetch_assoc($thucthi_user);
 	$idofgv = $row_user['IDGV'];

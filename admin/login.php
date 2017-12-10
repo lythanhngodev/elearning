@@ -33,13 +33,13 @@
 		<div class="login-form">
 			<h1>Người dùng đăng nhập</h1>
 				<div class="head">
-					<img src="images/user.png" alt=""/>
+					<img src="images/user.png" alt="" class="animated wobble" />
 				</div>
 				<form href="" method="post">
 						<input type="text" class="text nutnhap" name="username" value="" placeholder="tên đăng nhập" >
 						<input type="password" class="nutnhap" value="" name="password" placeholder="mật khẩu">
 						<div class="submit">
-							<input type="submit" value="ĐĂNG NHẬP" >
+							<input type="submit" class="" value="ĐĂNG NHẬP" >
 					</div>	
 					<p><a href="#">Quên mật khẩu?</a></p>
 				</form>

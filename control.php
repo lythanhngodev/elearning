@@ -20,6 +20,7 @@ if (isset($_GET["p"]) && !empty($_GET["p"])) {
 			require 'model/md_thiet_lap_tai_khoan.php';
 			$sv = el_thong_tin_ca_nhan($idofsv);
 			$row = mysqli_fetch_array($sv);
+			$kq = el_lich_su_khoc_hoc($idofsv);
 			require 'block/thiet-lap-tai-khoan.php';
 			break;
 		// thông tin cá nhân

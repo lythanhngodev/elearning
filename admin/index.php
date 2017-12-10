@@ -22,7 +22,7 @@
 	      <a class="navbar-brand" href="#"><b>VLUTE Elearning</b></a>
 	    </div>
 	    <ul class="nav navbar-nav">
-	      <li><a href="#">Trang chủ</a></li>
+	      <li id="trangchu"><a href="#">Trang chủ</a></li>
 	      <?php 
 	      // tài khoản admin cao nhất
 	      if ($loaitk == 1) { ?>
@@ -37,6 +37,7 @@
 	        </ul>
 	      </li>
 	      <li id="khoahoc"><a href="?p=khoahoc">Khóa học</a></li>
+	      <li id="lichnhapdiem"><a href="?p=lichnhapdiem">Lịch nhập điểm</a></li>
 	      <li id="lichthi"><a href="?p=lichthi">Thông báo</a></li>
 	      <li class="dropdown" id="thongke">
         	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Thống kê
@@ -58,7 +59,7 @@
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
 	        <li class="dropdown" id="quanlythongtin">
-	          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> Thông tin<span class="caret"></span></a>
+	          <a class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> Thông tin<span class="caret"></span></a>
 	          <ul class="dropdown-menu">
 	            <li><a href="?p=profile">Sửa thông tin</a></li>
 	            <li><a href="logout.php">Đăng xuất</a></li>

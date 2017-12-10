@@ -22,6 +22,9 @@
 			case 'lichthi':
 				include_once("control/ctrl_lich_thi.php");
 				break;
+			case 'lichnhapdiem':
+				include_once("control/ctrl_lich_nhap_diem.php");
+				break;
 			case 'toanbosinhvien':
 				include_once("control/ctrl_toan_bo_sinh_vien.php");
 				break;
@@ -39,6 +42,9 @@
 				break;
 			case 'top5':
 				include_once("control/ctrl_du_lieu_top_5.php");
+				break;
+			case 'profile':
+				include_once("control/ctrl_profile.php");
 				break;
 			default:
 				# code...

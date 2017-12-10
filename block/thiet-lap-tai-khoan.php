@@ -32,6 +32,27 @@
             });
       }
 </script>
+<style type="text/css">
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+</style>
 <div class="thiet-lap-tai-khoan">
   <h4>THIẾT LẬP TÀI KHOẢN</h4>
   <!-- Nav tabs -->
@@ -125,10 +146,18 @@
         <div class="row">
           <div class="col-md-4"></div>
           <div class="col-md-4">
-            <div class="col-md-12 cls-hinh-anh-dai-dien" style="background-image: url('<?php echo $row['HINHANH'] ?>');"></div>
+            <div id="img-upload" class="col-md-12 cls-hinh-anh-dai-dien" style="background-image: url('<?php echo $row['HINHANH'] ?>');"></div>
             <br><br>
             <div class="col-md-12">
-              <button class="btn btn-primary " id="thay-doi-anh-dai-dien">Thay đổi ảnh đại diện</button>
+            <div class="input-group">
+              <span class="input-group-btn">
+                  <span class="btn btn-default btn-file">
+                      Browse… <input type="file" id="imgInp">
+                  </span>
+              </span>
+              <input type="text" hidden="hidden" class="form-control" readonly>
+            </div>
+              <button class="btn btn-default">Thay đổi ảnh đại diện</button>
               <button class="btn btn-danger">Xóa</button>
             </div>
           </div>
@@ -175,24 +204,23 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Lập trình C# căn bản</td>
-              <td>10/10/2017 - 12/12/2017</td>
-              <td><span class="ket-qua-dat">HOÀN THÀNH</span></td>
+            <?php $stt=1;while ($r = mysqli_fetch_array($kq)) { ?>
+              <tr>
+                <th scope="row"><?php echo $stt; ?></th>
+                <td><?php echo $r['TENKH'] ?></td>
+                <td><?php echo $r['TGBATDAU']." đến ".$r['TGKETTHUC'] ?></td>
+                <td><span class="ket-qua-dat">
+                  <?php if($r['DIEM'] >=5){
+                    echo $r['DIEM']." điểm - HOÀN THÀNH";
+                  }else{echo $r['DIEM']." điểm - KHÔNG HOÀN THÀNH";}
+
+                   ?>
+                  
+                    
+                  </span></td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Lập trình PHP</td>
-              <td>10/10/2017 - 12/12/2017</td>
-              <td><span class="ket-qua-dat">HOÀN THÀNH</span></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Hệ điều hành</td>
-              <td>10/10/2017 - 12/12/2017</td>
-              <td><span class="ket-qua-khong-dat">KHÔNG ĐẠT</span></td>
-            </tr>
+            <?php $stt++; } ?>
+            
           </tbody>
         </table>
     </div> <!-- END LICH SU -->
@@ -236,5 +264,40 @@
           $("body").append(data);
       }
     });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready( function() {
+      $(document).on('change', '.btn-file :file', function() {
+    var input = $(this),
+      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [label]);
+    });
+
+    $('.btn-file :file').on('fileselect', function(event, label) {
+        var input = $(this).parents('.input-group').find(':text'),
+            log = label;
+        
+        if( input.length ) {
+            input.val(log);
+        } else {
+            if( log ) alert(log);
+        }
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#img-upload').css("background-image", "url("+e.target.result+")");
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function(){
+        readURL(this);
+    });   
   });
 </script>

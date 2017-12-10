@@ -37,7 +37,7 @@
 							<?php require 'modal-login.php' ?>
 					   </li>
 				   <?php } else{ ?>
-					   <li class="nav-item icon-dangnhap">
+					   <li class="nav-item icon-dangnhap" data-toggle="tooltip" data-placement="left" title="Thông tin cá nhân">
 					     <a class="nav-link" id="btn-thong-tin-ca-nhan" style="background: url('<?php echo $hinhanhofsv; ?>');  background-size: cover;"></a>
 					     <!-- BEGIN MODAL ĐÃ LOGIN -->
 							<?php require 'info.php'; ?>
@@ -48,3 +48,8 @@
 			</div>
 		</div> <!-- END MENU-TOP
 	</nav>	<!-- END MENU -->
+	<script type="text/javascript">
+		$(function () {
+  			$('[data-toggle="tooltip"]').tooltip()
+		})
+	</script>

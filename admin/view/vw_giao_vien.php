@@ -35,7 +35,7 @@
                 align: 'left'
               },
               type: 'danger',
-              delay: 2000
+              delay: 5000
             });
       }
 </script>
@@ -46,6 +46,7 @@
         Giảng viên
         <div class="line"></div>
       </h1>
+      <label> - Thông tin giảng viên của VLUTE Elearning</label>
     </section>
     <!-- Main content -->
     <section class="content">
@@ -107,7 +108,7 @@
                     	</select>
                     </td>
                     <td class="giua">
-                    	<select id="id-trang-thai-<?php echo $row['IDGV']; ?>" data-el="<?php echo $row['IDGV']; ?>" class="form-control chon" style="height: 28px;">
+                    	<select id="id-trang-thai-<?php echo $row['IDGV']; ?>" data-el="<?php echo $row['IDGV']; ?>" class="form-control chon doitrangthai" style="height: 28px;">
                     	<?php if ($row['TRANGTHAI']==0) { ?>
                     		<option value="0" selected >Bình thường</option>
                     		<option value="1">Bị cấm</option>
@@ -414,7 +415,20 @@
         }
       });
     });
-    
+    $(".doitrangthai").change(function(){
+      $.ajax({
+        url : "ajax/ajax_doi_trang_thai_giao_vien.php",
+        type : "post",
+        dataType:"text",
+        data : {
+          ma: $(this).attr("data-el"),
+          tt: $(this).val()
+        },
+        success : function (data){
+            $("body").append(data);
+        }
+      });
+    });
     $(".doiloaitaikhoan").change(function(){
       $.ajax({
         url : "ajax/ajax_doi_loai_tai_khoan_giao_vien.php",

@@ -56,7 +56,7 @@
 		$dc = Addslashes($dc);
 		$mk = md5($mk);
 		$hoi = "
-				INSERT INTO `sinhvien`(`HOSV`, `TENSV`, `GIOITINH`, `DIACHI`, `SDT`, `MAIL`, `NGAYSINH`, `TENDANGNHAP`, `MATKHAU`,`NGAYDANGKY`) VALUES ('$hodem','$ten','$gt','$dc','$sdt','$mail','$ns','$tdn','$mk',CURRENT_TIMESTAMP()
+				INSERT INTO `sinhvien`(`HOSV`, `TENSV`, `GIOITINH`, `DIACHI`, `SDT`, `MAIL`, `NGAYSINH`, `TENDANGNHAP`, `MATKHAU`,`NGAYDANGKY`) VALUES ('$hodem','$ten','$gt','$dc','$sdt','$mail','$ns','$tdn','$mk',CURRENT_TIMESTAMP())
 		";
 		if(mysqli_query($conn, $hoi)===TRUE)
 			return true;

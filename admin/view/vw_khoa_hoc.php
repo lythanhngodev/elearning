@@ -45,6 +45,7 @@
         Khóa học
         <div class="line"></div>
       </h1>
+      <label> - Thông tin về các khóa học dành cho sinh viên</label>
     </section>
     <!-- Main content -->
     <section class="content">
@@ -81,7 +82,16 @@
                     <th class="giua"><?php echo $stt; ?></th>
                     <td class="giua" id="id-ma-khoa-hoc-<?php echo $row['IDKH']; ?>"><a><?php echo $row['MAKH']; ?></a></td>
                     <td id="id-ten-khoa-hoc-<?php echo $row['IDKH']; ?>"><?php echo $row['TENKH']; ?></td>
-                    <td id="id-mo-ta-<?php echo $row['IDKH']; ?>"><?php echo $row['MOTAKH']; ?></td>
+                    <td id="id-mo-ta--<?php echo $row['IDKH']; ?>"><?php
+                          $mang = explode(' ', $row['MOTAKH']);
+                          if (count($mang)>8) {
+                            for ($i=0; $i <8; $i++) { 
+                              echo $mang[$i]." ";
+                            } echo "...";
+                          }
+                          else echo $row['MOTAKH'];
+                        ?></td>
+                    <td id="id-mo-ta-<?php echo $row['IDKH']; ?>" hidden="hidden" ><?php echo $row['MOTAKH']; ?></td>
                     <td id="id-thoi-gian-bat-dau-<?php echo $row['IDKH']; ?>" class="giua" id=""><span class="xam" ><?php echo $row['TGBATDAU']; ?></span></td>
                     <td id="id-thoi-gian-ket-thuc-<?php echo $row['IDKH']; ?>" class="giua"><span class="xam"><?php echo $row['TGKETTHUC']; ?></span></td>
                     <td id="id-thoi-gian-bat-dau-dang-ky-<?php echo $row['IDKH']; ?>" class="giua"><span class="xam" ><?php echo $row['TGBDDK']; ?></span></td>
@@ -134,13 +144,6 @@
               <textarea class="form-control" id="mo-ta-chi-tiet-khoa-hoc-them" rows="5"></textarea>
             </div>
           </div> 
-          <div class="col-md-6">
-            <div class="form-group">
-              <button class="btn btn-default" onclick="BrowseServer()">Chọn hình ảnh khóa học ...</button>
-              <img src="" id="hinh-anh-hoc-ky-them" style="width: 100%;">
-            </div>
-            <input type="text" id="hinh-anh-hoc-ky-them-src" hidden="hidden" name="">
-          </div>
         </div>
         <div class="row">
           <div class="col-md-6">
@@ -168,6 +171,19 @@
               <label>Thời gian kết thúc đăng ký</label>
               <input type="date" class="form-control" name="" id="thoi-gian-ket-thuc-dang-ky-them" required autocomplete="on">
             </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Thời gian thi</label>
+              <input type="date" class="form-control" name="" id="thoi-gian-thi-them" required autocomplete="on">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <button class="btn btn-default" onclick="BrowseServer()">Chọn hình ảnh khóa học ...</button>
+              <img src="" id="hinh-anh-hoc-ky-them" style="width: 100%;">
+            </div>
+            <input type="text" id="hinh-anh-hoc-ky-them-src" hidden="hidden" name="">
           </div>
         </div>
       </div>
@@ -210,13 +226,6 @@
               <textarea class="form-control" id="mo-ta-chi-tiet-khoa-hoc-sua" rows="5"></textarea>
             </div>
           </div> 
-          <div class="col-md-6">
-            <div class="form-group">
-              <button class="btn btn-default" onclick="BrowseServerSua()">Chọn hình ảnh khóa học ...</button>
-              <img src="" id="hinh-anh-hoc-ky-sua" style="width: 100%;">
-            </div>
-            <input type="text" id="hinh-anh-hoc-ky-sua-src" hidden="hidden" name="">
-          </div>
         </div>
         <div class="row">
           <div class="col-md-6">
@@ -244,6 +253,19 @@
               <label>Thời gian kết thúc đăng ký</label>
               <input type="date" class="form-control" name="" id="thoi-gian-ket-thuc-dang-ky-sua" required autocomplete="on">
             </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Thời gian thi</label>
+              <input type="date" class="form-control" name="" id="thoi-gian-thi-sua" required autocomplete="on">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <button class="btn btn-default" onclick="BrowseServerSua()">Chọn hình ảnh khóa học ...</button>
+              <img src="" id="hinh-anh-hoc-ky-sua" style="width: 100%;">
+            </div>
+            <input type="text" id="hinh-anh-hoc-ky-sua-src" hidden="hidden" name="">
           </div>
           <input type="text" hidden="hidden" name="" value="" id="id-khoa-hoc-sua">
         </div>
@@ -326,6 +348,7 @@
           tgktkh: $("#thoi-gian-ket-thuc-them").val(),
           tgbddk: $("#thoi-gian-dang-ky-them").val(),
           tgktdk: $("#thoi-gian-ket-thuc-dang-ky-them").val(),
+          tgt: $("#thoi-gian-thi-them").val(),
           hinh: $("#hinh-anh-hoc-ky-them-src").val()
         },
         success : function (data){
@@ -344,6 +367,7 @@
       $("#thoi-gian-bat-dau-sua").val($("#id-thoi-gian-bat-dau-"+id).text().trim());
       $("#thoi-gian-ket-thuc-sua").val($("#id-thoi-gian-ket-thuc-"+id).text().trim());
       $("#thoi-gian-dang-ky-sua").val($("#id-thoi-gian-bat-dau-dang-ky-"+id).text().trim());
+      $("#thoi-gian-thi-sua").val($("#id-thoi-gian-thi-"+id).text().trim());
       $("#thoi-gian-ket-thuc-dang-ky-sua").val($("#id-thoi-gian-ket-thuc-dang-ky-"+id).text().trim());
       $("#id-khoa-hoc-sua").val(id);
       $("#qltv-modal-sua-khoa-hoc").modal("show");
@@ -363,6 +387,7 @@
           tgbddk: $("#thoi-gian-dang-ky-sua").val(),
           tgktdk: $("#thoi-gian-ket-thuc-dang-ky-sua").val(),
           hinh: $("#hinh-anh-hoc-ky-sua-src").val(),
+          tgt: $("#thoi-gian-thi-sua").val(),
           id: $("#id-khoa-hoc-sua").val()
         },
         success : function (data){

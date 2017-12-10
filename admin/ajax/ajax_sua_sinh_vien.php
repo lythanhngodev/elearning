@@ -1,6 +1,6 @@
 <?php 
 	include_once("../config.php");
-	function el_them_khoa_hoc($tl, $t, $tdn,$sdt, $h, $m, $dc, $dc, $id){
+	function el_them_khoa_hoc($tl, $t, $tdn,$sdt, $h, $m, $dc,$ns, $id){
 		if (empty($tl)) {
 			echo "<script type=\"text/javascript\">khongthanhcong(\"<strong>Lỗi</strong> tên lót được trống!\")</script>";
 			exit();
@@ -24,25 +24,26 @@
 		$ketnoi = new clsKetnoi();
 		$conn = $ketnoi->ketnoi();
 		$hoi = "
-			UPDATE `giaovien` 
+			UPDATE `sinhvien` 
 			SET 
-				`MAGV`='$m',
-				`TENGV`='$t',
+				`HOSV`='$tl',
+				`TENSV`='$t',
+				`HINHANH`='$h',
 				`DIACHI`='$dc',
 				`SDT`='$sdt',
-				`MAIL`='$mail',
-				`HINHANH`='$hinh',
-				`MOTA`='$mt'
+				`MAIL`='$m',
+				`NGAYSINH`='$ns',
+				`TENDANGNHAP`='$tdn'
 			WHERE 
-				IDGV = '$idgv'
+				`IDSV`='$id'
 		";
 		if(mysqli_query($conn, $hoi)===TRUE)
 			return true;
 		else
 			return false;
 	}
-	if (el_them_khoa_hoc($_POST['tl'],$_POST['t'],$_POST['tdn'],$_POST['sdt'],$_POST['h'],$_POST['m'],$_POST['dc'], $_POST['id'])) {
-		echo "<script type=\"text/javascript\">tailai();thanhcong(\"<strong>Đã lưu</strong> thông tin giáo viên!\")</script>";
+	if (el_them_khoa_hoc($_POST['tl'],$_POST['t'],$_POST['tdn'],$_POST['sdt'],$_POST['h'],$_POST['m'],$_POST['dc'],$_POST['ns'], $_POST['id'])) {
+		echo "<script type=\"text/javascript\">tailai();thanhcong(\"<strong>Đã lưu</strong> thông tin sinh viên!\")</script>";
 		exit();
 	}
 	else{

@@ -56,8 +56,8 @@
                           $_kq = mysqli_fetch_array($_re);
                           $_count = mysqli_num_rows($_re);
                           if ($_count > 0) { ?>
-                          <td><input type="text" name="" value="<?php echo $_kq['DIEM'] ?>" class="form-control giua" style="width: 60px;" data-el-hk="<?php echo $_idkh ?>" data-el-sv="<?php echo $_idsv ?>" id="id-nhap-diem-<?php echo $stt; ?>" ></td>
-                          <td class="giua"><input type="text" name="" value="<?php echo $_kq['GHICHU'] ?>" class="form-control" style="width: 230px;" data-el-hk="<?php echo trim($_idkh) ?>" data-el-sv="<?php echo trim($_idsv) ?>" id="id-ghi-chu-<?php echo $stt; ?>" ></td>
+                          <td><input type="text" name="" value="<?php echo $_kq['DIEM'] ?>" class="form-control giua" style="width: 60px;height: 28px;" data-el-hk="<?php echo $_idkh ?>" data-el-sv="<?php echo $_idsv ?>" id="id-nhap-diem-<?php echo $stt; ?>" ></td>
+                          <td class="giua"><input type="text" name="" value="<?php echo $_kq['GHICHU'] ?>" class="form-control" style="width: 230px;height: 28px;" data-el-hk="<?php echo trim($_idkh) ?>" data-el-sv="<?php echo trim($_idsv) ?>" id="id-ghi-chu-<?php echo $stt; ?>" ></td>
                           <?php } else{ ?>
                           <td><input type="text" name="" value="" class="form-control giua" style="width: 60px;" data-el-hk="<?php echo $_idkh ?>" data-el-sv="<?php echo $_idsv ?>" id="id-nhap-diem-<?php echo $stt; ?>" ></td>
                           <td class="giua"><input type="text" name="" value="" class="form-control" style="width: 230px;" data-el-hk="<?php echo trim($_idkh) ?>" data-el-sv="<?php echo trim($_idsv) ?>" id="id-ghi-chu-<?php echo $stt; ?>" ></td>
