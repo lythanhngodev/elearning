@@ -19,7 +19,7 @@
 	<nav class="navbar navbar-default" style="border: none;">
 	  <div class="container-fluid" style="border-bottom: 1px solid #e7e7e7;">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#"><b>VLUTE Elearning</b></a>
+	      <img src="images/vlute-logo.png" style="width: 42px;float: left;margin-top: 3px;margin-right: 10px;"><a class="navbar-brand" href="#"><b>VLUTE Elearning</b></a>
 	    </div>
 	    <ul class="nav navbar-nav">
 	      <li id="trangchu"><a href="#">Trang chủ</a></li>

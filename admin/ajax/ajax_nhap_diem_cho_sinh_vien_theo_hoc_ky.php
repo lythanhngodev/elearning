@@ -7,7 +7,7 @@
 	$tongso = sizeof($d)-1;
 	$ketnoi = new clsKetnoi();
 	$conn = $ketnoi->ketnoi();
-	$query = "SELECT * FROM nhapdiem nd, diemkhoahoc d WHERE d.IDKH = nd.IDKH AND nd.IDKH = '$kh' AND (CURRENT_DATE() BETWEEN nd.NGAYBDN AND nd.NGAYKTN)";
+	$query = "SELECT * FROM nhapdiem nd WHERE nd.IDKH = '$kh' AND (CURRENT_DATE() BETWEEN nd.NGAYBDN AND nd.NGAYKTN)";
 	$result = mysqli_query($conn, $query);
 	$count = mysqli_num_rows($result);
 	if ($count == 0) {
