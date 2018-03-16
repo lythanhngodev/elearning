@@ -25,7 +25,7 @@
                 align: 'left'
               },
               type: 'danger',
-              delay: 2000
+              delay: 200000
             });
       }
 </script>
